@@ -20,6 +20,10 @@ body {
   background-color: #F8F8F8;
 }
 
+.blue-bg {
+  background-color: #13ABED;
+}
+
 button {
   font-family: 'Public Sans', sans-serif;
   font-size: 18px;
@@ -50,3 +54,7 @@ Home
   color: #0D9BD9;
   transition: .7s ease-in-out;
 }
+
+/*————————————————————————————————————
+Goals Selector Page
+—————————————————————————————————————*/

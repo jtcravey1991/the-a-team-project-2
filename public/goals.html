@@ -5,7 +5,7 @@
     <!-- meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Say yes to mental wellness at school with this helpful goal tracker.">
+    <meta name="description" content="Select a goal to achieve this week and strengthen your mental wellness. ">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.ico">
@@ -21,10 +21,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
         integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
 
-    <title>Goal Tracker | wellyes</title>
+    <title>Goals Selection | wellyes</title>
 </head>
 
-<body>
+<body class="blue-bg">
     <header class="home-header">
         <nav class="container navbar">
             <a class="navbar-brand" href="#"><img src="./images/wellyess-logo.svg" alt="wellyes logo"></a>
@@ -34,54 +34,16 @@
 
     <main class="container">
 
-        <!-- Test Form, needs to be restructured and stylized -->
-        <form>
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="userFirstName">First Name</label>
-                    <input type="text" class="form-control" id="signupFirstName" placeholder="Jane">
-                </div>
-                <div class="form-group">
-                    <label for="userLastName">Last Name</label>
-                    <input type="text" class="form-control" id="signupLastName" placeholder="Smith">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
-                        placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" class="form-control" id="loginPassword" placeholder="••••••••">
-                </div>
-                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span> <span class="msg"></span>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Create Account</button>
-        </form>
-
-        <hr>
 
 
         <!-- Test Form, needs to be restructured and stylized -->
         <form>
             <div class="form-group">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
-                        placeholder="your@email.com">
+                    <input type="number" class="form-control" id="stydyGoalInput" aria-describedby="emailHelp"
+                        placeholder="0">
                 </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" class="form-control" id="loginPassword" placeholder="••••••••">
-                </div>
-                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span> <span class="msg"></span>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary">Create Goals</button>
         </form>
     </main>
 
