@@ -20,15 +20,27 @@ body {
   background-color: #F8F8F8;
 }
 
-.blue-bg {
-  background-color: #13ABED;
-}
-
 button {
   font-family: 'Public Sans', sans-serif;
   font-size: 18px;
   font-weight: 600 !important;
 }
+
+h1 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 54px;
+  text-align: center;
+  color: white;
+}
+
+
+.blue-bg {
+  background-color: #13ABED;
+}
+
 
 
 /*————————————————————————————————————
@@ -36,9 +48,15 @@ Home
 —————————————————————————————————————*/
 
 .home-header {
-  padding-top: 60px;
+  /* padding-top: 60px; */
   background-color: #13ABED;
   height: 545px;
+}
+
+.home-header__h1 {
+  position: relative;
+  width: 551px;
+  top: 160px;
 }
 
 .home-header__btn {
