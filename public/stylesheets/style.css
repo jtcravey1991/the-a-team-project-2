@@ -18,6 +18,7 @@ GLOBAL
 
 body {
   background-color: #F8F8F8;
+  font-family: 'Open Sans', sans-serif;
 }
 
 button {
@@ -47,6 +48,7 @@ h1 {
 Home Desktop
 —————————————————————————————————————*/
 
+/* Header */
 .home-header {
   background-color: #13ABED;
   height: 545px;
@@ -72,6 +74,22 @@ Home Desktop
   color: #0D9BD9;
   transition: .3s ease-in-out;
 }
+
+
+
+/* Sign Up */
+.sign-up {
+  background-color: white; 
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 34px 74px 0px rgba(0,0,0,0.05);
+     -moz-box-shadow: 0px 34px 74px 0px rgba(0,0,0,0.05);
+          box-shadow: 0px 34px 74px 0px rgba(0,0,0,0.05);
+  padding: 50px;
+
+}
+
+
+
 
 /*————————————————————————————————————
 Goals Selector Page Desktop

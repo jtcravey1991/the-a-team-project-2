@@ -37,34 +37,39 @@
     </header>
 
     <main class="container">
+        <section class="row justify-content-md-center">
+            <form class="sign-up col col-lg-6">
+                <h2>Get Started Here</h2>
+                <p>Create an account to choose your goals!</p>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="userFirstName">First Name</label>
+                        <input type="text" class="form-control" id="signupFirstName" placeholder="Jane">
+                    </div>
+                    <div class="form-group">
+                        <label for="userLastName">Last Name</label>
+                        <input type="text" class="form-control" id="signupLastName" placeholder="Smith">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
+                            placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="••••••••">
+                    </div>
+                    <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span> <span class="msg"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+        </section>
 
         <!-- Test Form, needs to be restructured and stylized -->
-        <form>
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="userFirstName">First Name</label>
-                    <input type="text" class="form-control" id="signupFirstName" placeholder="Jane">
-                </div>
-                <div class="form-group">
-                    <label for="userLastName">Last Name</label>
-                    <input type="text" class="form-control" id="signupLastName" placeholder="Smith">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
-                        placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" class="form-control" id="loginPassword" placeholder="••••••••">
-                </div>
-                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span> <span class="msg"></span>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Create Account</button>
-        </form>
+
 
         <hr>
 
