@@ -1,8 +1,52 @@
-form.signup,
-form.login {
-  margin-top: 50px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Public+Sans:wght@300;400;700;900&display=swap');
+
+
+
+/* 
+
+Font Resource Below
+
+font-family: 'Open Sans', sans-serif;
+font-family: 'Public Sans', sans-serif;
+
+*/
+
+
+/*————————————————————————————————————
+GLOBAL 
+—————————————————————————————————————*/
 
 body {
-  background-color: red;
+  background-color: #F8F8F8;
+}
+
+button {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 600 !important;
+}
+
+
+/*————————————————————————————————————
+Home 
+—————————————————————————————————————*/
+
+.home-header {
+  padding-top: 60px;
+  background-color: #13ABED;
+  height: 545px;
+}
+
+.home-header__btn {
+  background-color: #0D9BD9;
+  color: white;
+  padding: 11px 70px;
+  border-radius: 30px;
+  transition: .7s ease-in-out;
+}
+
+.home-header__btn:hover {
+  background-color: white;
+  color: #0D9BD9;
+  transition: .7s ease-in-out;
 }
