@@ -16,8 +16,128 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    // users first name
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    // users last name
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    // -------- Goals --------------------//
+
+    // study time boolean
+    isTrackingStudyTime: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // study goal per night
+    studyTimeGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // sleep time boolean
+    isTrackingSleep: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // sleep goal per night
+    sleepGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // healthy eats boolean
+    isTrackingHealthyEats: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // heathy eats goal per week
+    healthyEatsGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // drinking water boolean
+    isTrackingDrinkingWater: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // drinking water goal per day in fl. oz.
+    drinkingWaterGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // medetation boolean
+    isTrackingMeditaion: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // meditation goal in minutes per week
+    meditationGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // exercise boolean
+    isTrackingExercise: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // exercise goal hours per week
+    exerciseGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // hugs given boolean
+    isTrackingHugs: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // hugs goal per day
+    hugsGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // socialized boolean
+    isTrackingSocizlizing: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // socialized goal hours per week
+    socializingGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // jokes told boolean
+    isTrackingJokes: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    //jokes goal jokes per day
+    jokesGoal: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    // hobby time boolean
+    isTrackingHobby: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    // hobby time goal hours per week
+    hobbyGoal: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: 0
     }
   });
+
+  //association setup
+  User.associate = function(models) {
+    User.hasMany(models.Sleep, {
+      onDelete: "cascade"
+    });
+  }
+
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
