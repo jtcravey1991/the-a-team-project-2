@@ -44,18 +44,18 @@ h1 {
 
 
 /*————————————————————————————————————
-Home 
+Home Desktop
 —————————————————————————————————————*/
 
 .home-header {
-  /* padding-top: 60px; */
   background-color: #13ABED;
   height: 545px;
+  border-radius: 0 0 40px 40px;
 }
 
 .home-header__h1 {
   position: relative;
-  width: 551px;
+  max-width: 550px;
   top: 160px;
 }
 
@@ -64,15 +64,80 @@ Home
   color: white;
   padding: 11px 70px;
   border-radius: 30px;
-  transition: .7s ease-in-out;
+  transition: .3s ease-in-out;
 }
 
 .home-header__btn:hover {
   background-color: white;
   color: #0D9BD9;
-  transition: .7s ease-in-out;
+  transition: .3s ease-in-out;
 }
 
 /*————————————————————————————————————
-Goals Selector Page
+Goals Selector Page Desktop
 —————————————————————————————————————*/
+
+
+
+/*————————————————————————————————————
+//////////////////////////////////////
+
+Media Queries 
+
+//////////////////////////////////////
+—————————————————————————————————————*/
+
+/*————————————————————————————————————
+Home Mobile
+—————————————————————————————————————*/
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .container, 
+  .container-md, 
+  .container-sm {
+    max-width: 960px;
+    flex-wrap: nowrap;
+  }
+
+  .home-header__h1 {
+    height: 110px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding-top: 40px;
+    justify-content: center;
+  }
+
+  .home-header__h1 {
+    position: static;
+    font-size: 30px;
+    line-height: 41px;
+    margin: 35px 0;
+  }
+
+  .home-header__btn {
+    background-color: white;
+    color: #0D9BD9;
+    -webkit-box-shadow: 0px 4px 14px 0px rgba(0,0,0,0.25);
+       -moz-box-shadow: 0px 4px 14px 0px rgba(0,0,0,0.25);
+            box-shadow: 0px 4px 14px 0px rgba(0,0,0,0.25);
+  }
+
+  .home-header__btn:hover {
+    background-color: white;
+    color: #0D9BD9;
+    -webkit-box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
+       -moz-box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
+            box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
+  }
+
+  .home-header__btn:active {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #0D9BD9;
+    -webkit-box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
+       -moz-box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
+            box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
+  }
+  
+}
