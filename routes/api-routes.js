@@ -47,5 +47,53 @@ module.exports = function(app) {
     }
   });
 
-  
+  // ----------- GOALS ROUTES -------------------- ||
+  // study get
+  app.get("/api/sleep/:userid", (req, res) => {
+    db.Study.findAll({
+      where: {
+        UserId: req.params.userid,
+        date: {
+          $gt: moment().subtract(7, "days").toDate()
+        }
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+  // study post
+  app.post("api/sleep/:userid", (req, res) => {
+    db.Study.create({
+      UserId: req.params.userid,
+      date: req.body.date,
+      value: req.body.value
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+
+  // sleep get
+  app.get("/api/sleep/:userid", (req, res) => {
+    db.Sleep.findAll({
+      where: {
+        UserId: req.params.userid,
+        date: {
+          $gt: moment().subtract(7, "days").toDate()
+        }
+      }
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+  // sleep post
+  app.post("api/sleep/:userid", (req, res) => {
+    db.Sleep.create({
+      UserId: req.params.userid,
+      date: req.body.date,
+      value: req.body.value
+    }).then(function(dbSleep) {
+      res.json(dbSleep);
+    });
+  });
 };
