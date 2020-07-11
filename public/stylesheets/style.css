@@ -58,10 +58,37 @@ label {
   margin-bottom: 1.5rem;
 }
 
+.form__btn {
+  background-color: #13ABED;
+  border-radius: 20px;
+  height: 45px;
+  border: none;
+  transition: .3s ease-in-out;
+}
 
-.blue-bg {
+.form__btn:hover {
+  background-color: #0D9BD9;
+  transition: .3s ease-in-out;
+}
+
+.form__btn:active {
+  background-color: #13ABED !important;
+  transition: .3s ease-in-out;
+}
+
+.form__btn:focus {
+  background-color: #0D9BD9 !important;
+  transition: .3s ease-in-out;
+}
+
+
+
+/* Color Modifiers */
+.bg--blue {
   background-color: #13ABED;
 }
+
+
 
 
 
@@ -109,6 +136,8 @@ Home Desktop
           box-shadow: 0px 20px 74px 0px rgba(0,0,0,0.15);
   padding: 50px 80px;
 }
+
+sign 
 
 
 
