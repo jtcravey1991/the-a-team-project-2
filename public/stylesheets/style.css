@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Public+Sans:wght@300;400;700;900&display=swap');
 
-
-
 /* 
 
 Font Resource Below
@@ -105,8 +103,10 @@ Home Desktop
 
 .home-header__h1 {
   position: relative;
-  max-width: 550px;
+  width: 550px;
+  max-width: 100%;
   top: 160px;
+  right: -10px;
 }
 
 .home-header__btn {
@@ -123,6 +123,12 @@ Home Desktop
   transition: .3s ease-in-out;
 }
 
+.home-header__btn:focus {
+  background-color: #0D9BD9;
+  color: white;
+  transition: .3s ease-in-out;
+}
+
 
 
 /* Sign Up */
@@ -135,9 +141,10 @@ Home Desktop
      -moz-box-shadow: 0px 20px 74px 0px rgba(0,0,0,0.15);
           box-shadow: 0px 20px 74px 0px rgba(0,0,0,0.15);
   padding: 50px 80px;
+  max-width: 550px;
 }
 
-sign 
+ 
 
 
 
@@ -163,12 +170,12 @@ Home Mobile
   .container, 
   .container-md, 
   .container-sm {
-    max-width: 960px;
     flex-wrap: nowrap;
   }
 
   .home-header__h1 {
     height: 110px;
+    top: 120px;
   }
 }
 
@@ -183,6 +190,7 @@ Home Mobile
     font-size: 30px;
     line-height: 41px;
     margin: 35px 0;
+    transition: .3 ease-in-out;
   }
 
   .home-header__btn {
@@ -209,4 +217,13 @@ Home Mobile
             box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
   }
   
+}
+
+@media screen and (max-width: 570px) {
+
+  .sign-up {
+    top: -170px;
+    padding: 40px 20px;
+
+  }
 }
