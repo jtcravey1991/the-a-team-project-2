@@ -79,11 +79,23 @@ label {
   transition: .3s ease-in-out;
 }
 
+::placeholder {
+  color: #c4c8cc !important;
+}
+
 
 
 /* Color Modifiers */
 .bg--blue {
   background-color: #13ABED;
+}
+
+.modal-backdrop {
+  /* background-color: black; */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(100px);  
+  opacity: .7 !important; 
+  
 }
 
 
@@ -142,6 +154,17 @@ Home Desktop
           box-shadow: 0px 20px 74px 0px rgba(0,0,0,0.15);
   padding: 50px 80px;
   max-width: 550px;
+}
+
+
+/* Login */
+.login {
+  background-color: white; 
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 20px 74px 0px rgba(0,0,0,0.15);
+     -moz-box-shadow: 0px 20px 74px 0px rgba(0,0,0,0.15);
+          box-shadow: 0px 20px 74px 0px rgba(0,0,0,0.15);
+  padding: 40px;
 }
 
  
@@ -216,6 +239,11 @@ Home Mobile
        -moz-box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
             box-shadow: 0px 4px 14px 0px rgba(0,0,0,0);
   }
+
+  .login {
+    padding: 20px;
+  }
+  
   
 }
 
@@ -224,6 +252,9 @@ Home Mobile
   .sign-up {
     top: -170px;
     padding: 40px 20px;
+  }
 
+  .login {
+    padding: 0;
   }
 }
