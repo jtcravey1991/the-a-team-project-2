@@ -48,20 +48,20 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label for="signupFirstName">First Name</label>
-                        <input type="text" class="form-control" id="signupFirstName" placeholder="Jane">
+                        <input type="text" class="form-control" id="signupFirstName" placeholder="Jane" required>
                     </div>
                     <div class="form-group">
                         <label for="signupLastName">Last Name</label>
-                        <input type="text" class="form-control" id="signupLastName" placeholder="Smith">
+                        <input type="text" class="form-control" id="signupLastName" placeholder="Smith" required>
                     </div>
                     <div class="form-group">
                         <label for="signupEmail">Email address</label>
                         <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
-                            placeholder="your@email.com">
+                            placeholder="your@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="signupPassword">Password</label>
-                        <input type="password" class="form-control" id="signupPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
                     </div>
                     <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -70,7 +70,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block form__btn">Create Account</button>
             </form>
-        </section
+        </section>
 
 
         <!-- Modal -->
@@ -89,12 +89,12 @@
                                 <div class="form-group">
                                     <label for="signupEmail">Email address</label>
                                     <input type="email" class="form-control" id="signupEmail"
-                                        aria-describedby="emailHelp" placeholder="your@email.com">
+                                        aria-describedby="emailHelp" placeholder="your@email.com" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="loginPassword">Password</label>
                                     <input type="password" class="form-control" id="loginPassword"
-                                        placeholder="••••••••">
+                                        placeholder="password" required>
                                 </div>
                                 <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
