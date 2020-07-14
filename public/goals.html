@@ -5,7 +5,7 @@
     <!-- meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Select a goal to achieve this week and strengthen your mental wellness. ">
+    <meta name="description" content="Select a goal or a few to get through school!">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.ico">
@@ -21,43 +21,90 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
         integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
 
-    <title>Goals Selection | wellyes</title>
+    <title>Goals | wellyes</title>
 </head>
 
-<body class="blue-bg">
-    <header class="home-header">
-        <nav class="container navbar">
+<body class="bg--blue">
+    <header>
+        <nav class="container navbar pt-4">
             <a class="navbar-brand" href="#"><img src="./images/wellyess-logo.svg" alt="wellyes logo"></a>
-            <button type="button" class="btn home-header__btn" id="loginBtn">Login</button>
+
+            <button type="button" class="btn home-header__btn" id="loginBtn" data-toggle="modal"
+                data-target="#loginModal">Login</button>
+
         </nav>
     </header>
 
-    <main class="container">
+    <main class="container" id="wrap">
+        <div class="row mt-5 text-center ">
+            <div class="col">
+                <h1 class="font-weight-bold">Let’s select a goal…</h1>
+                <h4>More to be activated after the beta launch.</h4>
+            </div>
+        </div>
 
 
-
-        <!-- Test Form, needs to be restructured and stylized -->
-        <form>
-            <div class="form-group">
-                <div class="form-group">
-                    <input type="date" class="form-control" id="stydyGoalInput" aria-describedby="emailHelp"
-                        placeholder="0">
-                </div>
-                <button type="submit" class="btn btn-primary">Create Goals</button>
-        </form>
     </main>
 
+    <!-- Footer -->
+    <footer>
+        Created with 💜by the <strong><a href="https://github.com/jtcravey1991/the-a-team-project-2" target="_blank"
+                class="footer__link">A
+                Team</a></strong>.
+    </footer>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content login">
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <h2>Login</h2>
+                    </div>
+
+                    <!-- Form -->
+                    <form class="login-hook">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="loginEmail">Email address</label>
+                                <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                                    placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="password"
+                                    required>
+                            </div>
+                            <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span> <span class="msg"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block form__btn">Login</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+
+    <!-- Popper -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+    <!-- SignUp JS -->
+    <script type="text/javascript" src="js/signup.js"></script>
 </body>
 
 </html>

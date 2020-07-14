@@ -19,12 +19,16 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+
 footer {
   background-color: white;
   font-size: 14px;
   color: #868686;
   padding: 10px;
   text-align: center;
+  position: relative;
+  clear:both;
+  padding-top:20px;
 }
 
 .footer__link {
@@ -51,6 +55,11 @@ h1 {
 h2 {
   font-size: 28px;
   line-height: 38px;
+}
+
+h4 {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 18px;
 }
 
 /* Forms */
@@ -100,6 +109,10 @@ label {
 /* Color Modifiers */
 .bg--blue {
   background-color: #13ABED;
+}
+
+.color--white {
+  color: white;
 }
 
 .modal-backdrop {
@@ -180,9 +193,6 @@ Home Desktop
 }
 
  
-
-
-
 
 /*————————————————————————————————————
 Goals Selector Page Desktop
