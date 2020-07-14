@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -57,7 +57,7 @@ module.exports = function(app) {
           $gt: moment().subtract(7, "days").toDate()
         }
       }
-    }).then(function(data) {
+    }).then(function (data) {
       res.json(data);
     });
   });
@@ -67,7 +67,7 @@ module.exports = function(app) {
       UserId: req.params.userid,
       date: req.body.date,
       value: req.body.value
-    }).then(function(data) {
+    }).then(function (data) {
       res.json(data);
     });
   });
@@ -82,7 +82,7 @@ module.exports = function(app) {
           $gt: moment().subtract(7, "days").toDate()
         }
       }
-    }).then(function(data) {
+    }).then(function (data) {
       res.json(data);
     });
   });
@@ -92,10 +92,33 @@ module.exports = function(app) {
       UserId: req.params.userid,
       date: req.body.date,
       value: req.body.value
-    }).then(function(dbSleep) {
+    }).then(function (dbSleep) {
       res.json(dbSleep);
     });
   });
 
+  //eat get
+  app.get("/api/eat/:userid", (req, res) => {
+    db.Eat.findAll({
+      where: {
+        UserId: req.params.userid,
+        date: {
+          $gt: moment().subtract(7, "days").toDate()
+        }
+      }
+    }).then(function (data) {
+      res.json(data);
+    });
+  });
+  //eat post
+  app.post("api/eat/:userid", (req, res) => {
+    db.Eat.create({
+      UserId: req.params.userid,
+      date: req.body.date,
+      value: req.body.value
+    }).then(function (dbSleep) {
+      res.json(dbSleep);
+    });
+  });
 
 };
