@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Say yes to mental wellness at school with this helpful goal tracker.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./stylesheets/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+
+    <title>Goal Tracker | wellyes</title>
+</head>
+
+<body>
+    <header class="home-header">
+        <nav class="container navbar">
+            <a class="navbar-brand" href="#"><img src="./images/wellyess-logo.svg" alt="wellyes logo"></a>
+            <h1 class="home-header__h1">Say <strong class="font-weight-bold">yes</strong> to mental <strong
+                    class="font-weight-bold">wellness</strong> with this
+                helpful goal tracker.</h1>
+
+            <button type="button" class="btn home-header__btn" id="loginBtn" data-toggle="modal"
+                data-target="#loginModal">Login</button>
+
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="row justify-content-center">
+            <form class="sign-up col">
+                <div class="text-center mb-4">
+                    <h2>Get Started Here</h2>
+                    <p>Create an account to choose your goals!</p>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="signupFirstName">First Name</label>
+                        <input type="text" class="form-control" id="signupFirstName" placeholder="Jane" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupLastName">Last Name</label>
+                        <input type="text" class="form-control" id="signupLastName" placeholder="Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email address</label>
+                        <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
+                            placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span> <span class="msg"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block form__btn">Create Account</button>
+            </form>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        Created with 💜by the <strong><a href="https://github.com/jtcravey1991/the-a-team-project-2" target="_blank"
+                class="footer__link">A
+                Team</a></strong>.
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content login">
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <h2>Login</h2>
+                    </div>
+
+                    <!-- Form -->
+                    <form class="login-hook">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="loginEmail">Email address</label>
+                                <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                                    placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="password"
+                                    required>
+                            </div>
+                            <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span> <span class="msg"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block form__btn">Login</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+
+    <!-- Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <!-- SignUp JS -->
+    <script type="text/javascript" src="js/signup.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+</body>
+
+</html>
