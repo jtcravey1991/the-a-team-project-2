@@ -32,6 +32,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
+  //route to log.html
+  app.get("/log", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/log.html"));
+  });
+
   // goals route loads goals.html
   app.get("/goals", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/goals.html"));

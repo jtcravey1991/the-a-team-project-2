@@ -62,7 +62,7 @@ module.exports = function(app) {
     });
   });
   // study post
-  app.post("api/sleep/:userid", (req, res) => {
+  app.post("/api/sleep/:userid", (req, res) => {
     db.Study.create({
       UserId: req.params.userid,
       date: req.body.date,
