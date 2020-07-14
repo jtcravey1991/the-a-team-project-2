@@ -16,11 +16,21 @@ $(document).ready(() => {
       password: passwordInput.val().trim()
     };
 
-    if (!userData.email || !userData.password || !userData.firstName || !userData.lastName) {
+    if (
+      !userData.email ||
+      !userData.password ||
+      !userData.firstName ||
+      !userData.lastName
+    ) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.firstName, userData.lastName, userData.email, userData.password);
+    signUpUser(
+      userData.firstName,
+      userData.lastName,
+      userData.email,
+      userData.password
+    );
     signupFirstName.val("");
     signupLastName.val("");
     emailInput.val("");
@@ -30,13 +40,13 @@ $(document).ready(() => {
   // Does a post to the signup route. If successful, we are redirected to the goals page
   // Otherwise we log any errors
   function signUpUser(firstName, lastName, email, password) {
-    $.post("/", {
+    $.post("/api/signup", {
       firstName: firstName,
       lastName: lastName,
       email: email,
       password: password
     })
-      .then(data => {
+      .then(() => {
         window.location.replace("/goals");
         // If there's an error, handle it by throwing up a bootstrap alert
       })

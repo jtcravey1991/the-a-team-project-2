@@ -1,8 +1,9 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -16,7 +17,9 @@ module.exports = function (app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -49,74 +52,79 @@ module.exports = function (app) {
 
   // ----------- GOALS ROUTES -------------------- ||
   // study get
-  app.get("/api/sleep/:userid", (req, res) => {
-    db.Study.findAll({
+  app.get("/api/sleep", isAuthenticated, (req, res) => {
+    db.Sleep.findAll({
       where: {
-        UserId: req.params.userid,
+        UserId: req.user.id,
         date: {
-          $gt: moment().subtract(7, "days").toDate()
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
         }
       }
-    }).then(function (data) {
+    }).then(data => {
       res.json(data);
     });
   });
   // study post
-  app.post("api/sleep/:userid", (req, res) => {
-    db.Study.create({
-      UserId: req.params.userid,
+  app.post("/api/sleep", isAuthenticated, (req, res) => {
+    db.Sleep.create({
+      UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
-    }).then(function (data) {
+    }).then(data => {
       res.json(data);
     });
   });
 
-
   // sleep get
-  app.get("/api/sleep/:userid", (req, res) => {
+  app.get("/api/sleep", isAuthenticated, (req, res) => {
     db.Sleep.findAll({
       where: {
-        UserId: req.params.userid,
+        UserId: req.user.id,
         date: {
-          $gt: moment().subtract(7, "days").toDate()
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
         }
       }
-    }).then(function (data) {
+    }).then(data => {
       res.json(data);
     });
   });
   // sleep post
-  app.post("api/sleep/:userid", (req, res) => {
+  app.post("api/sleep", isAuthenticated, (req, res) => {
     db.Sleep.create({
-      UserId: req.params.userid,
+      UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
-    }).then(function (dbSleep) {
+    }).then(dbSleep => {
       res.json(dbSleep);
     });
   });
-  
+
   //eat get
-  app.get("/api/eat/:userid", (req, res) => {
+  app.get("/api/eat", isAuthenticated, (req, res) => {
     db.Eat.findAll({
       where: {
-        UserId: req.params.userid,
+        UserId: req.user.id,
         date: {
-          $gt: moment().subtract(7, "days").toDate()
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
         }
       }
-    }).then(function (data) {
+    }).then(data => {
       res.json(data);
     });
   });
   //eat post
-  app.post("api/eat/:userid", (req, res) => {
+  app.post("api/eat", isAuthenticated, (req, res) => {
     db.Eat.create({
-      UserId: req.params.userid,
+      UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
-    }).then(function (dbSleep) {
+    }).then(dbSleep => {
       res.json(dbSleep);
     });
   });
