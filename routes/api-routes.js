@@ -96,7 +96,7 @@ module.exports = function (app) {
       res.json(dbSleep);
     });
   });
-
+  
   //eat get
   app.get("/api/eat/:userid", (req, res) => {
     db.Eat.findAll({
@@ -120,5 +120,4 @@ module.exports = function (app) {
       res.json(dbSleep);
     });
   });
-
 };
