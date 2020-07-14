@@ -9,6 +9,8 @@ module.exports = function (app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     res.json(req.user);
+  }).then(() => {
+    res.redirect(307, "/goals");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
