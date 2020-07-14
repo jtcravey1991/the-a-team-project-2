@@ -19,6 +19,18 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+footer {
+  background-color: white;
+  font-size: 14px;
+  color: #868686;
+  padding: 10px;
+  text-align: center;
+}
+
+.footer__link {
+  color: #c83efe;
+}
+
 button {
   font-family: 'Public Sans', sans-serif;
   font-size: 18px;
