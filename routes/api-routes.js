@@ -12,8 +12,7 @@ module.exports = function(app) {
       email: req.user.email,
       id: req.user.id
     });
-    res.redirect(307, "/goals");
-});
+  });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
