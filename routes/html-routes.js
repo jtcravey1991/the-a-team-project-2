@@ -2,7 +2,7 @@
 const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
-const isAuthenticated = require("../config/middleware/isAuthenticated");
+//const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // app.get("/", (req, res) => {
@@ -28,12 +28,17 @@ module.exports = function(app) {
   // });
 
   // blank route loads index.html
-  app.get("/", function(req, res) {
+  app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
+  //route to log.html
+  app.get("/log", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/log.html"));
+  });
+
   // goals route loads goals.html
-  app.get("/goals", function(req, res) {
+  app.get("/goals", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/goals.html"));
   });
 };
