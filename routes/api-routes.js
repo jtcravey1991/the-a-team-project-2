@@ -9,6 +9,7 @@ module.exports = function(app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     res.json(req.user);
+   res.redirect(307, "/goals");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -51,32 +52,6 @@ module.exports = function(app) {
   });
 
   // ----------- GOALS ROUTES -------------------- ||
-  // study get
-  app.get("/api/sleep", isAuthenticated, (req, res) => {
-    db.Sleep.findAll({
-      where: {
-        UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
-      }
-    }).then(data => {
-      res.json(data);
-    });
-  });
-  // study post
-  app.post("/api/sleep", isAuthenticated, (req, res) => {
-    db.Sleep.create({
-      UserId: req.user.id,
-      date: req.body.date,
-      value: req.body.value
-    }).then(data => {
-      res.json(data);
-    });
-  });
-
   // sleep get
   app.get("/api/sleep", isAuthenticated, (req, res) => {
     db.Sleep.findAll({
@@ -93,13 +68,40 @@ module.exports = function(app) {
     });
   });
   // sleep post
-  app.post("api/sleep", isAuthenticated, (req, res) => {
+  app.post("/api/sleep", isAuthenticated, (req, res) => {
     db.Sleep.create({
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
-    }).then(dbSleep => {
-      res.json(dbSleep);
+    }).then(data => {
+      res.json(data);
+    });
+    //res.send("Hello"); 
+  });
+
+  // study get
+  app.get("/api/study", isAuthenticated, (req, res) => {
+    db.Study.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  // study post
+  app.post("api/study", isAuthenticated, (req, res) => {
+    db.Study.create({
+      UserId: req.user.id,
+      date: req.body.date,
+      value: req.body.value
+    }).then(dbStudy => {
+      res.json(dbStudy);
     });
   });
 
@@ -124,8 +126,8 @@ module.exports = function(app) {
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
-    }).then(dbSleep => {
-      res.json(dbSleep);
+    }).then(dbEat => {
+      res.json(dbEat);
     });
   });
-};
+ };

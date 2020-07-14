@@ -94,6 +94,6 @@ function addSleep() {
     console.log(data);
     console.log("logged sleep");
     // Reload the page to get the updated list
-    location.reload();
+    //location.reload();
   });
 }

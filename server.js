@@ -19,8 +19,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 // handlebars setup
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
 
 // Requiring our routes
 require("./routes/html-routes.js")(app);
