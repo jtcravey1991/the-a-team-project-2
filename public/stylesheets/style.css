@@ -209,11 +209,16 @@ Goals Selector Page Desktop
   text-align: center;
   color: white;
   font-size: 1.2rem;
+  max-width: 80px;
+}
+
+.goal__sentence {
+  flex-grow: 6;
+  align-self: center;
 }
 
 .goal__input {
   font-family: 'Public Sans', sans-serif;
-  font-style: normal;
   font-weight: 900;
   font-size: 20px;
   color: rgba(255, 255, 255, 0.7);
@@ -223,6 +228,7 @@ Goals Selector Page Desktop
   border-bottom: 1px solid white;
   background: none;
   display: inline;
+  max-width: 50px;
 }
 
 .goal__tooltip {
@@ -230,6 +236,7 @@ Goals Selector Page Desktop
   text-align: center;
   color: white;
   font-size: 1.2rem;
+  max-width: 35px;
 }
 
 .goal__add {
