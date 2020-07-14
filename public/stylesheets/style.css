@@ -197,7 +197,51 @@ Home Desktop
 /*————————————————————————————————————
 Goals Selector Page Desktop
 —————————————————————————————————————*/
+.goal {
+  background-color: #0D9BD9;
+  border-radius: 50px 0 0 50px;
+  min-height: 65px;
+}
 
+.goal--icon {
+  border-right: 1px solid rgba(255, 255, 255, 0.20);
+  align-self: center;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.goal__input {
+  font-family: 'Public Sans', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  border-style: none;
+  border: none;
+  border-bottom: 1px solid white;
+  background: none;
+  display: inline;
+}
+
+.goal__tooltip {
+  align-self: center;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.goal__add {
+  align-self: center;
+  text-align: center;
+}
+
+.goal__add__btn {
+  background-color: #13ABED;
+  color: white;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+}
 
 
 /*————————————————————————————————————
