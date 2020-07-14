@@ -53,7 +53,7 @@ module.exports = function (app) {
   // ----------- GOALS ROUTES -------------------- ||
   // study get
   app.get("/api/sleep", isAuthenticated, (req, res) => {
-    db.Study.findAll({
+    db.Sleep.findAll({
       where: {
         UserId: req.user.id,
         date: {
@@ -66,7 +66,7 @@ module.exports = function (app) {
   });
   // study post
   app.post("/api/sleep", isAuthenticated, (req, res) => {
-    db.Study.create({
+    db.Sleep.create({
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value

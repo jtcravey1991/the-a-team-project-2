@@ -30,7 +30,7 @@ $(document).ready(() => {
   // Does a post to the signup route. If successful, we are redirected to the goals page
   // Otherwise we log any errors
   function signUpUser(firstName, lastName, email, password) {
-    $.post("/", {
+    $.post("/api/signup", {
       firstName: firstName,
       lastName: lastName,
       email: email,

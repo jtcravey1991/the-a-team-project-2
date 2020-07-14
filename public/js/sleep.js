@@ -87,7 +87,7 @@ function addSleep() {
     type: "POST",
     data: newSleep
   }).then(
-    function() {
+    function(data) {
         console.log(data); 
       console.log("logged sleep");
       // Reload the page to get the updated list
