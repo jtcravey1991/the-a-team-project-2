@@ -83,7 +83,7 @@ function addSleep() {
         value: sleepHours
     };
     // Send the POST request.
-  $.ajax("/api/sleep/1", {
+  $.ajax("/api/sleep", {
     type: "POST",
     data: newSleep
   }).then(
