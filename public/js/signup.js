@@ -16,11 +16,21 @@ $(document).ready(() => {
       password: passwordInput.val().trim()
     };
 
-    if (!userData.email || !userData.password || !userData.firstName || !userData.lastName) {
+    if (
+      !userData.email ||
+      !userData.password ||
+      !userData.firstName ||
+      !userData.lastName
+    ) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.firstName, userData.lastName, userData.email, userData.password);
+    signUpUser(
+      userData.firstName,
+      userData.lastName,
+      userData.email,
+      userData.password
+    );
     signupFirstName.val("");
     signupLastName.val("");
     emailInput.val("");
@@ -36,7 +46,7 @@ $(document).ready(() => {
       email: email,
       password: password
     })
-      .then(data => {
+      .then(() => {
         window.location.replace("/goals");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
