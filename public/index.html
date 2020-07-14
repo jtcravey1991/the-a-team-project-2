@@ -48,20 +48,20 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label for="signupFirstName">First Name</label>
-                        <input type="text" class="form-control" id="signupFirstName" placeholder="Jane">
+                        <input type="text" class="form-control" id="signupFirstName" placeholder="Jane" required>
                     </div>
                     <div class="form-group">
                         <label for="signupLastName">Last Name</label>
-                        <input type="text" class="form-control" id="signupLastName" placeholder="Smith">
+                        <input type="text" class="form-control" id="signupLastName" placeholder="Smith" required>
                     </div>
                     <div class="form-group">
                         <label for="signupEmail">Email address</label>
                         <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
-                            placeholder="your@email.com">
+                            placeholder="your@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="signupPassword">Password</label>
-                        <input type="password" class="form-control" id="signupPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="signupPassword" placeholder="Password" required>
                     </div>
                     <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -70,56 +70,69 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block form__btn">Create Account</button>
             </form>
-        </section
+        </section>
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content login">
-                    <div class="modal-body">
-                        <div class="text-center mb-4">
-                            <h2>Login</h2>
-                        </div>
+    </main>
 
-                        <!-- Form -->
-                        <form>
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <label for="signupEmail">Email address</label>
-                                    <input type="email" class="form-control" id="signupEmail"
-                                        aria-describedby="emailHelp" placeholder="your@email.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="loginPassword">Password</label>
-                                    <input type="password" class="form-control" id="loginPassword"
-                                        placeholder="••••••••">
-                                </div>
-                                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                    <span class="sr-only">Error:</span> <span class="msg"></span>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-block form__btn">Login</button>
-                        </form>
+    <!-- Footer -->
+    <footer>
+        Created with 💜by the <strong><a href="https://github.com/jtcravey1991/the-a-team-project-2" target="_blank" class="footer__link">A
+                Team</a></strong>.
+    </footer>
 
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content login">
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <h2>Login</h2>
                     </div>
+
+                    <!-- Form -->
+                    <form class="login-hook">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="loginEmail">Email address</label>
+                                <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                                    placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="password"
+                                    required>
+                            </div>
+                            <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                <span class="sr-only">Error:</span> <span class="msg"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block form__btn">Login</button>
+                    </form>
+
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+
+    <!-- Popper -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+    <!-- SignUp JS -->
+    <script type="text/javascript" src="js/signup.js"></script>
 </body>
 
 </html>
