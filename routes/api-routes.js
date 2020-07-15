@@ -12,8 +12,7 @@ module.exports = function(app) {
       email: req.user.email,
       id: req.user.id
     });
-    res.redirect(307, "/goals");
-});
+  });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
@@ -56,8 +55,8 @@ module.exports = function(app) {
 
   // ----------- GOALS ROUTES -------------------- ||
   // study get
-  app.get("/api/sleep", isAuthenticated, (req, res) => {
-    db.Sleep.findAll({
+  app.get("/api/study", isAuthenticated, (req, res) => {
+    db.Study.findAll({
       where: {
         UserId: req.user.id,
         date: {
@@ -71,8 +70,8 @@ module.exports = function(app) {
     });
   });
   // study post
-  app.post("/api/sleep", isAuthenticated, (req, res) => {
-    db.Sleep.create({
+  app.post("/api/study", isAuthenticated, (req, res) => {
+    db.Study.create({
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value

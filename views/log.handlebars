@@ -1,0 +1,43 @@
+   <!-- sleep chart -->
+    <div class="container">
+        <h3 id="sleepHoursGoal"></h3>
+        <label for="startOne">Start date:</label>
+        <input type="date" id="startOne" name="trip-start">
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <input type="number" name="sleepLog" id="sleepLog" class="form-control" placeholder="Hours Slept">
+                    <button class="btn btn-info" id="sleepBtn">Log Sleep</button>
+                </div>
+            </div>
+        </form>
+        <h3 id="sleepProgress"></h3>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- study chart -->
+    <div class="container">
+
+        <h3 id="studyHoursGoal"></h3>
+        <label for="start">Start date:</label>
+
+        <input type="date" id="start" name="trip-start">
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <input type="number" id="minStudy" class="form-control" placeholder="Minutes Studied">
+                    <button class="btn btn-info" id="studyBtn">Add Study
+                        Minutes</button>
+                </div>
+            </div>
+        </form>
+        <!-- //<p>Date: <input type="text" id="datepicker"></p> -->
+        <canvas id="donutChart"></canvas>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="/js/sleep.js"></script>
+    <script src="/js/study.js"></script>
