@@ -35,6 +35,7 @@
         </nav>
     </header>
 
+    <!-- Header -->
     <main class="container" id="wrap">
         <div class="row mt-5 text-center goal__header">
             <div class="col">
@@ -43,20 +44,22 @@
             </div>
         </div>
 
+
+        <!-- Goals -->
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <!-- Goal -->
+                <!-- Sleep Goal -->
                 <div class="row goal mb-4">
                     <div class="col-1 goal--icon">
                         <i class="fas fa-bed"></i>
                     </div>
                     <div class="col-7 goal__sentence">
-                        <span>I want to study for</span><input type="number" class="goal__input" id="studyGoalVal"
-                            placeholder="0"><span>hours a night.</span>
+                        <span>I want to sleep for</span><input type="number" class="goal__input" id="sleepGoalVal"
+                            placeholder="0" max="3"><span>hours a night.</span>
                     </div>
                     <div class="col-2 goal__tooltip">
-                        <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
                             title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
                             <i class="far fa-question-circle"></i>
                         </button>
@@ -66,7 +69,189 @@
                     </div>
                 </div>
 
-                <!-- Background -->
+                <!-- Study Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to study for</span><input type="number" class="goal__input" id="studyGoalVal"
+                            placeholder="0" max="3"><span>hours a week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addStudyBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Eat Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to eat healthy for</span><input type="number" class="goal__input" id="eatGoalVal"
+                            placeholder="0" max="3"><span>weeks.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addEatBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Drink Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to drink</span><input type="number" class="goal__input" id="drinkGoalVal"
+                            placeholder="0" max="3"><span>cups of water a day.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addDrinkBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Exercise Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to exercise for</span><input type="number" class="goal__input" id="exerciseGoalVal"
+                            placeholder="0" max="3"><span>times in a week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addExerciseBtn">Add</button>
+                    </div>
+                </div>
+
+
+                <!-- Socialize Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to socialize</span><input type="number" class="goal__input" id="socializeGoalVal"
+                            placeholder="0" max="3"><span>times in a month.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addSocializeBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Meditate Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to meditate</span><input type="number" class="goal__input" id="meditateGoalVal"
+                            placeholder="0" max="3"><span>times in a month.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addMeditateBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Jokes Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-grin-squint"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to tell</span><input type="number" class="goal__input" id="jokesGoalVal"
+                            placeholder="0" max="3"><span>jokes a week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addJokesBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Hugs Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to give</span><input type="number" class="goal__input" id="hugsGoalVal"
+                            placeholder="0" max="3"><span>hugs a week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addHugsBtn">Add</button>
+                    </div>
+                </div>
+
+
+                <!-- Hobbies Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to spend</span><input type="number" class="goal__input" id="hobbiesGoalVal"
+                            placeholder="0" max="3"><span>hhours on hobbies this week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addHobbiesBtn">Add</button>
+                    </div>
+                </div>
+
+
 
             </div>
         </div>
