@@ -101,8 +101,8 @@ module.exports = function(app) {
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
-    }).then(dbSleep => {
-      res.json(dbSleep);
+    }).then(data => {
+      res.json(data);
     });
   });
 
@@ -127,8 +127,187 @@ module.exports = function(app) {
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
-    }).then(dbSleep => {
-      res.json(dbSleep);
+    }).then(data => {
+      res.json(data);
     });
   });
+
+  //joke get
+  app.get("/api/joke", isAuthenticated, (req, res) => {
+    db.Joke.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  //joke post
+  app.post("api/joke", isAuthenticated, (req, res) => {
+    db.Joke.create({
+      UserId: req.user.id,
+      date: req.body.date
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  //socialize get
+  app.get("/api/socialize", isAuthenticated, (req, res) => {
+    db.Socialize.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  //socialize post
+  app.post("api/socialize", isAuthenticated, (req, res) => {
+    db.Socialize.create({
+      UserId: req.user.id,
+      date: req.body.date
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  //hug get
+  app.get("/api/hug", isAuthenticated, (req, res) => {
+    db.Hug.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  //hug post
+  app.post("api/hug", isAuthenticated, (req, res) => {
+    db.Hug.create({
+      UserId: req.user.id,
+      date: req.body.date
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  //water get
+  app.get("/api/water", isAuthenticated, (req, res) => {
+    db.Water.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  //water post
+  app.post("api/water", isAuthenticated, (req, res) => {
+    db.Water.create({
+      UserId: req.user.id,
+      date: req.body.date,
+      value: req.body.value
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  //meditation get
+  app.get("/api/meditation", isAuthenticated, (req, res) => {
+    db.Meditation.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  //meditation post
+  app.post("api/meditation", isAuthenticated, (req, res) => {
+    db.Meditation.create({
+      UserId: req.user.id,
+      date: req.body.date
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  //exercise get
+  app.get("/api/exercise", isAuthenticated, (req, res) => {
+    db.Exercise.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  //exercise post
+  app.post("api/exercise", isAuthenticated, (req, res) => {
+    db.Exercise.create({
+      UserId: req.user.id,
+      date: req.body.date,
+      value: req.body.value
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  //hobby get
+  app.get("/api/hobby", isAuthenticated, (req, res) => {
+    db.Hobby.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  //hobby post
+  app.post("api/hobby", isAuthenticated, (req, res) => {
+    db.Hobby.create({
+      UserId: req.user.id,
+      date: req.body.date,
+      value: req.body.value
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
 };
