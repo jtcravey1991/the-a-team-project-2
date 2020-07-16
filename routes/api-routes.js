@@ -101,8 +101,10 @@ module.exports = function(app) {
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
+
     }).then(data => {
       res.json(data);
+
     });
   });
 
@@ -311,3 +313,4 @@ module.exports = function(app) {
   });
 
 };
+
