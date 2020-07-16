@@ -36,7 +36,7 @@
     </header>
 
     <main class="container" id="wrap">
-        <div class="row mt-5 text-center ">
+        <div class="row mt-5 text-center goal__header">
             <div class="col">
                 <h1 class="font-weight-bold">Let’s select a goal…</h1>
                 <h4>More to be activated after the beta launch.</h4>
@@ -45,21 +45,29 @@
 
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="row goal">
-                    <div class="col goal--icon">
+
+                <!-- Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
                         <i class="fas fa-bed"></i>
                     </div>
-                    <div class="col goal__sentence">
-                        <span>I want to study for</span> <input type="number" class="goal__input" id="studyGoalVal"
+                    <div class="col-7 goal__sentence">
+                        <span>I want to study for</span><input type="number" class="goal__input" id="studyGoalVal"
                             placeholder="0"><span>hours a night.</span>
                     </div>
-                    <div class="col goal__tooltip">
-                        <i class="far fa-question-circle"></i>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                            title="Hello klasmdkmdlkasdmlkasdmlkamdsklamsdlkamsdlkasmdlkasdmasdkmasdlkamdslkamsdlkamsdlkamsdlkamsdlkmadklasdklmasdkamsdlkamsdklmkl">
+                            <i class="far fa-question-circle"></i>
+                        </button>
                     </div>
-                    <div class="col goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addSleep">Add</button>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addSleepBtn">Add</button>
                     </div>
                 </div>
+
+                <!-- Background -->
+
             </div>
         </div>
 
@@ -126,6 +134,12 @@
 
     <!-- SignUp JS -->
     <script type="text/javascript" src="js/signup.js"></script>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </body>
 
 </html>
