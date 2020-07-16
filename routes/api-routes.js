@@ -52,32 +52,6 @@ module.exports = function(app) {
   });
 
   // ----------- GOALS ROUTES -------------------- ||
-  // study get
-  app.get("/api/sleep", isAuthenticated, (req, res) => {
-    db.Sleep.findAll({
-      where: {
-        UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
-      }
-    }).then(data => {
-      res.json(data);
-    });
-  });
-  // study post
-  app.post("/api/sleep", isAuthenticated, (req, res) => {
-    db.Sleep.create({
-      UserId: req.user.id,
-      date: req.body.date,
-      value: req.body.value
-    }).then(data => {
-      res.json(data);
-    });
-  });
-
   // sleep get
   app.get("/api/sleep", isAuthenticated, (req, res) => {
     db.Sleep.findAll({
@@ -94,7 +68,33 @@ module.exports = function(app) {
     });
   });
   // sleep post
-  app.post("api/sleep", isAuthenticated, (req, res) => {
+  app.post("/api/sleep", isAuthenticated, (req, res) => {
+    db.Sleep.create({
+      UserId: req.user.id,
+      date: req.body.date,
+      value: req.body.value
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // study get
+  app.get("/api/study", isAuthenticated, (req, res) => {
+    db.Sleep.findAll({
+      where: {
+        UserId: req.user.id,
+        date: {
+          $gt: moment()
+            .subtract(7, "days")
+            .toDate()
+        }
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+  // study post
+  app.post("api/study", isAuthenticated, (req, res) => {
     db.Sleep.create({
       UserId: req.user.id,
       date: req.body.date,
