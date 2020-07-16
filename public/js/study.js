@@ -74,8 +74,9 @@ studyTime.addEventListener("click", () => {
 });
 
 function addValue() {
-  const day = document.getElementById("start").value;
-  console.log(day);
+  let day = document.getElementById("start").value;
+    day = moment().format("ddd, MMMM Do");
+ 
   //dayStudy = 2;
   studyMin = document.getElementById("minStudy").value;
   dayStudy = studyMin / 60;

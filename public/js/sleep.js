@@ -61,7 +61,9 @@ sleepTime.addEventListener("click", () => {
   addSleep();
 });
 function addSleep() {
-  const logDate = document.getElementById("startOne").valueAsDate;
+  let logDate = document.getElementById("startOne").valueAsDate.toString();
+  logDate = moment().format("ddd, MMMM Do");
+  
 
   sleepGoal = 8;
 
@@ -93,7 +95,5 @@ function addSleep() {
   }).then(data => {
     console.log(data);
     console.log("logged sleep");
-    // Reload the page to get the updated list
-    //location.reload();
   });
-}
+};

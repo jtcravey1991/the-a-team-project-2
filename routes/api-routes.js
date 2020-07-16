@@ -78,7 +78,6 @@ module.exports = function(app) {
     }).then(data => {
       res.json(data);
     });
-    //res.send("Hello"); 
   });
 
   // study get
