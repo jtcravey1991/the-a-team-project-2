@@ -136,6 +136,33 @@ module.exports = function(sequelize, DataTypes) {
     User.hasMany(models.Sleep, {
       onDelete: "cascade"
     });
+    User.hasMany(models.Study, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Eat, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Water, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Meditation, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Exercise, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Hug, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Socialize, {    
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Joke, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Hobby, {
+      onDelete: "cascade"
+    });
   };
 
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
