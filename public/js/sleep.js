@@ -95,5 +95,6 @@ function addSleep() {
   }).then(data => {
     console.log(data);
     console.log("logged sleep");
+
   });
 };
