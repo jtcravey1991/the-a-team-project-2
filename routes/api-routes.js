@@ -82,7 +82,7 @@ module.exports = function(app) {
 
   // study get
   app.get("/api/study", isAuthenticated, (req, res) => {
-    db.Sleep.findAll({
+    db.Study.findAll({
       where: {
         UserId: req.user.id,
         date: {
@@ -97,12 +97,14 @@ module.exports = function(app) {
   });
   // study post
   app.post("api/study", isAuthenticated, (req, res) => {
-    db.Sleep.create({
+    db.Study.create({
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
+
     }).then(data => {
       res.json(data);
+
     });
   });
 
@@ -311,3 +313,4 @@ module.exports = function(app) {
   });
 
 };
+
