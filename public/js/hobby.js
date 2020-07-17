@@ -1,25 +1,25 @@
-const donutChart = document.getElementById("donutChart").getContext("2d");
-const studyTime = document.querySelector("#studyBtn");
-let studyMin = document.getElementById("minStudy").value;
+const hobbyLogChart = document.getElementById("hobbyChart").getContext("2d");
+const hobbyBtn = document.querySelector("#hobbyBtn");
+let hobbyMin = document.getElementById("minHobby").value;
 
-let studGoal = 20;
+let hobbyGoal = 20;
 
 
-document.getElementById("studyHoursGoal").innerHTML =
-  "Hours left this week to study: " + studGoal;
+document.getElementById("hobbyHoursGoal").innerHTML =
+  "Hours left to reach your hobby time goal: " + hobbyGoal;
 
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
-const studyChart = new Chart(donutChart, {
+const hobbyChart = new Chart(hobbyLogChart, {
   type: "doughnut", //bar, horizontalBar, pie, line, donut, radar, polarArea
   data: {
     labels: [],
     datasets: [
       {
-        label: ["Study Hours Per Day", studGoal],
+        label: ["Hobby Hours Per Day", hobbyGoal],
         data: [],
         backgroundColor: [
           "CornflowerBlue",
@@ -37,7 +37,7 @@ const studyChart = new Chart(donutChart, {
   options: {
     title: {
       display: true,
-      text: "Study Tracker",
+      text: "Hobby Tracker",
       fontSize: 25
     },
     legend: {
@@ -69,55 +69,55 @@ const studyChart = new Chart(donutChart, {
   }
 });
 
-studyTime.addEventListener("click", () => {
+hobbyBtn.addEventListener("click", () => {
   event.preventDefault();
-  addValue();
+  addHobby();
 });
 
-function addValue() {
-  let day = document.getElementById("start").value;
+function addHobby() {
+  let day = document.getElementById("hobbyDate").value;
     day = moment().format("ddd, MMMM Do");
  
   //dayStudy = 2;
-  studyMin = document.getElementById("minStudy").value;
-  dayStudy = studyMin / 60;
-  studGoal = studGoal - dayStudy;
+  hobbyMin = document.getElementById("minHobby").value;
+  dayHobby = hobbyMin / 60;
+  hobbyGoal = hobbyGoal - dayHobby;
   //date++;
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
-  studyChart.data.datasets[0].data.pop(studGoal);
-  studyChart.data.datasets[0].data.push(dayStudy);
-  studyChart.data.datasets[0].data.push(studGoal);
+  hobbyChart.data.datasets[0].data.pop(hobbyGoal);
+  hobbyChart.data.datasets[0].data.push(dayHobby);
+  hobbyChart.data.datasets[0].data.push(hobbyGoal);
   //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
-  studyChart.data.labels.push(day);
+  hobbyChart.data.labels.push(day);
   //studyChart.data.labels = [studGoal];
-  document.getElementById("studyHoursGoal").innerHTML =
-    "Hours left this week to study: " + studGoal;
-  if (studGoal <= 0) {
-    document.getElementById("studyHoursGoal").innerHTML =
-      "Congratulations! You've met your study goal!";
-    studGoal = 0;
+  document.getElementById("hobbyHoursGoal").innerHTML =
+    "Hours left this week to work on hobby: " + hobbyGoal;
+  if (hobbyGoal <= 0) {
+    document.getElementById("hobbyHoursGoal").innerHTML =
+      "A master at your craft! You've met your hobby time goal!";
+    hobbyGoal = 0;
   }
-  studyChart.update();
+  hobbyChart.update();
 
-  const newStudy = {
+  const newHobby = {
     date: day,
-    value: studyMin
+    value: hobbyMin
   };
   // Send the POST request.
-  $.ajax("/api/study", {
+  $.ajax("/api/hobby", {
     type: "POST",
-    data: newStudy
+    data: newHobby
   }).then(data => {
     console.log(data);
-    console.log("logged study time");
+    console.log("logged hobby time");
 
   });
 }
 
-function getStudy() {
-  $.get("/api/study", function(data) {
+function getHobby() {
+  $.get("/api/hobby", function(data) {
     // type: "GET",
-    // data: newStudy
+    // data: newExercise
   
   });
 }
