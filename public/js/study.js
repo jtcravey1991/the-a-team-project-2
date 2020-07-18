@@ -2,12 +2,12 @@ const donutChart = document.getElementById("donutChart").getContext("2d");
 const studyTime = document.querySelector("#studyBtn");
 let studyMin = document.getElementById("minStudy").value;
 
-let studGoal = 20;
+// let studGoal = 20;
 //render study chart with db data for user
-getStudy(); 
+getStudy();
 
-document.getElementById("studyHoursGoal").innerHTML =
-  "Hours left this week to study: " + studGoal;
+// document.getElementById("studyHoursGoal").innerHTML =
+//   "Hours left this week to study: " + studGoal;
 
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
@@ -15,7 +15,7 @@ Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
 const studyChart = new Chart(donutChart, {
-  type: "doughnut", 
+  type: "doughnut",
   data: {
     labels: [],
     datasets: [
