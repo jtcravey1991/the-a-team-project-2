@@ -1,5 +1,4 @@
-
-//WORK IN PROGRESS NEED MY HERO JACOB
+$(".plus-minus").on("change")
 
 $("#createGoalsBtn").on("click", () => {
   const userData = {
