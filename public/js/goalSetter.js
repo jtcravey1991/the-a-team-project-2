@@ -31,4 +31,8 @@ $("#createGoalsBtn").on("click", () => {
     console.log(data);
     console.log("sent sleep goal");
   });
+
+  req.login(user, err => {
+    if (err) return err;
+  })
 });
