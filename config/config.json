@@ -1,6 +1,5 @@
 {
   "development": {
-
     "username": "root",
     "password": "admin",
     "database": "passport_demo",

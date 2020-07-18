@@ -33,7 +33,7 @@
         </nav>
     </header>
 
-    <main class="container wrapper">
+    <main class="container wrapper mb-5">
 
         <!-- Header -->
         <div class="row mt-5 text-center goal__header">
@@ -44,7 +44,7 @@
 
         <!-- Goals -->
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <form class="col-md-8">
 
                 <!-- Sleep Goal -->
                 <div class="row goal mb-4">
@@ -61,8 +61,9 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addSleepBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addSleepBtn">Add</button>
+                        <button type="button" class="btn goal__btns__remove" id="removeSleepBtn">Remove</button>
                     </div>
                 </div>
 
@@ -81,8 +82,8 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addStudyBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addStudyBtn">Add</button>
                     </div>
                 </div>
 
@@ -101,8 +102,8 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addEatBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addEatBtn">Add</button>
                     </div>
                 </div>
 
@@ -121,8 +122,8 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addDrinkBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addDrinkBtn">Add</button>
                     </div>
                 </div>
 
@@ -141,8 +142,8 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addExerciseBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addExerciseBtn">Add</button>
                     </div>
                 </div>
 
@@ -161,18 +162,10 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addSocializeBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addSocializeBtn">Add</button>
                     </div>
                 </div>
-
-
-        <!-- Test Form, needs to be restructured and stylized -->
-        <form>
-            <div class="form-group">
-                <div class="form-group">
-                    <input type="date" class="form-control" id="studyGoalInput" aria-describedby="emailHelp"
-                        placeholder="0">
 
                 <!-- Meditate Goal -->
                 <div class="row goal mb-4">
@@ -189,8 +182,8 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addMeditateBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addMeditateBtn">Add</button>
                     </div>
                 </div>
 
@@ -209,8 +202,8 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addJokesBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addJokesBtn">Add</button>
                     </div>
                 </div>
 
@@ -229,8 +222,8 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addHugsBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addHugsBtn">Add</button>
                     </div>
                 </div>
 
@@ -249,20 +242,19 @@
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
-                    <div class="col-2 goal__add">
-                        <button type="button" class="btn goal__add__btn" id="addHobbiesBtn">Add</button>
+                    <div class="col-2 goal__btns">
+                        <button type="button" class="btn goal__btns__add" id="addHobbiesBtn">Add</button>
                     </div>
                 </div>
 
-            </div>
-
-            {{!-- Add a "Create Goals" Button Here --}}
+                {{!-- Add a "Create Goals" Button Here --}}
 
 
-        </div>
+            </form>
 
-        {{!-- Pins Footer --}}
-        <div class="push"></div>
+
+            {{!-- Pins Footer To Bottom Of Page --}}
+            <div class="push"></div>
     </main>
 
     {{!-- Footer --}}
