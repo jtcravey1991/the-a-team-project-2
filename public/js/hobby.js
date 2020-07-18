@@ -76,8 +76,8 @@ hobbyBtn.addEventListener("click", () => {
 });
 
 function addHobby() {
-  let day = document.getElementById("hobbyDate").value;
-    day = moment().format("ddd, MMMM Do");
+  let inputDate = document.getElementById("hobbyDate").value;
+    let day = moment(inputDate).format("ddd, MMMM Do");
  
   //dayStudy = 2;
   hobbyMin = document.getElementById("minHobby").value;
@@ -101,7 +101,7 @@ function addHobby() {
   hobbyChart.update();
 
   const newHobby = {
-    date: day,
+    date: inputDate,
     value: hobbyMin
   };
   // Send the POST request.
