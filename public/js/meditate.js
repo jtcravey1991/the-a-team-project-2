@@ -1,10 +1,12 @@
-const meditateLogChart = document.getElementById("meditationChart").getContext("2d");
+const meditateLogChart = document
+  .getElementById("meditationChart")
+  .getContext("2d");
 
 const meditateBtn = document.querySelector("#meditationBtn");
 
 //variable for daily meditation minute goal
-let meditateGoal = 30;
-getMeditate(); 
+const meditateGoal = 30;
+getMeditate();
 
 document.getElementById("meditationGoal").innerHTML =
   "You've set a goal for " + meditateGoal + " minutes of meditation per day!";
@@ -23,7 +25,7 @@ const meditationChart = new Chart(meditateLogChart, {
         data: [],
         backgroundColor: "RosyBrown",
         hoverBackgroundColor: "Thistle",
-        barThickness: 50   
+        barThickness: 50
       }
     ]
   },
@@ -63,7 +65,6 @@ const meditationChart = new Chart(meditateLogChart, {
 meditateBtn.addEventListener("click", () => {
   event.preventDefault();
   addMeditation();
-
 });
 function addMeditation() {
   let logDate = document.getElementById("meditationDate").value;
@@ -76,7 +77,8 @@ function addMeditation() {
   meditationChart.data.labels.push(logDate);
 
   if (meditateValue < meditateGoal) {
-    document.getElementById("meditationProgress").innerHTML = "Take some time to be still!";
+    document.getElementById("meditationProgress").innerHTML =
+      "Take some time to be still!";
   } else {
     document.getElementById("meditationProgress").innerHTML =
       "A buddha in the making; you met your daily meditation goal!";
@@ -96,23 +98,18 @@ function addMeditation() {
   }).then(data => {
     console.log(data);
     console.log("logged meditation");
-
   });
-};
+}
 
 function getMeditate() {
-  $.get("/api/meditation", function(data) {
-  
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < data.length; i++) {
+  $.get("/api/meditation", data => {
+    //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+      meditationChart.data.datasets[0].data.push(data[i].value);
 
-    meditationChart.data.datasets[0].data.push(data[i].value);
-
-    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-    meditationChart.data.labels.push(data[i].date);
-
-};
-  meditationChart.update(); 
-  
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
+      meditationChart.data.labels.push(data[i].date);
+    }
+    meditationChart.update();
   });
-};
+}

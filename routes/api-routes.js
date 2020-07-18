@@ -56,22 +56,19 @@ module.exports = function(app) {
 
   //user settings put
   app.put("/api/user_data", isAuthenticated, (req, res) => {
-    db.User.update(
-      req.body,
-      {
+    db.User.update(req.body, {
       where: {
         id: req.user.id
       }
-    })
+    });
   });
 
   // ----------- GOALS ROUTES -------------------- ||
   // sleep get
   app.get("/api/sleep", isAuthenticated, (req, res) => {
-
     db.Sleep.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         //doesn't work if less than 7 days in db
         // date: {
         //   $gt: moment()
@@ -80,7 +77,7 @@ module.exports = function(app) {
         // }
       }
     }).then(data => {
-      console.log(data); 
+      console.log(data);
       res.json(data);
     });
   });
@@ -116,10 +113,8 @@ module.exports = function(app) {
       UserId: req.user.id,
       date: req.body.date,
       value: req.body.value
-
     }).then(data => {
       res.json(data);
-
     });
   });
 
@@ -330,6 +325,4 @@ module.exports = function(app) {
       res.json(data);
     });
   });
-
 };
-

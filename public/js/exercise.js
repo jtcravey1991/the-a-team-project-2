@@ -1,4 +1,6 @@
-const exerciseLogChart = document.getElementById("exerciseChart").getContext("2d");
+const exerciseLogChart = document
+  .getElementById("exerciseChart")
+  .getContext("2d");
 const exerciseBtn = document.querySelector("#exerciseBtn");
 let exerciseMin = document.getElementById("minExercise").value;
 
@@ -31,7 +33,7 @@ const exerciseChart = new Chart(exerciseLogChart, {
           "MediumAquamarine",
           "RosyBrown"
         ],
-        hoverBackgroundColor: "LightBlue"   
+        hoverBackgroundColor: "LightBlue"
       }
     ]
   },
@@ -77,8 +79,8 @@ exerciseBtn.addEventListener("click", () => {
 
 function addExercise() {
   let day = document.getElementById("exDate").value;
-    day = moment().format("ddd, MMMM Do");
- 
+  day = moment().format("ddd, MMMM Do");
+
   //dayStudy = 2;
   exerciseMin = document.getElementById("minExercise").value;
   dayExercise = exerciseMin / 60;
@@ -111,24 +113,18 @@ function addExercise() {
   }).then(data => {
     console.log(data);
     console.log("logged exercise time");
-
   });
 }
 
-
 function getExercise() {
-  $.get("/api/exercise", function(data) {
-  
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < data.length; i++) {
+  $.get("/api/exercise", data => {
+    //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+      exerciseChart.data.datasets[0].data.push(data[i].value);
 
-    exerciseChart.data.datasets[0].data.push(data[i].value);
-
-    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-    exerciseChart.data.labels.push(data[i].date);
-
-};
-  exerciseChart.update(); 
-  
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
+      exerciseChart.data.labels.push(data[i].date);
+    }
+    exerciseChart.update();
   });
-};
+}
