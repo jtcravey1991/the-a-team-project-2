@@ -1,4 +1,4 @@
-$(".plus-minus").on("change", (event) => {
+$(".plus-minus").change(function(event) {
   if ($(this).prop("checked")) {
     $(this).parent().parent().addClass("goal__checked");
   } else if (!$(this).prop("checked")) {
