@@ -2,7 +2,7 @@
 //WORK IN PROGRESS NEED MY HERO JACOB
 
 const userData = {
-  trackingSleep: $("#sleepCheck").checked(),
+  isTrackingSleep: $("#sleepCheck").checked(),
   sleepGoal: $("#sleepGoalVal").val()
   };
   $.ajax("/api/sleep", {

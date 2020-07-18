@@ -57,8 +57,8 @@ eatBtn.addEventListener("click", function () {
 });
 
 function addEatValue(){
-    let day = document.getElementById("logDate").value;
-    day = moment(day).format("ddd, MMMM Do");
+    let inputDate = document.getElementById("logDate").value;
+    let day = moment(inputDate).format("ddd, MMMM Do");
 
     eatValue= document.getElementById("eatValue").value;
     console.log(eatValue);
@@ -78,7 +78,7 @@ function addEatValue(){
 
 
   const newEat = {
-    date: day,
+    date: inputDate,
     value: eatValue
   };
   // Send the POST request.

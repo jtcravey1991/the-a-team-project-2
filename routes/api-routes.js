@@ -89,18 +89,18 @@ module.exports = function(app) {
     db.Study.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
       res.json(data);
     });
   });
   // study post
-  app.post("api/study", isAuthenticated, (req, res) => {
+  app.post("/api/study", isAuthenticated, (req, res) => {
     db.Study.create({
       UserId: req.user.id,
       date: req.body.date,
@@ -117,18 +117,18 @@ module.exports = function(app) {
     db.Eat.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
       res.json(data);
     });
   });
   //eat post
-  app.post("api/eat", isAuthenticated, (req, res) => {
+  app.post("/api/eat", isAuthenticated, (req, res) => {
     db.Eat.create({
       UserId: req.user.id,
       date: req.body.date,
@@ -143,18 +143,18 @@ module.exports = function(app) {
     db.Joke.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
       res.json(data);
     });
   });
   //joke post
-  app.post("api/joke", isAuthenticated, (req, res) => {
+  app.post("/api/joke", isAuthenticated, (req, res) => {
     db.Joke.create({
       UserId: req.user.id,
       date: req.body.date,
@@ -169,18 +169,18 @@ module.exports = function(app) {
     db.Socialize.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
       res.json(data);
     });
   });
   //socialize post
-  app.post("api/socialize", isAuthenticated, (req, res) => {
+  app.post("/api/socialize", isAuthenticated, (req, res) => {
     db.Socialize.create({
       UserId: req.user.id,
       date: req.body.date,
@@ -195,18 +195,18 @@ module.exports = function(app) {
     db.Hug.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
       res.json(data);
     });
   });
   //hug post
-  app.post("api/hug", isAuthenticated, (req, res) => {
+  app.post("/api/hug", isAuthenticated, (req, res) => {
     db.Hug.create({
       UserId: req.user.id,
       date: req.body.date,
@@ -221,18 +221,18 @@ module.exports = function(app) {
     db.Water.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
       res.json(data);
     });
   });
   //water post
-  app.post("api/water", isAuthenticated, (req, res) => {
+  app.post("/api/water", isAuthenticated, (req, res) => {
     db.Water.create({
       UserId: req.user.id,
       date: req.body.date,
@@ -247,18 +247,19 @@ module.exports = function(app) {
     db.Meditation.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
+      console.log(data); 
       res.json(data);
     });
   });
   //meditation post
-  app.post("api/meditation", isAuthenticated, (req, res) => {
+  app.post("/api/meditation", isAuthenticated, (req, res) => {
     db.Meditation.create({
       UserId: req.user.id,
       date: req.body.date,
@@ -273,18 +274,18 @@ module.exports = function(app) {
     db.Exercise.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
       res.json(data);
     });
   });
   //exercise post
-  app.post("api/exercise", isAuthenticated, (req, res) => {
+  app.post("/api/exercise", isAuthenticated, (req, res) => {
     db.Exercise.create({
       UserId: req.user.id,
       date: req.body.date,
@@ -299,18 +300,18 @@ module.exports = function(app) {
     db.Hobby.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
       res.json(data);
     });
   });
   //hobby post
-  app.post("api/hobby", isAuthenticated, (req, res) => {
+  app.post("/api/hobby", isAuthenticated, (req, res) => {
     db.Hobby.create({
       UserId: req.user.id,
       date: req.body.date,
