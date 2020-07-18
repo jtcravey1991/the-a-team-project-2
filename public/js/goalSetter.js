@@ -1,8 +1,8 @@
 $(".plus-minus").on("change", (event) => {
-  if (this.prop("checked")) {
-    this.parent().parent().addClass("goal__checked");
-  } else if (!this.prop("checked")) {
-    this.parent().parent().removeClass("goal__checked");
+  if ($(this).prop("checked")) {
+    $(this).parent().parent().addClass("goal__checked");
+  } else if (!$(this).prop("checked")) {
+    $(this).parent().parent().removeClass("goal__checked");
   }
 });
 
