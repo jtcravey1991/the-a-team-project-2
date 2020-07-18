@@ -245,7 +245,6 @@ Goals Selector Page Desktop
 }
 
 .goal--icon {
-  border-right: 1px solid rgba(255, 255, 255, 0.20);
   align-self: center;
   text-align: center;
   font-size: 1.2rem;
@@ -290,6 +289,10 @@ input:focus {
   opacity: .8;
 }
 
+button.goal__tooltip__icon {
+  padding: 0;
+}
+
 .goal__btns {
   align-self: center;
   text-align: center;
@@ -303,6 +306,18 @@ input:focus {
 
 .goal__btns__add:hover {
   background-color: #12a5e4;
+  color: white;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.08);
+}
+
+.goal__btns__remove {
+  background-color: #E41919;
+  color: white;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.goal__btns__remove:hover {
+  background-color: #d41414;
   color: white;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.08);
 }
@@ -393,6 +408,7 @@ Home Mobile
 
 @media screen and (max-width: 570px) {
 
+  /* Home Page */
   .sign-up {
     top: -170px;
     padding: 40px 20px;
@@ -400,5 +416,27 @@ Home Mobile
 
   .login {
     padding: 0;
+  }
+
+  /* Goals Page */
+  .goal__header {
+    margin-bottom: 20px;
+  }
+
+
+  .goal {
+    padding: 20px;
+  }
+
+  .goal__tooltip {
+    align-self: center;
+    text-align: center;
+    padding: none;
+  }
+  
+  .goal__tooltip__icon {
+    color: white;
+    font-size: 1.2rem;
+    padding: none;
   }
 }
