@@ -57,8 +57,11 @@ $("#jokeBtn").on("click", function (e){
 }); 
 
 function addJoke(){
-    let dayDate = moment().format('MMMM Do YYYY');
+    let inputDate = moment().format(); 
+    console.log(inputDate); 
+    let dayDate = moment(inputDate).format('MMMM Do YYYY');
     $("#dateDisplay").text(dayDate);
+    
     
     jokeValue = 1; 
     jokeChart.data.datasets[0].data.push(jokeValue);
@@ -70,7 +73,7 @@ function addJoke(){
   jokeChart.update();
 
   const newJoke = {
-    date: dayDate,
+    date: inputDate,
     value: jokeValue
   };
   // Send the POST request.
@@ -79,7 +82,7 @@ function addJoke(){
     data: newJoke
   }).then(data => {
     console.log(data);
-    console.log("logged sleep");
+    console.log("logged joke");
 
   });
 }

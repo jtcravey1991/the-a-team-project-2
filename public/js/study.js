@@ -81,13 +81,15 @@ const studyChart = new Chart(donutChart, {
 
 studyTime.addEventListener("click", () => {
   event.preventDefault();
-  addValue();
+  addStudy();
 });
 
-function addValue() {
-  let day = document.getElementById("start").value;
-    day = moment().format("ddd, MMMM Do");
-
+function addStudy() {
+  let inputDate = document.getElementById("start").value;
+  let day = moment(inputDate).format("ddd, MMMM Do");
+    currentDate = moment().format('MMMM Do YYYY');
+    //console.log(currentDate); 
+    console.log(inputDate); 
   
   studyMin = document.getElementById("minStudy").value;
   studyHours = studyMin / 60;
@@ -111,7 +113,7 @@ function addValue() {
   studyChart.update();
 
   const newStudy = {
-    date: day,
+    date: inputDate,
     value: studyMin
   };
   // Send the POST request.
