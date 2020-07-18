@@ -1,6 +1,6 @@
 # wellyes
 
-The wellyes app is a helpful tool 
+The wellyes app is a helpful tool to track different goals by the user's choice, to help with their mental health.
 
 # Contents
 1. [User Story](#user-story)
@@ -21,15 +21,20 @@ SO THAT I can make sure my mental health needs are being met
 Deployed website can be found at [this link]().
 
 ## Usage 
-User can begin by logging into their own account. If first starting, user is directed first to the goals page, that lists out 
+User can begin by logging into their own account, or signing up to create a new account. If first starting with a new signup, user is directed first to the goals page, that lists out goals the user can choose from:
+
+![Address usage](./Assets/images/Readme_frontpage.PNG)
+
+Once those goals are set, user is sent to their dashboard that shows all of their chosen goals. 
+User can now track daily what they want to input, i.e. how many hugs they gave, how many minutes they studied, etc.
 
 ![Address usage](./Assets/images/Readme_frontpage.PNG)
 
 ## Built with
 
 Back-end:
-- Node
-- Express
+- [Node.js](https://nodejs.org/en/) - used to design and start our application
+- [Express](https://expressjs.com/) - Node.js web framework the provides more features
 
 HTML/CSS:
 - [Bootstrap](https://getbootstrap.com/) - CSS framework used
@@ -37,6 +42,8 @@ HTML/CSS:
 - [fontawesome](https://fontawesome.com/) - used for the icons
 
 ## Future Development
+
+Create Student profile with sharing links and images
 
 
 ## Authors
