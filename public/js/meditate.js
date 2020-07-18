@@ -4,6 +4,7 @@ const meditateBtn = document.querySelector("#meditationBtn");
 
 //variable for daily meditation minute goal
 let meditateGoal = 30;
+
 getMeditate(); 
 
 document.getElementById("meditationGoal").innerHTML =
@@ -66,10 +67,11 @@ meditateBtn.addEventListener("click", () => {
 
 });
 function addMeditation() {
-  let logDate = document.getElementById("meditationDate").value;
-  logDate = moment(logDate).format("ddd, MMMM Do");
+  let inputDate = document.getElementById("meditationDate").value;
+  let logDate = moment(inputDate).format("ddd, MMMM Do");
 
   meditateValue = document.getElementById("meditationLog").value;
+  console.log(meditateValue); 
 
   meditationChart.data.datasets[0].data.push(meditateValue);
 
@@ -85,7 +87,7 @@ function addMeditation() {
   meditationChart.update();
 
   const newMeditation = {
-    date: logDate,
+    date: inputDate,
     value: meditateValue
   };
 
@@ -100,12 +102,15 @@ function addMeditation() {
   });
 };
 
+
 function getMeditate() {
-  $.get("/api/meditation", function(data) {
   
+  $.get("/api/meditation", function(data) {
+    console.log(data);
      //array that takes in the data values to populate the chart
   for (let i = 0; i < data.length; i++) {
-
+console.log(data[i].value); 
+console.log(data[i].date);
     meditationChart.data.datasets[0].data.push(data[i].value);
 
     data[i].date = moment(data[i].date).format("ddd, MMMM Do")

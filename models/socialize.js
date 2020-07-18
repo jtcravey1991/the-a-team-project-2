@@ -8,7 +8,12 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           isDate: true
         }
-      }
+      },
+          // value column
+          value: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+          }
     });
   
     Socialize.associate = function(models) {
