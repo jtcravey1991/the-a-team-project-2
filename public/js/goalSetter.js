@@ -1,4 +1,4 @@
-$(".plus-minus").on("change")
+
 
 $("#createGoalsBtn").on("click", () => {
   const userData = {
