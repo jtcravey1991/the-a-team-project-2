@@ -1,4 +1,3 @@
-
 $("#addSleepBtn").on("click", function (e){
     e.preventDefault(); 
     setSleepGoal();

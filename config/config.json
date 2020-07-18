@@ -1,13 +1,6 @@
 {
   "development": {
-
-    "username": "root",
-    "password": "admin",
-    "database": "passport_demo",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
     "use_env_variable":"DEV_DB_STRING"
-
   },
   "test": {
     "username": "root",
