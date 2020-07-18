@@ -64,9 +64,9 @@ sleepTime.addEventListener("click", () => {
 });
 
 function addSleep() {
-  let inputDate = document.getElementById("startOne").value;
+  const inputDate = document.getElementById("startOne").value;
 
-  let logDate = moment(inputDate).format("ddd, MMMM Do");
+  const logDate = moment(inputDate).format("ddd, MMMM Do");
 
   sleepGoal = 8;
 
@@ -86,8 +86,6 @@ function addSleep() {
   document.getElementById("sleepHoursGoal").innerHTML =
     "You've set a goal for " + sleepGoal + " hours per night";
   sleepChart.update();
-
- 
 
   const newSleep = {
     date: inputDate,

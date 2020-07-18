@@ -43,7 +43,9 @@ HTML/CSS:
 
 ## Future Development
 
-Create Student profile with sharing links and images
+- Create Student profile where you can add friends, see their goals, and have a profile picture
+- Add more goals
+- have user be able to create their own custom goals
 
 
 ## Authors

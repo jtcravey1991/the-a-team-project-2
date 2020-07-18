@@ -59,9 +59,9 @@ eatBtn.addEventListener("click", () => {
   addEatValue();
 });
 
-function addEatValue(){
-    let inputDate = document.getElementById("logDate").value;
-    let day = moment(inputDate).format("ddd, MMMM Do");
+function addEatValue() {
+  const inputDate = document.getElementById("logDate").value;
+  const day = moment(inputDate).format("ddd, MMMM Do");
 
   eatValue = document.getElementById("eatValue").value;
   console.log(eatValue);

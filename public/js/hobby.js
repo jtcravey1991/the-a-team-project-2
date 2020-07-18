@@ -76,9 +76,9 @@ hobbyBtn.addEventListener("click", () => {
 });
 
 function addHobby() {
-  let inputDate = document.getElementById("hobbyDate").value;
-    let day = moment(inputDate).format("ddd, MMMM Do");
- 
+  const inputDate = document.getElementById("hobbyDate").value;
+  const day = moment(inputDate).format("ddd, MMMM Do");
+
   //dayStudy = 2;
   hobbyMin = document.getElementById("minHobby").value;
   dayHobby = hobbyMin / 60;

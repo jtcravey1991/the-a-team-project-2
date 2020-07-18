@@ -101,4 +101,4 @@ function getHug() {
     }
     hugChart.update();
   });
-}
+};

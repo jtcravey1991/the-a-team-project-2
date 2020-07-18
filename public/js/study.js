@@ -85,12 +85,12 @@ studyTime.addEventListener("click", () => {
 });
 
 function addStudy() {
-  let inputDate = document.getElementById("start").value;
-  let day = moment(inputDate).format("ddd, MMMM Do");
-    currentDate = moment().format('MMMM Do YYYY');
-    //console.log(currentDate); 
-    console.log(inputDate); 
-  
+  const inputDate = document.getElementById("start").value;
+  const day = moment(inputDate).format("ddd, MMMM Do");
+  currentDate = moment().format("MMMM Do YYYY");
+  //console.log(currentDate);
+  console.log(inputDate);
+
   studyMin = document.getElementById("minStudy").value;
   studyHours = studyMin / 60;
   studGoal = studGoal - studyHours;

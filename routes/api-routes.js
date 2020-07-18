@@ -96,7 +96,7 @@ module.exports = function(app) {
   app.get("/api/study", isAuthenticated, (req, res) => {
     db.Study.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")
@@ -122,7 +122,7 @@ module.exports = function(app) {
   app.get("/api/eat", isAuthenticated, (req, res) => {
     db.Eat.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")
@@ -148,7 +148,7 @@ module.exports = function(app) {
   app.get("/api/joke", isAuthenticated, (req, res) => {
     db.Joke.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")
@@ -174,7 +174,7 @@ module.exports = function(app) {
   app.get("/api/socialize", isAuthenticated, (req, res) => {
     db.Socialize.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")
@@ -200,7 +200,7 @@ module.exports = function(app) {
   app.get("/api/hug", isAuthenticated, (req, res) => {
     db.Hug.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")
@@ -226,7 +226,7 @@ module.exports = function(app) {
   app.get("/api/water", isAuthenticated, (req, res) => {
     db.Water.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")
@@ -252,7 +252,7 @@ module.exports = function(app) {
   app.get("/api/meditation", isAuthenticated, (req, res) => {
     db.Meditation.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")
@@ -260,7 +260,7 @@ module.exports = function(app) {
         // }
       }
     }).then(data => {
-      console.log(data); 
+      console.log(data);
       res.json(data);
     });
   });
@@ -279,7 +279,7 @@ module.exports = function(app) {
   app.get("/api/exercise", isAuthenticated, (req, res) => {
     db.Exercise.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")
@@ -305,7 +305,7 @@ module.exports = function(app) {
   app.get("/api/hobby", isAuthenticated, (req, res) => {
     db.Hobby.findAll({
       where: {
-        UserId: req.user.id,
+        UserId: req.user.id
         // date: {
         //   $gt: moment()
         //     .subtract(7, "days")

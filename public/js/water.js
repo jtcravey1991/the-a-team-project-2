@@ -64,8 +64,8 @@ waterBtn.addEventListener("click", () => {
   addWater();
 });
 function addWater() {
-  let inputDate = document.getElementById("waterDate").value;
-  let logDate = moment(inputDate).format("ddd, MMMM Do");
+  const inputDate = document.getElementById("waterDate").value;
+  const logDate = moment(inputDate).format("ddd, MMMM Do");
 
   waterOunces = document.getElementById("waterLog").value;
 

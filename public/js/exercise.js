@@ -78,9 +78,9 @@ exerciseBtn.addEventListener("click", () => {
 });
 
 function addExercise() {
-  let inputDate = document.getElementById("exDate").value;
-  let day = moment(inputDate).format("ddd, MMMM Do");
- 
+  const inputDate = document.getElementById("exDate").value;
+  const day = moment(inputDate).format("ddd, MMMM Do");
+
   //dayStudy = 2;
   exerciseMin = document.getElementById("minExercise").value;
   dayExercise = exerciseMin / 60;
