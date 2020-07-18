@@ -44,7 +44,7 @@
 
         <!-- Goals -->
         <div class="row justify-content-center">
-            <form class="col-md-8">
+            <form class="col-md-8 d-flex flex-column">
 
                 <!-- Sleep Goal -->
                 <div class="row goal mb-4">
@@ -62,9 +62,7 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addSleepBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeSleepBtn">X</button>
-                        <input type="checkbox" id="sleepCheck" class="d-none">
+                        <input type="checkbox" id="sleepCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -84,9 +82,7 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addStudyBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeStudyBtn">X</button>
-                        <input type="checkbox" id="studyCheck" class="d-none">
+                        <input type="checkbox" id="studyCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -106,9 +102,7 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addEatBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeEatBtn">X</button>
-                        <input type="checkbox" id="eatCheck" class="d-none">
+                        <input type="checkbox" id="eatCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -128,9 +122,7 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addDrinkBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeDrinkBtn">X</button>
-                        <input type="checkbox" id="waterCheck" class="d-none">
+                        <input type="checkbox" id="waterCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -150,9 +142,7 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addExerciseBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeExerciseBtn">X</button>
-                        <input type="checkbox" id="exerciseCheck" class="d-none">
+                        <input type="checkbox" id="exerciseCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -172,9 +162,7 @@
                         </button>
                     </div>
                     <div class="col-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addSocializeBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeSocializeBtn">X</button>
-                        <input type="checkbox" id="socializeCheck" class="d-none">
+                        <input type="checkbox" id="socializeCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -194,9 +182,7 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addMeditateBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeMeditateBtn">X</button>
-                        <input type="checkbox" id="meditateCheck" class="d-none">
+                        <input type="checkbox" id="meditateCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -216,9 +202,7 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addJokesBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeJokesBtn">X</button>
-                        <input type="checkbox" id="jokesCheck" class="d-none">
+                        <input type="checkbox" id="jokesCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -238,9 +222,7 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addHugsBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeHugsBtn">X</button>
-                        <input type="checkbox" id="hugsCheck" class="d-none">
+                        <input type="checkbox" id="hugsCheck" class="plus-minus">
                     </div>
                 </div>
 
@@ -260,14 +242,12 @@
                         </button>
                     </div>
                     <div class="col-1 col-sm-2 goal__btns">
-                        <button type="button" class="btn goal__btns__add" id="addHobbiesBtn">+</button>
-                        <button type="button" class="btn goal__btns__remove d-none" id="removeHobbiesBtn">X</button>
-                        <input type="checkbox" id="hobbiesCheck" class="d-none">
+                        <input type="checkbox" id="hobbiesCheck" class="plus-minus">
                     </div>
                 </div>
 
                 {{!-- Add a "Create Goals" Button Here --}}
-
+                <button type="button" class="btn goals__create-btn" id="createGoals">Create Goal(s)</button>
 
             </form>
 
