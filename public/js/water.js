@@ -2,6 +2,7 @@ const waterLogChart = document.getElementById("waterChart").getContext("2d");
 
 const waterBtn = document.querySelector("#waterBtn");
 
+getWater(); 
 //variable for water ounce goal
 let waterGoal = 32;
 document.getElementById("waterGoal").innerHTML =
@@ -96,5 +97,22 @@ function addWater() {
     console.log(data);
     console.log("logged water");
 
+  });
+};
+
+function getWater() {
+  $.get("/api/water", function(data) {
+  
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < data.length; i++) {
+
+    waterChart.data.datasets[0].data.push(data[i].value);
+
+    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+    waterChart.data.labels.push(data[i].date);
+
+};
+  waterChart.update(); 
+  
   });
 };

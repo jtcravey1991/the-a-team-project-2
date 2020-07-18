@@ -3,7 +3,8 @@ const studyTime = document.querySelector("#studyBtn");
 let studyMin = document.getElementById("minStudy").value;
 
 let studGoal = 20;
-
+//render study chart with db data for user
+getStudy(); 
 
 document.getElementById("studyHoursGoal").innerHTML =
   "Hours left this week to study: " + studGoal;
@@ -14,7 +15,7 @@ Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
 const studyChart = new Chart(donutChart, {
-  type: "doughnut", //bar, horizontalBar, pie, line, donut, radar, polarArea
+  type: "doughnut", 
   data: {
     labels: [],
     datasets: [
@@ -42,7 +43,16 @@ const studyChart = new Chart(donutChart, {
     },
     legend: {
       //display, font options as well in labels object
-      position: "top"
+      position: "top",
+    
+      labels: {
+          filter: function(label) {
+           if (label[0] === undefined) {
+             return false;
+           }
+          return true;
+          }
+       }
     },
     layout: {
       padding: {
@@ -77,15 +87,15 @@ studyTime.addEventListener("click", () => {
 function addValue() {
   let day = document.getElementById("start").value;
     day = moment().format("ddd, MMMM Do");
- 
-  //dayStudy = 2;
+
+  
   studyMin = document.getElementById("minStudy").value;
-  dayStudy = studyMin / 60;
-  studGoal = studGoal - dayStudy;
-  //date++;
+  studyHours = studyMin / 60;
+  studGoal = studGoal - studyHours;
+  
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
   studyChart.data.datasets[0].data.pop(studGoal);
-  studyChart.data.datasets[0].data.push(dayStudy);
+  studyChart.data.datasets[0].data.push(studyHours);
   studyChart.data.datasets[0].data.push(studGoal);
   //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
   studyChart.data.labels.push(day);
@@ -97,6 +107,7 @@ function addValue() {
       "Congratulations! You've met your study goal!";
     studGoal = 0;
   }
+  //updating chart with logged data by user
   studyChart.update();
 
   const newStudy = {
@@ -116,8 +127,17 @@ function addValue() {
 
 function getStudy() {
   $.get("/api/study", function(data) {
-    // type: "GET",
-    // data: newStudy
+  
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < data.length; i++) {
+
+    studyChart.data.datasets[0].data.push(data[i].value);
+
+    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+    studyChart.data.labels.push(data[i].date);
+
+};
+  studyChart.update(); 
   
   });
-}
+};

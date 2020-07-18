@@ -1,7 +1,7 @@
 let eatLogChart = document.getElementById("eatChart").getContext("2d");
 
 const eatBtn = document.querySelector("#eatBtn");
-
+getEat(); 
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
@@ -91,3 +91,20 @@ function addEatValue(){
 
   });
 };
+
+function getEat() {
+    $.get("/api/eat", function(data) {
+    
+       //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+  
+      eatChart.data.datasets[0].data.push(data[i].value);
+  
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+      eatChart.data.labels.push(data[i].date);
+  
+  };
+    eatChart.update(); 
+    
+    });
+  };

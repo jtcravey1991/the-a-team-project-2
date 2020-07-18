@@ -4,6 +4,7 @@ let exerciseMin = document.getElementById("minExercise").value;
 
 let exerciseGoal = 20;
 
+getExercise();
 
 document.getElementById("exerciseHoursGoal").innerHTML =
   "Hours left this week to exercise: " + exerciseGoal;
@@ -114,10 +115,20 @@ function addExercise() {
   });
 }
 
+
 function getExercise() {
   $.get("/api/exercise", function(data) {
-    // type: "GET",
-    // data: newExercise
+  
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < data.length; i++) {
+
+    exerciseChart.data.datasets[0].data.push(data[i].value);
+
+    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+    exerciseChart.data.labels.push(data[i].date);
+
+};
+  exerciseChart.update(); 
   
   });
-}
+};

@@ -1,5 +1,6 @@
 let jokeLogChart = document.getElementById("jokeChart").getContext("2d");
 
+getJoke(); 
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
@@ -82,3 +83,19 @@ function addJoke(){
 
   });
 }
+function getJoke() {
+    $.get("/api/joke", function(data) {
+    
+       //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+  
+      jokeChart.data.datasets[0].data.push(data[i].value);
+  
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+      jokeChart.data.labels.push(data[i].date);
+  
+  };
+    jokeChart.update(); 
+    
+    });
+  };

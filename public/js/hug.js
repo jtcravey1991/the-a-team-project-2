@@ -1,5 +1,6 @@
 let hugLogChart = document.getElementById("hugChart").getContext("2d");
 
+getHug(); 
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
@@ -82,3 +83,19 @@ function addHug(){
 
   });
 }
+function getHug() {
+    $.get("/api/hug", function(data) {
+    
+       //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+  
+      hugChart.data.datasets[0].data.push(data[i].value);
+  
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+      hugChart.data.labels.push(data[i].date);
+  
+  };
+    hugChart.update(); 
+    
+    });
+  };

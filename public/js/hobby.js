@@ -4,6 +4,7 @@ let hobbyMin = document.getElementById("minHobby").value;
 
 let hobbyGoal = 20;
 
+getHobby();
 
 document.getElementById("hobbyHoursGoal").innerHTML =
   "Hours left to reach your hobby time goal: " + hobbyGoal;
@@ -116,8 +117,17 @@ function addHobby() {
 
 function getHobby() {
   $.get("/api/hobby", function(data) {
-    // type: "GET",
-    // data: newExercise
+  
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < data.length; i++) {
+
+    hobbyChart.data.datasets[0].data.push(data[i].value);
+
+    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+    hobbyChart.data.labels.push(data[i].date);
+
+};
+  hobbyChart.update(); 
   
   });
-}
+};

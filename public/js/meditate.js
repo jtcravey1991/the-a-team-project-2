@@ -4,6 +4,7 @@ const meditateBtn = document.querySelector("#meditationBtn");
 
 //variable for daily meditation minute goal
 let meditateGoal = 30;
+getMeditate(); 
 
 document.getElementById("meditationGoal").innerHTML =
   "You've set a goal for " + meditateGoal + " minutes of meditation per day!";
@@ -96,5 +97,22 @@ function addMeditation() {
     console.log(data);
     console.log("logged meditation");
 
+  });
+};
+
+function getMeditate() {
+  $.get("/api/meditation", function(data) {
+  
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < data.length; i++) {
+
+    meditationChart.data.datasets[0].data.push(data[i].value);
+
+    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+    meditationChart.data.labels.push(data[i].date);
+
+};
+  meditationChart.update(); 
+  
   });
 };

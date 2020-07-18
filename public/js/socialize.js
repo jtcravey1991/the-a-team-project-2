@@ -2,6 +2,7 @@ let socializeLogChart = document.getElementById("socializeChart").getContext("2d
 
 const socializeBtn = document.querySelector("#socializeBtn");
 
+getSocialize(); 
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
@@ -90,3 +91,20 @@ function addSocializeValue(){
 
   });
 };
+
+function getSocialize() {
+    $.get("/api/socialize", function(data) {
+    
+       //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+  
+      socializeChart.data.datasets[0].data.push(data[i].value);
+  
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+      socializeChart.data.labels.push(data[i].date);
+  
+  };
+    socializeChart.update(); 
+    
+    });
+  };
