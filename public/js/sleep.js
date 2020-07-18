@@ -2,10 +2,10 @@ const sleepLogChart = document.getElementById("myChart").getContext("2d");
 
 const sleepTime = document.querySelector("#sleepBtn");
 
-let sleepGoal = 8;
+// let sleepGoal = 8;
 getSleep();
-document.getElementById("sleepHoursGoal").innerHTML =
-  "You've set a goal for " + sleepGoal + " hours per night";
+// document.getElementById("sleepHoursGoal").innerHTML =
+//   "You've set a goal for " + sleepGoal + " hours per night";
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;

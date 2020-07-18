@@ -8,30 +8,46 @@
 
 <main class="container wrapper">
 
-    {{#if isTrackingSleep}}
-    {{>sleep}}
-    {{/if}}
-
     {{#if isTrackingStudyTime}}
     {{>study}}
     {{/if}}
 
+    {{#if isTrackingSleep}}
+    {{>sleep}}
+    {{/if}}
+
+
+    {{#if isTrackingHealthyEats}}
     {{>eat}}
+    {{/if}}
 
+    {{#if isTrackingJokes}}
     {{>joke}}
+    {{/if}}
 
+    {{#if isTrackingSocializing}}
     {{>socialize}}
+    {{/if}}
 
+    {{#if isTrackingHugs}}
     {{>hug}}
+    {{/if}}
 
+    {{#if isTrackingDrinkingWater}}
     {{>water}}
+    {{/if}}
 
+    {{#if isTrackingMeditation}}
     {{>meditate}}
+    {{/if}}
 
+    {{#if isTrackingExercise}}
     {{>exercise}}
+    {{/if}}
 
+    {{#if isTrackingHobby}}
     {{>hobby}}
-
+    {{/if}}
 </main>
 
 {{!-- Footer --}}
