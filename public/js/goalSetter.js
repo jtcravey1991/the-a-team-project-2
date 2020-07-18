@@ -1,7 +1,7 @@
 $(".plus-minus").on("change", () => {
-  if (this.checked()) {
+  if (this.is(":checked")) {
     this.parent().parent().addClass("goal__checked");
-  } else if (!this.checked()) {
+  } else if (!this.is(":checked")) {
     this.parent().parent().removeClass("goal__checked");
   }
 });
