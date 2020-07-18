@@ -57,7 +57,8 @@ $("#hugBtn").on("click", function (e){
 }); 
 
 function addHug(){
-    let hugDate = moment().format('MMMM Do YYYY');
+    let inputDate = moment().format(); 
+    let hugDate = moment(inputDate).format('MMMM Do YYYY');
     $("#hugDisplayDate").text(hugDate);
     
     hugValue = 1; 
@@ -70,7 +71,7 @@ function addHug(){
   hugChart.update();
 
   const newHug = {
-    date: hugDate,
+    date: inputDate,
     value: hugValue
   };
   // Send the POST request.

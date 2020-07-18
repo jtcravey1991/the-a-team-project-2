@@ -1,5 +1,6 @@
 
 //WORK IN PROGRESS NEED MY HERO JACOB
+
 $("#createGoalsBtn").on("click", () => {
   const userData = {
     isTrackingStudyTime: $("#studyCheck").checked(),
