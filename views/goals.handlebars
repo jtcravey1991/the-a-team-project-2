@@ -5,7 +5,7 @@
     <!-- meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Select a goal to achieve this week and strengthen your mental wellness. ">
+    <meta name="description" content="Select a goal or a few to get through school!">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.ico">
@@ -15,24 +15,157 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="./stylesheets/style.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
         integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
 
-    <title>Goals Selection | wellyes</title>
+    <title>Goals | wellyes</title>
 </head>
 
-<body class="blue-bg">
-    <header class="home-header">
-        <nav class="container navbar">
-            <a class="navbar-brand" href="#"><img src="./images/wellyess-logo.svg" alt="wellyes logo"></a>
-            <button type="button" class="btn home-header__btn" id="loginBtn">Login</button>
+<body class="bg--blue">
+    <header>
+        <nav class="container navbar pt-4">
+            <img class="navbar-brand" src="./images/wellyess-logo.svg" alt="wellyes logo">
+            <p class="navbar--goals">More to be activated after the beta launch.</p>
+
         </nav>
     </header>
 
-    <main class="container">
+    <main class="container wrapper">
+
+        <!-- Header -->
+        <div class="row mt-5 text-center goal__header">
+            <div class="col">
+                <h1 class="font-weight-bold">Let’s select a goal…</h1>
+            </div>
+        </div>
+
+        <!-- Goals -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                <!-- Sleep Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to sleep for</span><input type="number" class="goal__input" id="sleepGoalVal"
+                            placeholder="0" max="3"><span>hours a night.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Being awake for 16 hours straight decreases your performance as much as if your blood alcohol level were 0.05% (The legal limit is 0.08%.)">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addSleepBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Study Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to study for</span><input type="number" class="goal__input" id="studyGoalVal"
+                            placeholder="0" max="3"><span>hours a week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Avoid studying in the same place regularly. Changing your study environment while learning helps you retain knowledge effectively.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addStudyBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Eat Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to eat healthy for</span><input type="number" class="goal__input" id="eatGoalVal"
+                            placeholder="0" max="3"><span>weeks.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Eating right could protect your memory. Studies have found people who follow healthy diets are less likely to develop dementia and Alzheimer's.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addEatBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Drink Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to drink</span><input type="number" class="goal__input" id="drinkGoalVal"
+                            placeholder="0" max="3"><span>cups of water a day.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="A simple glass of water can help boost brain function by 14 percent.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addDrinkBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Exercise Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to exercise for</span><input type="number" class="goal__input" id="exerciseGoalVal"
+                            placeholder="0" max="3"><span>times in a week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Try dividing your exercise into two or three mini-segments of 10 to 15 minutes per day — you will still experience benefits.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addExerciseBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Socialize Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to socialize</span><input type="number" class="goal__input" id="socializeGoalVal"
+                            placeholder="0" max="3"><span>times in a month.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Socializing gives a sense of purpose and meaning, and is very confidence-boosting!">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addSocializeBtn">Add</button>
+                    </div>
+                </div>
+
 
         <!-- Test Form, needs to be restructured and stylized -->
         <form>
@@ -40,22 +173,129 @@
                 <div class="form-group">
                     <input type="date" class="form-control" id="studyGoalInput" aria-describedby="emailHelp"
                         placeholder="0">
+
+                <!-- Meditate Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to meditate</span><input type="number" class="goal__input" id="meditateGoalVal"
+                            placeholder="0" max="3"><span>times in a month.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Thousands of people have overcome addictions using mindful meditation.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addMeditateBtn">Add</button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Create Goals</button>
-        </form>
+
+                <!-- Jokes Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-grin-squint"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to tell</span><input type="number" class="goal__input" id="jokesGoalVal"
+                            placeholder="0" max="3"><span>jokes a week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Laughter triggers the release of endorphins, the body’s natural feel-good chemicals. Endorphins promote an overall sense of well-being and can even temporarily relieve pain.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addJokesBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Hugs Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to give</span><input type="number" class="goal__input" id="hugsGoalVal"
+                            placeholder="0" max="3"><span>hugs a week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hugging reduces social anxiety. Hugs release oxytocin which inspires positive thinking and helps you have an optimistic outlook on the world.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addHugsBtn">Add</button>
+                    </div>
+                </div>
+
+                <!-- Hobbies Goal -->
+                <div class="row goal mb-4">
+                    <div class="col-1 goal--icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <div class="col-7 goal__sentence">
+                        <span>I want to spend</span><input type="number" class="goal__input" id="hobbiesGoalVal"
+                            placeholder="0" max="3"><span>hours on hobbies this week.</span>
+                    </div>
+                    <div class="col-2 goal__tooltip">
+                        <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
+                            title="Hobbies help to relieve stress by keeping you engaged in something you enjoy. Hobbies give you a way to take your mind off the stresses of everyday life.">
+                            <i class="far fa-question-circle"></i>
+                        </button>
+                    </div>
+                    <div class="col-2 goal__add">
+                        <button type="button" class="btn goal__add__btn" id="addHobbiesBtn">Add</button>
+                    </div>
+                </div>
+
+            </div>
+
+            {{!-- Add a "Create Goals" Button Here --}}
+
+
+        </div>
+
+        {{!-- Pins Footer --}}
+        <div class="push"></div>
     </main>
 
+    {{!-- Footer --}}
+    <footer>
+        Created with 💜by the <strong><a href="https://github.com/jtcravey1991/the-a-team-project-2" target="_blank"
+                class="footer__link">A
+                Team</a></strong>.
+    </footer>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
+
+    <!-- Popper -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+    <!-- Goalsetter JS -->
+    <script type="text/javascript" src="js/goalSetter.js"></script>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </body>
 
 </html>

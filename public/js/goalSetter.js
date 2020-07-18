@@ -1,5 +1,4 @@
 
-
 //WORK IN PROGRESS NEED MY HERO JACOB
 
 const userData = {
@@ -16,6 +15,7 @@ const userData = {
 
 
 //old code, no bueno
+
 $("#addSleepBtn").on("click", function (e){
     e.preventDefault(); 
     setSleepGoal();

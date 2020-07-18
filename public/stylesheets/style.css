@@ -13,10 +13,25 @@ font-family: 'Public Sans', sans-serif;
 /*————————————————————————————————————
 Global / Base Styles 
 —————————————————————————————————————*/
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
 
 body {
   background-color: #F8F8F8;
   font-family: 'Open Sans', sans-serif;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -30px;
+}
+
+.footer, 
+.push {
+  height: 30px;
 }
 
 footer {
@@ -25,6 +40,9 @@ footer {
   color: #868686;
   padding: 10px;
   text-align: center;
+  position: relative;
+  clear:both;
+  padding-top:20px;
 }
 
 .footer__link {
@@ -51,6 +69,11 @@ h1 {
 h2 {
   font-size: 28px;
   line-height: 38px;
+}
+
+h4 {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 18px;
 }
 
 /* Forms */
@@ -100,6 +123,10 @@ label {
 /* Color Modifiers */
 .bg--blue {
   background-color: #13ABED;
+}
+
+.color--white {
+  color: white;
 }
 
 .modal-backdrop {
@@ -181,12 +208,112 @@ Home Desktop
 
  
 
-
-
-
 /*————————————————————————————————————
 Goals Selector Page Desktop
 —————————————————————————————————————*/
+.goal__header {
+  margin-bottom: 50px;
+}
+
+
+.navbar--goals {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 200px;
+}
+
+
+.goal {
+  background-color: #0D9BD9;
+  color: white;
+  border-radius: 50px;
+  min-height: 65px;
+  padding: 0 10px 0 10px;
+}
+
+.goal:focus-within {
+  background-color: rgba(255, 255, 255, 0.90);
+  color: #0D9BD9;
+}
+
+.goal:focus-within .goal__tooltip__icon {
+  color: #0D9BD9;
+}
+
+.goal--icon {
+  border-right: 1px solid rgba(255, 255, 255, 0.20);
+  align-self: center;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.goal__sentence {
+  align-self: center;
+}
+
+.goal__input {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  border-style: none;
+  border: none;
+  border-bottom: 1px solid white;
+  background: none;
+  display: inline;
+  max-width: 52px;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 3px solid #0D9BD9;
+  color: #0D9BD9;
+}
+
+.goal__tooltip {
+  align-self: center;
+  text-align: center;
+}
+
+.goal__tooltip__icon {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.goal__tooltip__icon:hover {
+  color: white;
+  opacity: .8;
+}
+
+.goal__add {
+  align-self: center;
+  text-align: center;
+}
+
+.goal__add__btn {
+  background-color: #13ABED;
+  color: white;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.goal__add__btn:hover {
+  background-color: #12a5e4;
+  color: white;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 
 
 
