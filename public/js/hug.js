@@ -62,8 +62,13 @@ function addHug() {
   const hugDate = moment().format("MMMM Do YYYY");
   $("#hugDisplayDate").text(hugDate);
 
-  hugValue = 1;
-  hugChart.data.datasets[0].data.push(hugValue);
+function addHug(){
+    let inputDate = moment().format(); 
+    let hugDate = moment(inputDate).format('MMMM Do YYYY');
+    $("#hugDisplayDate").text(hugDate);
+    
+    hugValue = 1; 
+    hugChart.data.datasets[0].data.push(hugValue);
 
   hugChart.data.labels.push(hugDate);
   //want to push dayDate as value to backend
@@ -73,7 +78,7 @@ function addHug() {
   hugChart.update();
 
   const newHug = {
-    date: hugDate,
+    date: inputDate,
     value: hugValue
   };
   // Send the POST request.

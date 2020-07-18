@@ -64,8 +64,8 @@ waterBtn.addEventListener("click", () => {
   addWater();
 });
 function addWater() {
-  let logDate = document.getElementById("waterDate").value;
-  logDate = moment(logDate).format("ddd, MMMM Do");
+  let inputDate = document.getElementById("waterDate").value;
+  let logDate = moment(inputDate).format("ddd, MMMM Do");
 
   waterOunces = document.getElementById("waterLog").value;
 
@@ -85,7 +85,7 @@ function addWater() {
   waterChart.update();
 
   const newWater = {
-    date: logDate,
+    date: inputDate,
     value: waterOunces
   };
   // Send the POST request.

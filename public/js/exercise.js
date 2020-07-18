@@ -78,9 +78,9 @@ exerciseBtn.addEventListener("click", () => {
 });
 
 function addExercise() {
-  let day = document.getElementById("exDate").value;
-  day = moment().format("ddd, MMMM Do");
-
+  let inputDate = document.getElementById("exDate").value;
+  let day = moment(inputDate).format("ddd, MMMM Do");
+ 
   //dayStudy = 2;
   exerciseMin = document.getElementById("minExercise").value;
   dayExercise = exerciseMin / 60;
@@ -103,7 +103,7 @@ function addExercise() {
   exerciseChart.update();
 
   const newExercise = {
-    date: day,
+    date: inputDate,
     value: exerciseMin
   };
   // Send the POST request.

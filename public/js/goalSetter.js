@@ -1,4 +1,5 @@
 //WORK IN PROGRESS NEED MY HERO JACOB
+
 $("#createGoalsBtn").on("click", () => {
   const userData = {
     isTrackingStudyTime: $("#studyCheck").checked(),
@@ -30,4 +31,8 @@ $("#createGoalsBtn").on("click", () => {
     console.log(data);
     console.log("sent sleep goal");
   });
+
+  req.login(user, err => {
+    if (err) return err;
+  })
 });

@@ -62,8 +62,15 @@ function addJoke() {
   const dayDate = moment().format("MMMM Do YYYY");
   $("#dateDisplay").text(dayDate);
 
-  jokeValue = 1;
-  jokeChart.data.datasets[0].data.push(jokeValue);
+function addJoke(){
+    let inputDate = moment().format(); 
+    console.log(inputDate); 
+    let dayDate = moment(inputDate).format('MMMM Do YYYY');
+    $("#dateDisplay").text(dayDate);
+    
+    
+    jokeValue = 1; 
+    jokeChart.data.datasets[0].data.push(jokeValue);
 
   jokeChart.data.labels.push(dayDate);
   //want to push dayDate as value to backend
@@ -73,7 +80,7 @@ function addJoke() {
   jokeChart.update();
 
   const newJoke = {
-    date: dayDate,
+    date: inputDate,
     value: jokeValue
   };
   // Send the POST request.
@@ -82,7 +89,8 @@ function addJoke() {
     data: newJoke
   }).then(data => {
     console.log(data);
-    console.log("logged sleep");
+    console.log("logged joke");
+
   });
 }
 function getJoke() {

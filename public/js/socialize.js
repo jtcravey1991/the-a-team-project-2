@@ -62,9 +62,9 @@ socializeBtn.addEventListener("click", () => {
   addSocializeValue();
 });
 
-function addSocializeValue() {
-  let day = document.getElementById("logSocialDate").value;
-  day = moment(day).format("ddd, MMMM Do");
+function addSocializeValue(){
+    let inputDate = document.getElementById("logSocialDate").value;
+    let day = moment(inputDate).format("ddd, MMMM Do");
 
   socializeValue = document.getElementById("socializeValue").value;
 
@@ -85,7 +85,7 @@ function addSocializeValue() {
   socializeChart.update();
 
   const newSocialize = {
-    date: day,
+    date: inputDate,
     value: socializeValue
   };
   // Send the POST request.
