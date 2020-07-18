@@ -2,12 +2,12 @@ const donutChart = document.getElementById("donutChart").getContext("2d");
 const studyTime = document.querySelector("#studyBtn");
 let studyMin = document.getElementById("minStudy").value;
 
-let studGoal = 20;
+// let studGoal = 20;
 //render study chart with db data for user
-getStudy(); 
+getStudy();
 
-document.getElementById("studyHoursGoal").innerHTML =
-  "Hours left this week to study: " + studGoal;
+// document.getElementById("studyHoursGoal").innerHTML =
+//   "Hours left this week to study: " + studGoal;
 
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
@@ -15,7 +15,7 @@ Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
 const studyChart = new Chart(donutChart, {
-  type: "doughnut", 
+  type: "doughnut",
   data: {
     labels: [],
     datasets: [
@@ -31,7 +31,7 @@ const studyChart = new Chart(donutChart, {
           "MediumAquamarine",
           "RosyBrown"
         ],
-        hoverBackgroundColor: "LightBlue"   
+        hoverBackgroundColor: "LightBlue"
       }
     ]
   },
@@ -44,15 +44,15 @@ const studyChart = new Chart(donutChart, {
     legend: {
       //display, font options as well in labels object
       position: "top",
-    
+
       labels: {
-          filter: function(label) {
-           if (label[0] === undefined) {
-             return false;
-           }
-          return true;
+        filter: function(label) {
+          if (label[0] === undefined) {
+            return false;
           }
-       }
+          return true;
+        }
+      }
     },
     layout: {
       padding: {
@@ -85,16 +85,16 @@ studyTime.addEventListener("click", () => {
 });
 
 function addStudy() {
-  let inputDate = document.getElementById("start").value;
-  let day = moment(inputDate).format("ddd, MMMM Do");
-    currentDate = moment().format('MMMM Do YYYY');
-    //console.log(currentDate); 
-    console.log(inputDate); 
-  
+  const inputDate = document.getElementById("start").value;
+  const day = moment(inputDate).format("ddd, MMMM Do");
+  currentDate = moment().format("MMMM Do YYYY");
+  //console.log(currentDate);
+  console.log(inputDate);
+
   studyMin = document.getElementById("minStudy").value;
   studyHours = studyMin / 60;
   studGoal = studGoal - studyHours;
-  
+
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
   studyChart.data.datasets[0].data.pop(studGoal);
   studyChart.data.datasets[0].data.push(studyHours);
@@ -123,23 +123,18 @@ function addStudy() {
   }).then(data => {
     console.log(data);
     console.log("logged study time");
-
   });
 }
 
 function getStudy() {
-  $.get("/api/study", function(data) {
-  
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < data.length; i++) {
+  $.get("/api/study", data => {
+    //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+      studyChart.data.datasets[0].data.push(data[i].value);
 
-    studyChart.data.datasets[0].data.push(data[i].value);
-
-    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-    studyChart.data.labels.push(data[i].date);
-
-};
-  studyChart.update(); 
-  
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
+      studyChart.data.labels.push(data[i].date);
+    }
+    studyChart.update();
   });
-};
+}

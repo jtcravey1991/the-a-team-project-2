@@ -27,7 +27,7 @@ $("#createGoalsBtn").on("click", () => {
     isTrackingJokes: $("#jokeCheck").checked(),
     jokesGoal: $("#jokeGoalVal").val(),
     isTrackingHobby: $("#hobbyCheck").checked(),
-    hobbyGoal: $("#hobbyGoalVal").val(),
+    hobbyGoal: $("#hobbyGoalVal").val()
   };
 
   $.ajax("/api/user_data", {
@@ -39,6 +39,8 @@ $("#createGoalsBtn").on("click", () => {
   });
 
   req.login(user, err => {
-    if (err) return err;
-  })
+    if (err) {
+      return err;
+    }
+  });
 });

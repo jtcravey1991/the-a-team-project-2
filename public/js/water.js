@@ -2,9 +2,9 @@ const waterLogChart = document.getElementById("waterChart").getContext("2d");
 
 const waterBtn = document.querySelector("#waterBtn");
 
-getWater(); 
+getWater();
 //variable for water ounce goal
-let waterGoal = 32;
+const waterGoal = 32;
 document.getElementById("waterGoal").innerHTML =
   "You've set a goal for " + waterGoal + " ounces of water per day!";
 //Global options
@@ -21,8 +21,8 @@ const waterChart = new Chart(waterLogChart, {
         label: "Water Oz",
         data: [],
         backgroundColor: "CornflowerBlue",
-        hoverBackgroundColor: "LightBlue"  ,
-        barThickness: 50   
+        hoverBackgroundColor: "LightBlue",
+        barThickness: 50
       }
     ]
   },
@@ -62,11 +62,10 @@ const waterChart = new Chart(waterLogChart, {
 waterBtn.addEventListener("click", () => {
   event.preventDefault();
   addWater();
-
 });
 function addWater() {
-  let inputDate = document.getElementById("waterDate").value;
-  let logDate = moment(inputDate).format("ddd, MMMM Do");
+  const inputDate = document.getElementById("waterDate").value;
+  const logDate = moment(inputDate).format("ddd, MMMM Do");
 
   waterOunces = document.getElementById("waterLog").value;
 
@@ -81,8 +80,8 @@ function addWater() {
       "You met your daily water goal! Great work!";
   }
 
-//   document.getElementById("waterGoal").innerHTML =
-//     "You've set a goal for " + waterGoal + " ounces of water per day.";
+  //   document.getElementById("waterGoal").innerHTML =
+  //     "You've set a goal for " + waterGoal + " ounces of water per day.";
   waterChart.update();
 
   const newWater = {
@@ -96,23 +95,18 @@ function addWater() {
   }).then(data => {
     console.log(data);
     console.log("logged water");
-
   });
-};
+}
 
 function getWater() {
-  $.get("/api/water", function(data) {
-  
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < data.length; i++) {
+  $.get("/api/water", data => {
+    //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+      waterChart.data.datasets[0].data.push(data[i].value);
 
-    waterChart.data.datasets[0].data.push(data[i].value);
-
-    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-    waterChart.data.labels.push(data[i].date);
-
-};
-  waterChart.update(); 
-  
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
+      waterChart.data.labels.push(data[i].date);
+    }
+    waterChart.update();
   });
-};
+}
