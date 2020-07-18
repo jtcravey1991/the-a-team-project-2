@@ -1,0 +1,26 @@
+{{!-- linked to goals page --}}
+
+<!-- socialize chart -->
+<div class="container">
+    <h3 id="socializeGoal"></h3>
+    <label for="logDate">Log date:</label>
+    <input type="date" id="logSocialDate" name="trip-start">
+    <form>
+        <div class="form-row">
+            <div class="col">
+                <input type="number" name="socializeValue" id="socializeValue" class="form-control"
+                    placeholder="1-5 Social Quality Rating">
+                <button class="btn btn-info" id="socializeBtn">Log Socialization Quality</button>
+            </div>
+        </div>
+    </form>
+    <h3 id="socializeProgress"></h3>
+    <canvas id="socializeChart"></canvas>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="/js/socialize.js"></script>

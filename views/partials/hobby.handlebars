@@ -1,0 +1,26 @@
+{{!-- lined to dashboard --}}
+<!-- hobby chart -->
+<div class="container">
+
+    <h3 id="hobbyHoursGoal"></h3>
+    <label for="hobbyDate">Log date:</label>
+
+    <input type="date" id="hobbyDate" name="trip-start">
+    <form>
+        <div class="form-row">
+            <div class="col">
+                <input type="number" id="minHobby" class="form-control" placeholder="Hobby Minutes">
+                <button class="btn btn-info" id="hobbyBtn">Add Hobby
+                    Minutes</button>
+            </div>
+        </div>
+    </form>
+
+    <canvas id="hobbyChart"></canvas>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="/js/hobby.js"></script>

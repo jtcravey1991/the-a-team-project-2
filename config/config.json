@@ -1,6 +1,12 @@
 {
   "development": {
-    "use_env_variable":"DEV_DB_STRING"
+
+    "username": "root",
+    "password": "admin",
+    "database": "passport_demo",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "use_env_variable": "DEV_DB_STRING"
   },
   "test": {
     "username": "root",
@@ -10,6 +16,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable":"JAWSDB_URL"
+    "use_env_variable": "JAWSDB_URL"
   }
 }

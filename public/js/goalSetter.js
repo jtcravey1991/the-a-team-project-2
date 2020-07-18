@@ -1,3 +1,21 @@
+
+//WORK IN PROGRESS NEED MY HERO JACOB
+
+const userData = {
+  trackingSleep: $("#sleepCheck").checked(),
+  sleepGoal: $("#sleepGoalVal").val()
+  };
+  $.ajax("/api/sleep", {
+    type: "POST",
+    data: userData
+  }).then(data => {
+    console.log(data);
+    console.log("sent sleep goal");
+  });
+
+
+//old code, no bueno
+
 $("#addSleepBtn").on("click", function (e){
     e.preventDefault(); 
     setSleepGoal();
