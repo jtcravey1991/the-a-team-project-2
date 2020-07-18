@@ -1,25 +1,25 @@
 {{!-- linked to goals page --}}
 
- <!-- sleep chart -->
-     <div class="container">
-        <h3 id="sleepHoursGoal"></h3>
-        <label for="startOne">Start date:</label>
-        <input type="date" id="startOne" name="trip-start">
-        <form>
-            <div class="form-row">
-                <div class="col">
-                    <input type="number" name="sleepLog" id="sleepLog" class="form-control" placeholder="Hours Slept">
-                    <button class="btn btn-info" id="sleepBtn">Log Sleep</button>
-                </div>
+<!-- sleep chart -->
+<div class="container">
+    <h3 id="sleepHoursGoal"></h3>
+    <label for="startOne">Log date:</label>
+    <input type="date" id="startOne" name="trip-start">
+    <form>
+        <div class="form-row">
+            <div class="col">
+                <input type="number" name="sleepLog" id="sleepLog" class="form-control" placeholder="Hours Slept">
+                <button class="btn btn-info" id="sleepBtn">Log Sleep</button>
             </div>
-        </form>
-        <h3 id="sleepProgress"></h3>
-        <canvas id="myChart"></canvas>
-    </div>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="/js/sleep.js"></script>
+        </div>
+    </form>
+    <h3 id="sleepProgress"></h3>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="/js/sleep.js"></script>

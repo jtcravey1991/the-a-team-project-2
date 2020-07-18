@@ -1,26 +1,26 @@
-const donutChart = document.getElementById("donutChart").getContext("2d");
-const studyTime = document.querySelector("#studyBtn");
-let studyMin = document.getElementById("minStudy").value;
+const exerciseLogChart = document.getElementById("exerciseChart").getContext("2d");
+const exerciseBtn = document.querySelector("#exerciseBtn");
+let exerciseMin = document.getElementById("minExercise").value;
 
-let studGoal = 20;
-//render study chart with db data for user
-getStudy(); 
+let exerciseGoal = 20;
 
-document.getElementById("studyHoursGoal").innerHTML =
-  "Hours left this week to study: " + studGoal;
+getExercise();
+
+document.getElementById("exerciseHoursGoal").innerHTML =
+  "Hours left this week to exercise: " + exerciseGoal;
 
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
-const studyChart = new Chart(donutChart, {
-  type: "doughnut", 
+const exerciseChart = new Chart(exerciseLogChart, {
+  type: "doughnut", //bar, horizontalBar, pie, line, donut, radar, polarArea
   data: {
     labels: [],
     datasets: [
       {
-        label: ["Study Hours Per Day", studGoal],
+        label: ["Exercise Hours Per Day", exerciseGoal],
         data: [],
         backgroundColor: [
           "CornflowerBlue",
@@ -38,21 +38,12 @@ const studyChart = new Chart(donutChart, {
   options: {
     title: {
       display: true,
-      text: "Study Tracker",
+      text: "Exercise Tracker",
       fontSize: 25
     },
     legend: {
       //display, font options as well in labels object
-      position: "top",
-    
-      labels: {
-          filter: function(label) {
-           if (label[0] === undefined) {
-             return false;
-           }
-          return true;
-          }
-       }
+      position: "top"
     },
     layout: {
       padding: {
@@ -79,65 +70,65 @@ const studyChart = new Chart(donutChart, {
   }
 });
 
-studyTime.addEventListener("click", () => {
+exerciseBtn.addEventListener("click", () => {
   event.preventDefault();
-  addValue();
+  addExercise();
 });
 
-function addValue() {
-  let day = document.getElementById("start").value;
+function addExercise() {
+  let day = document.getElementById("exDate").value;
     day = moment().format("ddd, MMMM Do");
-
-  
-  studyMin = document.getElementById("minStudy").value;
-  studyHours = studyMin / 60;
-  studGoal = studGoal - studyHours;
-  
+ 
+  //dayStudy = 2;
+  exerciseMin = document.getElementById("minExercise").value;
+  dayExercise = exerciseMin / 60;
+  exerciseGoal = exerciseGoal - dayExercise;
+  //date++;
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
-  studyChart.data.datasets[0].data.pop(studGoal);
-  studyChart.data.datasets[0].data.push(studyHours);
-  studyChart.data.datasets[0].data.push(studGoal);
+  exerciseChart.data.datasets[0].data.pop(exerciseGoal);
+  exerciseChart.data.datasets[0].data.push(dayExercise);
+  exerciseChart.data.datasets[0].data.push(exerciseGoal);
   //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
-  studyChart.data.labels.push(day);
+  exerciseChart.data.labels.push(day);
   //studyChart.data.labels = [studGoal];
-  document.getElementById("studyHoursGoal").innerHTML =
+  document.getElementById("exerciseHoursGoal").innerHTML =
     "Hours left this week to study: " + studGoal;
-  if (studGoal <= 0) {
-    document.getElementById("studyHoursGoal").innerHTML =
-      "Congratulations! You've met your study goal!";
-    studGoal = 0;
+  if (exerciseGoal <= 0) {
+    document.getElementById("exerciseHoursGoal").innerHTML =
+      "Now that is fitness! You've met your exercise goal!";
+    exerciseGoal = 0;
   }
-  //updating chart with logged data by user
-  studyChart.update();
+  exerciseChart.update();
 
-  const newStudy = {
+  const newExercise = {
     date: day,
-    value: studyMin
+    value: exerciseMin
   };
   // Send the POST request.
-  $.ajax("/api/study", {
+  $.ajax("/api/exercise", {
     type: "POST",
-    data: newStudy
+    data: newExercise
   }).then(data => {
     console.log(data);
-    console.log("logged study time");
+    console.log("logged exercise time");
 
   });
 }
 
-function getStudy() {
-  $.get("/api/study", function(data) {
+
+function getExercise() {
+  $.get("/api/exercise", function(data) {
   
      //array that takes in the data values to populate the chart
   for (let i = 0; i < data.length; i++) {
 
-    studyChart.data.datasets[0].data.push(data[i].value);
+    exerciseChart.data.datasets[0].data.push(data[i].value);
 
     data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-    studyChart.data.labels.push(data[i].date);
+    exerciseChart.data.labels.push(data[i].date);
 
 };
-  studyChart.update(); 
+  exerciseChart.update(); 
   
   });
 };

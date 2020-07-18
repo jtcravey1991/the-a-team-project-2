@@ -3,7 +3,7 @@ const sleepLogChart = document.getElementById("myChart").getContext("2d");
 const sleepTime = document.querySelector("#sleepBtn");
 
 let sleepGoal = 8;
-
+getSleep();
 document.getElementById("sleepHoursGoal").innerHTML =
   "You've set a goal for " + sleepGoal + " hours per night";
 //Global options
@@ -19,7 +19,9 @@ const sleepChart = new Chart(sleepLogChart, {
       {
         label: "Sleep Hours Per Night",
         data: [],
-        backgroundColor: "CornflowerBlue"
+        backgroundColor: "CornflowerBlue",
+        hoverBackgroundColor: "LightBlue"  ,
+        barThickness: 50   
       }
     ]
   },
@@ -60,9 +62,10 @@ sleepTime.addEventListener("click", () => {
   event.preventDefault();
   addSleep();
 });
+
 function addSleep() {
-  let logDate = document.getElementById("startOne").valueAsDate.toString();
-  logDate = moment().format("ddd, MMMM Do");
+  let logDate = document.getElementById("startOne").value;
+  logDate = moment(logDate).format("ddd, MMMM Do");
   
 
   sleepGoal = 8;
@@ -96,5 +99,22 @@ function addSleep() {
     console.log(data);
     console.log("logged sleep");
 
+  });
+};
+
+function getSleep() {
+  $.get("/api/sleep", function(data) {
+  
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < data.length; i++) {
+
+    sleepChart.data.datasets[0].data.push(data[i].value);
+
+    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
+    sleepChart.data.labels.push(data[i].date);
+
+};
+sleepChart.update(); 
+  
   });
 };

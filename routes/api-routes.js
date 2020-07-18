@@ -2,6 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const moment = require("moment");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -67,16 +68,19 @@ module.exports = function(app) {
   // ----------- GOALS ROUTES -------------------- ||
   // sleep get
   app.get("/api/sleep", isAuthenticated, (req, res) => {
+
     db.Sleep.findAll({
       where: {
         UserId: req.user.id,
-        date: {
-          $gt: moment()
-            .subtract(7, "days")
-            .toDate()
-        }
+        //doesn't work if less than 7 days in db
+        // date: {
+        //   $gt: moment()
+        //     .subtract(7, "days")
+        //     .toDate()
+        // }
       }
     }).then(data => {
+      console.log(data); 
       res.json(data);
     });
   });
@@ -164,7 +168,8 @@ module.exports = function(app) {
   app.post("api/joke", isAuthenticated, (req, res) => {
     db.Joke.create({
       UserId: req.user.id,
-      date: req.body.date
+      date: req.body.date,
+      value: req.body.value
     }).then(data => {
       res.json(data);
     });
@@ -189,7 +194,8 @@ module.exports = function(app) {
   app.post("api/socialize", isAuthenticated, (req, res) => {
     db.Socialize.create({
       UserId: req.user.id,
-      date: req.body.date
+      date: req.body.date,
+      value: req.body.value
     }).then(data => {
       res.json(data);
     });
@@ -214,7 +220,8 @@ module.exports = function(app) {
   app.post("api/hug", isAuthenticated, (req, res) => {
     db.Hug.create({
       UserId: req.user.id,
-      date: req.body.date
+      date: req.body.date,
+      value: req.body.value
     }).then(data => {
       res.json(data);
     });
@@ -265,7 +272,8 @@ module.exports = function(app) {
   app.post("api/meditation", isAuthenticated, (req, res) => {
     db.Meditation.create({
       UserId: req.user.id,
-      date: req.body.date
+      date: req.body.date,
+      value: req.body.value
     }).then(data => {
       res.json(data);
     });
