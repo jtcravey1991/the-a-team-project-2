@@ -53,6 +53,17 @@ module.exports = function(app) {
     }
   });
 
+  //user settings put
+  app.put("/api/user_data", isAuthenticated, (req, res) => {
+    db.User.update(
+      req.body,
+      {
+      where: {
+        id: req.user.id
+      }
+    })
+  });
+
   // ----------- GOALS ROUTES -------------------- ||
   // sleep get
   app.get("/api/sleep", isAuthenticated, (req, res) => {
