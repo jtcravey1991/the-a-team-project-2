@@ -70,7 +70,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 0
     },
     // medetation boolean
-    isTrackingMeditaion: {
+    isTrackingMeditation: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
@@ -100,7 +100,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 0
     },
     // socialized boolean
-    isTrackingSocizlizing: {
+    isTrackingSocializing: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
@@ -126,7 +126,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     // hobby time goal hours per week
     hobbyGoal: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       defaultValue: 0
     }
   });
