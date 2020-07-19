@@ -2,7 +2,7 @@ const donutChart = document.getElementById("donutChart").getContext("2d");
 const studyTime = document.querySelector("#studyBtn");
 let studyMin = document.getElementById("minStudy").value;
 
-// let studGoal = 20;
+let studGoal = 20;
 //render study chart with db data for user
 getStudy();
 
@@ -163,9 +163,8 @@ function getStudy() {
     document.getElementById("studyHoursGoal").innerHTML =
     "Hours left this week to study: " + studGoal;
 
-
-      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
-      studyChart.data.labels.push(data[i].date);
+      chartData[i].date = moment(chartData[i].date).format("ddd, MMMM Do");
+      studyChart.data.labels.push(chartData[i].date);
     }
     studyChart.update();
   });

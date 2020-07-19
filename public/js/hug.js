@@ -69,9 +69,6 @@ $("#hugBtn").on("click", function (e){
     addHug();
 }); 
 
-function addHug() {
-  const hugDate = moment().format("MMMM Do YYYY");
-  $("#hugDisplayDate").text(hugDate);
 
 function addHug(){
  
@@ -106,7 +103,7 @@ function addHug(){
     location.reload(); 
 
   });
-}
+};
 
 function getHug() {
 
@@ -142,4 +139,4 @@ function getHug() {
     hugChart.update(); 
     
     });
-  };
+  }; 

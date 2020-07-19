@@ -95,7 +95,6 @@ function addSleep() {
   }).then(data => {
     console.log(data);
     console.log("logged sleep");
-
     location.reload(); 
   });
 
@@ -103,7 +102,6 @@ function addSleep() {
 
 function getSleep() {
   $.get("/api/sleep", function(data) {
-  
 
     const dataSet = [data];
     console.log(dataSet); 
@@ -112,10 +110,10 @@ function getSleep() {
       temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
       return {...last, ...temp};
     }, {}); 
-  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
-  console.log(chartData); 
+      const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+      console.log(chartData); 
      //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
+      for (let i = 0; i < chartData.length; i++) {
 
     sleepChart.data.datasets[0].data.push(chartData[i].value);
 
@@ -128,6 +126,7 @@ function getSleep() {
       document.getElementById("sleepProgress").innerHTML =
         "You must feel well rested!";
     }
+  
 };
 
 sleepChart.update(); 

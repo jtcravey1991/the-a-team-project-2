@@ -70,15 +70,7 @@ function addEatValue() {
 
   eatChart.data.labels.push(day);
 
-  if (eatValue == 3 || eatValue == 4) {
-    document.getElementById("eatProgress").innerHTML =
-      "Keep up the healthy eating!";
-  } else if (eatValue == 5) {
-    document.getElementById("eatProgress").innerHTML = "Wow! Amazing!";
-  } else {
-    document.getElementById("eatProgress").innerHTML =
-      "Let's try to eat better!";
-  }
+
   eatChart.update();
 
   const newEat = {
@@ -97,12 +89,35 @@ function addEatValue() {
 
 function getEat() {
   $.get("/api/eat", data => {
-    //array that takes in the data values to populate the chart
-    for (let i = 0; i < data.length; i++) {
-      eatChart.data.datasets[0].data.push(data[i].value);
 
-      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
-      eatChart.data.labels.push(data[i].date);
+    const dataSet = [data];
+
+    const mappedData = data.reduce((last, date) =>{
+    const temp = {};
+    temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+      return {...last, ...temp};
+      }, {}); 
+      const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+      console.log(chartData); 
+    //array that takes in the data values to populate the chart
+    for (let i = 0; i < chartData.length; i++) {
+
+      eatChart.data.datasets[0].data.push(chartData[i].value);
+
+      chartData[i].date = moment(chartData[i].date).format("ddd, MMMM Do");
+      eatChart.data.labels.push(chartData[i].date);
+
+      let eatValue = hartData[chartData.length -1].value; 
+      
+      if (eatValue == 3 || eatValue == 4) {
+        document.getElementById("eatProgress").innerHTML =
+          "Keep up the healthy eating!";
+      } else if (eatValue == 5) {
+        document.getElementById("eatProgress").innerHTML = "Wow! Amazing!";
+      } else {
+        document.getElementById("eatProgress").innerHTML =
+          "Let's try to eat better!";
+      }
     }
     eatChart.update();
   });
