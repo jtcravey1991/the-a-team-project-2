@@ -2,10 +2,9 @@ const sleepLogChart = document.getElementById("myChart").getContext("2d");
 
 const sleepTime = document.querySelector("#sleepBtn");
 
-// let sleepGoal = 8;
+let sleepGoal = 8;
 getSleep();
-// document.getElementById("sleepHoursGoal").innerHTML =
-//   "You've set a goal for " + sleepGoal + " hours per night";
+
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
@@ -20,8 +19,8 @@ const sleepChart = new Chart(sleepLogChart, {
         label: "Sleep Hours Per Night",
         data: [],
         backgroundColor: "CornflowerBlue",
-        hoverBackgroundColor: "LightBlue",
-        barThickness: 50
+        hoverBackgroundColor: "LightBlue"  ,
+        barThickness: 50   
       }
     ]
   },
@@ -64,11 +63,9 @@ sleepTime.addEventListener("click", () => {
 });
 
 function addSleep() {
-
   let inputDate = document.getElementById("startOne").value;
   
   let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
-  
   
 
   sleepGoal = "8";
@@ -83,6 +80,7 @@ function addSleep() {
     "You've set a goal for " + sleepGoal + " hours per night";
 
   sleepChart.update();
+
 
   const newSleep = {
     date: inputDate,
@@ -102,6 +100,7 @@ function addSleep() {
 
 function getSleep() {
   $.get("/api/sleep", function(data) {
+  
 
     const dataSet = [data];
     console.log(dataSet); 
@@ -110,10 +109,10 @@ function getSleep() {
       temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
       return {...last, ...temp};
     }, {}); 
-      const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
-      console.log(chartData); 
+  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+  console.log(chartData); 
      //array that takes in the data values to populate the chart
-      for (let i = 0; i < chartData.length; i++) {
+  for (let i = 0; i < chartData.length; i++) {
 
     sleepChart.data.datasets[0].data.push(chartData[i].value);
 
@@ -126,10 +125,10 @@ function getSleep() {
       document.getElementById("sleepProgress").innerHTML =
         "You must feel well rested!";
     }
-  
 };
+
 
 sleepChart.update(); 
   
   });
-}
+};
