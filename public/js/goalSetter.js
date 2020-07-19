@@ -1,8 +1,14 @@
 $(".plus-minus").change(function(event) {
   if ($(this).prop("checked")) {
-    $(this).parent().parent().addClass("goal__checked");
+    $(this)
+      .parent()
+      .parent()
+      .addClass("goal__checked");
   } else if (!$(this).prop("checked")) {
-    $(this).parent().parent().removeClass("goal__checked");
+    $(this)
+      .parent()
+      .parent()
+      .removeClass("goal__checked");
   }
 });
 
