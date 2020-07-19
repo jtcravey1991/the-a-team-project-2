@@ -140,6 +140,9 @@ function getExercise() {
     exerciseChart.data.labels.push(chartData[i].date);
     exerciseChart.data.datasets[0].data.push(exerciseHours);
 
+   
+  exerciseGoal = exerciseGoal - exerciseHours;
+
     document.getElementById("exerciseHoursGoal").innerHTML =
     "Hours left this week to exercise: " + exerciseGoal;
     if (exerciseGoal <= 0) {

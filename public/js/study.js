@@ -100,7 +100,7 @@ function addStudy() {
   //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
   studyChart.data.labels.push(day);
   studyChart.data.labels.push(studyHours);
-  
+
   document.getElementById("studyHoursGoal").innerHTML =
     "Hours left this week to study: " + studGoal;
   if (studGoal <= 0) {
@@ -152,9 +152,9 @@ function getStudy() {
     studyChart.data.labels.push(chartData[i].date);
 
     // studyHours = studyMin / 60;
-    // studGoal = studGoal - studyHours;
-    // document.getElementById("studyHoursGoal").innerHTML =
-    // "Hours left this week to study: " + studGoal;
+    studGoal = studGoal - studyHours;
+    document.getElementById("studyHoursGoal").innerHTML =
+    "Hours left this week to study: " + studGoal;
 
 };
   studyChart.update(); 

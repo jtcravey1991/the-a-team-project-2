@@ -27,7 +27,7 @@ const jokeChart = new Chart(jokeLogChart, {
         },
         legend: {
             //display, font options as well in labels object
-            //position: "right"
+            position: "top"
         },
         layout: {
             padding: {
@@ -105,11 +105,7 @@ console.log(dataSet);
       chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
       jokeChart.data.labels.push(chartData[i].date);
 
-       //let jokeValue = chartData[chartData.length -1].value; 
-      // if(jokeValue > 1){
-      //   jokeValue = 1; 
-      // };
-      jokeChart.data.datasets[0].data.push(chartData[chartData.length -1].value);
+      //jokeChart.data.datasets[0].data.push(chartData[chartData.length -1].value);
      
       document.getElementById("jokeProgress").innerHTML = "Always nice to make others smile, keep it up!"
   
