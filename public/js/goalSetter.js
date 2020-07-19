@@ -26,7 +26,7 @@ function init() {
       isTrackingHobby: $("#hobbyCheck").prop("checked"),
       hobbyGoal: valueChecker($("#hobbiesGoalVal").val())
     };
-  
+
     $.ajax("/api/user_data", {
       type: "PUT",
       data: userData
@@ -37,7 +37,7 @@ function init() {
   });
 
   //check listener to add or remove class if goal is checked
-  $(".plus-minus").change(function(event) {
+  $(".plus-minus").change(function (event) {
     if ($(this).prop("checked")) {
       $(this).parent().parent().addClass("goal__checked");
     } else if (!$(this).prop("checked")) {
@@ -78,10 +78,10 @@ function setGoalClasses() {
   if ($("#sleepCheck").prop("checked")) {
     $("#sleepGoalDiv").addClass("goal__checked");
   }
-  if($("#studyCheck").prop("checked")) {
+  if ($("#studyCheck").prop("checked")) {
     $("#studyGoalDiv").addClass("goal__checked");
   }
-  if($("#eatCheck").prop("checked")) {
+  if ($("#eatCheck").prop("checked")) {
     $("#eatGoalDiv").addClass("goal__checked");
   }
   if ($("#waterCheck").prop("checked")) {
@@ -93,7 +93,7 @@ function setGoalClasses() {
   if ($("#socializeCheck").prop("checked")) {
     $("#socializeGoalDiv").addClass("goal__checked");
   }
-  if($("#meditateCheck").prop("checked")) {
+  if ($("#meditateCheck").prop("checked")) {
     $("#meditationGoalDiv").addClass("goal__checked");
   }
   if ($("#jokesCheck").prop("checked")) {
@@ -109,7 +109,7 @@ function setGoalClasses() {
 
 // checks if a value is null and returns 0 if so
 function valueChecker(value) {
-  if  (!value) {
+  if (!value) {
     return 0;
   } else {
     return value;

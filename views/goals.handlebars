@@ -92,8 +92,16 @@
                         <i class="fas fa-apple-alt"></i>
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
-                        <span>I want to eat healthy for</span><input type="number" class="goal__input" id="eatGoalVal"
-                            placeholder="0"><span>weeks.</span>
+                        I want to eat
+                        <select id="eatGoalVal" class="goal__select">
+                            <option value="">choose…</option>
+                            <option value="1">not</option>
+                            <option value="2">some</option>
+                            <option value="3">fairly</option>
+                            <option value="4">very</option>
+                            <option value="5">all</option>
+                        </select>
+                        healthy every day.
                     </div>
                     <div class="col-2 goal__tooltip">
                         <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
@@ -152,8 +160,16 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
-                        <span>I want to socialize</span><input type="number" class="goal__input" id="socializeGoalVal"
-                            placeholder="0"><span>times in a month.</span>
+                        I want to socialize
+                        <select id="socializeGoalVal" class="goal__select">
+                            <option value="">choose…</option>
+                            <option value="1">none</option>
+                            <option value="2">some</option>
+                            <option value="3">often</option>
+                            <option value="4">a lot</option>
+                            <option value="5">all day</option>
+                        </select>
+                        every day.
                     </div>
                     <div class="col-2 goal__tooltip">
                         <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
@@ -173,7 +189,7 @@
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
                         <span>I want to meditate</span><input type="number" class="goal__input" id="meditateGoalVal"
-                            placeholder="0"><span>times in a month.</span>
+                            placeholder="0"><span>minutes a day.</span>
                     </div>
                     <div class="col-2 goal__tooltip">
                         <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
@@ -193,7 +209,7 @@
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
                         <span>I want to tell</span><input type="number" class="goal__input" id="jokesGoalVal"
-                            placeholder="0"><span>jokes a week.</span>
+                            placeholder="0"><span>jokes a day.</span>
                     </div>
                     <div class="col-2 goal__tooltip">
                         <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
@@ -213,7 +229,7 @@
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
                         <span>I want to give</span><input type="number" class="goal__input" id="hugsGoalVal"
-                            placeholder="0"><span>hugs a week.</span>
+                            placeholder="0"><span>hugs a day.</span>
                     </div>
                     <div class="col-2 goal__tooltip">
                         <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
