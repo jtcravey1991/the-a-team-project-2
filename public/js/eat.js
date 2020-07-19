@@ -84,8 +84,9 @@ function addEatValue() {
   }).then(data => {
     console.log(data);
     console.log("logged healthy eating rating");
+    location.reload(); 
   });
-}
+};
 
 function getEat() {
   $.get("/api/eat", data => {
@@ -107,7 +108,7 @@ function getEat() {
       chartData[i].date = moment(chartData[i].date).format("ddd, MMMM Do");
       eatChart.data.labels.push(chartData[i].date);
 
-      let eatValue = hartData[chartData.length -1].value; 
+      let eatValue = chartData[chartData.length -1].value; 
       
       if (eatValue == 3 || eatValue == 4) {
         document.getElementById("eatProgress").innerHTML =
