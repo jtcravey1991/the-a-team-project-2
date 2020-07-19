@@ -74,13 +74,6 @@ function addWater() {
 
   waterChart.data.labels.push(logDate);
 
-  if (waterOunces < waterGoal) {
-    document.getElementById("waterProgress").innerHTML = "Remember to hydrate!";
-  } else {
-    document.getElementById("waterProgress").innerHTML =
-      "You met your daily water goal! Great work!";
-  }
-
 //   document.getElementById("waterGoal").innerHTML =
 //     "You've set a goal for " + waterGoal + " ounces of water per day.";
   waterChart.update();
@@ -120,6 +113,15 @@ function getWater() {
 
     chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
     waterChart.data.labels.push(chartData[i].date);
+
+    waterOz = chartData[chartData.length -1].value;
+
+    if (waterOz < waterGoal) {
+      document.getElementById("waterProgress").innerHTML = "Remember to hydrate!";
+    } else {
+      document.getElementById("waterProgress").innerHTML =
+        "You met your daily water goal! Great work!";
+    }
 
 };
   waterChart.update(); 

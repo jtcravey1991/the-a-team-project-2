@@ -57,17 +57,16 @@ $("#jokeBtn").on("click", function (e){
 }); 
 
 function addJoke(){
-    let inputDate = moment().utc().format(); 
+    let inputDate = moment({hour: 0, minute: 0, seconds: 0, milliseconds: 0}).utc().format(); 
     console.log(inputDate); 
     let dayDate = moment(inputDate).utc().format('MMMM Do YYYY');
     $("#dateDisplay").text(dayDate);
     
+    let jokeValue = 1; 
     
-    jokeValue = 1; 
     jokeChart.data.datasets[0].data.push(jokeValue);
     jokeChart.data.labels.push(dayDate);
-  //want to push dayDate as value to backend
-  document.getElementById("jokeProgress").innerHTML = "Always nice to make others smile, keep it up!"
+
    
   jokeChart.update();
 
@@ -90,7 +89,7 @@ function getJoke() {
     $.get("/api/joke", function(data) {
     
   const dataSet = [data];
-
+console.log(dataSet);
   const mappedData = data.reduce((last, date) =>{
   const temp = {};
   temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
@@ -105,6 +104,14 @@ function getJoke() {
   
       chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
       jokeChart.data.labels.push(chartData[i].date);
+
+       //let jokeValue = chartData[chartData.length -1].value; 
+      // if(jokeValue > 1){
+      //   jokeValue = 1; 
+      // };
+      jokeChart.data.datasets[0].data.push(chartData[chartData.length -1].value);
+     
+      document.getElementById("jokeProgress").innerHTML = "Always nice to make others smile, keep it up!"
   
   };
     jokeChart.update(); 

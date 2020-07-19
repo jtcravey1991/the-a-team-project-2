@@ -95,11 +95,7 @@ function addHobby() {
   //studyChart.data.labels = [studGoal];
   document.getElementById("hobbyHoursGoal").innerHTML =
     "Hours left this week to work on hobby: " + hobbyGoal;
-  if (hobbyGoal <= 0) {
-    document.getElementById("hobbyHoursGoal").innerHTML =
-      "A master at your craft! You've met your hobby time goal!";
-    hobbyGoal = 0;
-  }
+ 
   hobbyChart.update();
 
   const newHobby = {
@@ -141,7 +137,11 @@ function getHobby() {
     hobbyChart.data.labels.push(chartData[i].date);
     hobbyChart.data.datasets[0].data.push(hobbyHours);
    
-
+    if (hobbyGoal <= 0) {
+      document.getElementById("hobbyHoursGoal").innerHTML =
+        "A master at your craft! You've met your hobby time goal!";
+      hobbyGoal = 0;
+    }
 };
   hobbyChart.update(); 
   

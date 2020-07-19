@@ -67,16 +67,7 @@ function addSocializeValue(){
 
     socializeChart.data.labels.push(day);
    
-    if (socializeValue == 3 || socializeValue == 4) {
-        document.getElementById("socializeProgress").innerHTML = "Keep up the social quality!"
-    } else if(socializeValue == 5){
-        document.getElementById("socializeProgress").innerHTML = "Wow! What a friend!"
-    } else{
-        document.getElementById("socializeProgress").innerHTML = "Give a friend a call!"
-    };
-    if (socializeValue > 5){
-        socializeValue = 5; 
-    }; 
+ 
     socializeChart.update();
 
 
@@ -114,6 +105,19 @@ function getSocialize() {
   
       chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
       socializeChart.data.labels.push(chartData[i].date);
+
+      let socializeInput = chartData[chartData.length -1].value; 
+
+      if (socializeInput == 3 || socializeInput == 4) {
+        document.getElementById("socializeProgress").innerHTML = "Keep up the social quality!"
+    } else if(socializeInput == 5){
+        document.getElementById("socializeProgress").innerHTML = "Wow! What a friend!"
+    } else{
+        document.getElementById("socializeProgress").innerHTML = "Give a friend a call!"
+    };
+    if (socializeInput > 5){
+        socializeInput = 5; 
+    }; 
   
   };
     socializeChart.update(); 

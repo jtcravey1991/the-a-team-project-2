@@ -78,19 +78,11 @@ function addSleep() {
 
   sleepChart.data.labels.push(logDate);
 
-  // if (sleepHours < sleepGoal) {
-  //   document.getElementById("sleepProgress").innerHTML = "You need more sleep!";
-  // } else {
-  //   document.getElementById("sleepProgress").innerHTML =
-  //     "You must feel well rested!";
-  // }
- 
   document.getElementById("sleepHoursGoal").innerHTML =
     "You've set a goal for " + sleepGoal + " hours per night";
 
   sleepChart.update();
 
- 
 
   const newSleep = {
     date: inputDate,
@@ -113,7 +105,7 @@ function getSleep() {
   
 
     const dataSet = [data];
-
+    console.log(dataSet); 
     const mappedData = data.reduce((last, date) =>{
       const temp = {};
       temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;

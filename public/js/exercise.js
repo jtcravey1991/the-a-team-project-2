@@ -92,14 +92,8 @@ function addExercise() {
   //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
   exerciseChart.data.labels.push(day);
   exerciseChart.data.labels.push(exerciseHours);
-  
-  document.getElementById("exerciseHoursGoal").innerHTML =
-    "Hours left this week to exercise: " + exerciseGoal;
-  if (exerciseGoal <= 0) {
-    document.getElementById("exerciseHoursGoal").innerHTML =
-      "Now that is fitness! You've met your exercise goal!";
-    exerciseGoal = 0;
-  }
+
+ 
   exerciseChart.update();
 
   const newExercise = {
@@ -146,7 +140,13 @@ function getExercise() {
     exerciseChart.data.labels.push(chartData[i].date);
     exerciseChart.data.datasets[0].data.push(exerciseHours);
 
-    //exerciseChart.data.labels.push(exerciseHours);
+    document.getElementById("exerciseHoursGoal").innerHTML =
+    "Hours left this week to exercise: " + exerciseGoal;
+    if (exerciseGoal <= 0) {
+      document.getElementById("exerciseHoursGoal").innerHTML =
+        "Now that is fitness! You've met your exercise goal!";
+      exerciseGoal = 0;
+    }
   
 };
   exerciseChart.update(); 

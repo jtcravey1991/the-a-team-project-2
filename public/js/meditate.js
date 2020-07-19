@@ -77,13 +77,6 @@ function addMeditation() {
 
   meditationChart.data.labels.push(logDate);
 
-  if (meditateValue < meditateGoal) {
-    document.getElementById("meditationProgress").innerHTML = "Take some time to be still!";
-  } else {
-    document.getElementById("meditationProgress").innerHTML =
-      "A buddha in the making; you met your daily meditation goal!";
-  }
-
   meditationChart.update();
 
   const newMeditation = {
@@ -124,6 +117,13 @@ function getMeditate() {
 
     chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
     meditationChart.data.labels.push(chartData[i].date);
+
+    if (chartData[chartData.length -1].value  < meditateGoal) {
+      document.getElementById("meditationProgress").innerHTML = "Take some time to be still!";
+    } else {
+      document.getElementById("meditationProgress").innerHTML =
+        "A buddha in the making; you met your daily meditation goal!";
+    }
 
 };
   meditationChart.update(); 
