@@ -1,28 +1,33 @@
-
-//WORK IN PROGRESS NEED MY HERO JACOB
+$(".plus-minus").change(function(event) {
+  if ($(this).prop("checked")) {
+    $(this).parent().parent().addClass("goal__checked");
+  } else if (!$(this).prop("checked")) {
+    $(this).parent().parent().removeClass("goal__checked");
+  }
+});
 
 $("#createGoalsBtn").on("click", () => {
   const userData = {
-    isTrackingStudyTime: $("#studyCheck").checked(),
+    isTrackingStudyTime: $("#studyCheck").prop("checked"),
     studyTimeGoal: $("#studyGoalVal").val(),
-    isTrackingSleep: $("#sleepCheck").checked(),
+    isTrackingSleep: $("#sleepCheck").prop("checked"),
     sleepGoal: $("#sleepGoalVal").val(),
-    isTrackingHealthyEats: $("#eatCheck").checked(),
+    isTrackingHealthyEats: $("#eatCheck").prop("checked"),
     heathyEatsGoal: $("#eatGoalVal").val(),
-    isTrackingDrinkingWater: $("#waterCheck").checked(),
+    isTrackingDrinkingWater: $("#waterCheck").prop("checked"),
     drinkingWaterGoal: $("#waterGoalVal").val(),
-    isTrackingMeditation: $("#meditateCheck").checked(),
+    isTrackingMeditation: $("#meditateCheck").prop("checked"),
     meditationGoal: $("#meditateGoalVal").val(),
-    isTrackingExercise: $("#exerciseCheck").checked(),
+    isTrackingExercise: $("#exerciseCheck").prop("checked"),
     exerciseGoal: $("#exerciseGoalVal").val(),
-    isTrackingHugs: $("#hugCheck").checked(),
+    isTrackingHugs: $("#hugCheck").prop("checked"),
     hugGoal: $("#hugGoalVal").val(),
-    isTrackingSocializing: $("#socializeCheck").checked(),
+    isTrackingSocializing: $("#socializeCheck").prop("checked"),
     socializingGoal: $("#socializeGoalVal").val(),
-    isTrackingJokes: $("#jokeCheck").checked(),
+    isTrackingJokes: $("#jokeCheck").prop("checked"),
     jokesGoal: $("#jokeGoalVal").val(),
-    isTrackingHobby: $("#hobbyCheck").checked(),
-    hobbyGoal: $("#hobbyGoalVal").val(),
+    isTrackingHobby: $("#hobbyCheck").prop("checked"),
+    hobbyGoal: $("#hobbyGoalVal").val()
   };
 
   $.ajax("/api/user_data", {
@@ -34,6 +39,8 @@ $("#createGoalsBtn").on("click", () => {
   });
 
   req.login(user, err => {
-    if (err) return err;
-  })
+    if (err) {
+      return err;
+    }
+  });
 });

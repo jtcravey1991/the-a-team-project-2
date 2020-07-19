@@ -1,4 +1,6 @@
-const exerciseLogChart = document.getElementById("exerciseChart").getContext("2d");
+const exerciseLogChart = document
+  .getElementById("exerciseChart")
+  .getContext("2d");
 const exerciseBtn = document.querySelector("#exerciseBtn");
 let exerciseMin = document.getElementById("minExercise").value;
 
@@ -31,7 +33,7 @@ const exerciseChart = new Chart(exerciseLogChart, {
           "MediumAquamarine",
           "RosyBrown"
         ],
-        hoverBackgroundColor: "LightBlue"   
+        hoverBackgroundColor: "LightBlue"
       }
     ]
   },
@@ -76,6 +78,7 @@ exerciseBtn.addEventListener("click", () => {
 });
 
 function addExercise() {
+
   let inputDate = document.getElementById("exDate").value;
   let day = moment(inputDate).utc().format("ddd, MMMM Do");
  
@@ -107,7 +110,9 @@ function addExercise() {
   }).then(data => {
     console.log(data);
     console.log("logged exercise time");
+
     location.reload(); 
+
   });
   
   //GET request to update
@@ -115,8 +120,8 @@ function addExercise() {
   
 }
 
-
 function getExercise() {
+
   $.get("/api/exercise", function(data) {
   
     const dataSet = [data];
@@ -154,6 +159,5 @@ function getExercise() {
 };
   exerciseChart.update(); 
 
-  
   });
-};
+}

@@ -2,9 +2,9 @@ const waterLogChart = document.getElementById("waterChart").getContext("2d");
 
 const waterBtn = document.querySelector("#waterBtn");
 
-getWater(); 
+getWater();
 //variable for water ounce goal
-let waterGoal = 32;
+const waterGoal = 32;
 document.getElementById("waterGoal").innerHTML =
   "You've set a goal for " + waterGoal + " ounces of water per day!";
 //Global options
@@ -21,8 +21,8 @@ const waterChart = new Chart(waterLogChart, {
         label: "Water Oz",
         data: [],
         backgroundColor: "CornflowerBlue",
-        hoverBackgroundColor: "LightBlue"  ,
-        barThickness: 50   
+        hoverBackgroundColor: "LightBlue",
+        barThickness: 50
       }
     ]
   },
@@ -62,11 +62,12 @@ const waterChart = new Chart(waterLogChart, {
 waterBtn.addEventListener("click", () => {
   event.preventDefault();
   addWater();
-
 });
 function addWater() {
+
   let inputDate = document.getElementById("waterDate").value;
   let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
+
 
   waterOunces = document.getElementById("waterLog").value;
 
@@ -74,8 +75,10 @@ function addWater() {
 
   waterChart.data.labels.push(logDate);
 
+
 //   document.getElementById("waterGoal").innerHTML =
 //     "You've set a goal for " + waterGoal + " ounces of water per day.";
+
   waterChart.update();
 
   const newWater = {
@@ -89,11 +92,14 @@ function addWater() {
   }).then(data => {
     console.log(data);
     console.log("logged water");
+
     location.reload(); 
+
   });
-};
+}
 
 function getWater() {
+
   $.get("/api/water", function(data) {
 
   const dataSet = [data];
@@ -126,5 +132,6 @@ function getWater() {
 };
   waterChart.update(); 
   
+
   });
-};
+}

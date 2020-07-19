@@ -35,9 +35,9 @@ body {
 }
 
 footer {
-  background-color: white;
+  background-color: #0D9BD9;
   font-size: 14px;
-  color: #868686;
+  color: white;
   padding: 10px;
   text-align: center;
   position: relative;
@@ -219,6 +219,11 @@ Goals Selector Page Desktop
 .navbar--goals {
   color: rgba(255, 255, 255, 0.8);
   max-width: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 
@@ -230,17 +235,22 @@ Goals Selector Page Desktop
   padding: 0 10px 0 10px;
 }
 
-.goal:focus-within {
+.goal__checked {
   background-color: rgba(255, 255, 255, 0.90);
   color: #0D9BD9;
 }
 
-.goal:focus-within .goal__tooltip__icon {
+.goal__checked input.goal__input {
+  outline: none;
+  border-bottom: 3px solid #0D9BD9;
+  color: #0D9BD9;
+}
+
+.goal__checked .goal__tooltip__icon {
   color: #0D9BD9;
 }
 
 .goal--icon {
-  border-right: 1px solid rgba(255, 255, 255, 0.20);
   align-self: center;
   text-align: center;
   font-size: 1.2rem;
@@ -264,10 +274,8 @@ Goals Selector Page Desktop
   max-width: 52px;
 }
 
-input:focus {
+input.goal__input:focus {
   outline: none;
-  border-bottom: 3px solid #0D9BD9;
-  color: #0D9BD9;
 }
 
 .goal__tooltip {
@@ -285,22 +293,30 @@ input:focus {
   opacity: .8;
 }
 
-.goal__add {
+button.goal__tooltip__icon {
+  padding: 0;
+}
+
+.goal__btns {
   align-self: center;
   text-align: center;
 }
 
-.goal__add__btn {
-  background-color: #13ABED;
-  color: white;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.08);
+.goals__create-btn {
+  margin: 30px auto 0;
+  background-color: white;
+  border-radius: 50px;
+  width: 200px;
+  height: 55px;
+  color: #13ABED;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.20);
 }
 
-.goal__add__btn:hover {
-  background-color: #12a5e4;
+.goals__create-btn:hover {
   color: white;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.08);
+  background-color: #0D9BD9;
 }
+
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -314,6 +330,152 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+/* PLUS MINUS CHECKBOX START */
+.plus-minus {
+  --primary: #fff;
+  --secondary: #1ccf0b;
+  --duration: .5s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-mask-image: -webkit-radial-gradient(white, #E41919);
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 240px;
+          perspective: 240px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background-size: 300% 300%;
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+  -webkit-transform: scale(var(--scale, 1)) translateZ(0);
+          transform: scale(var(--scale, 1)) translateZ(0);
+  -webkit-animation: var(--name, unchecked) var(--duration) ease forwards;
+          animation: var(--name, unchecked) var(--duration) ease forwards;
+}
+.plus-minus:checked {
+  --primary: #E41919;
+  --secondary: white;
+}
+.plus-minus:before, .plus-minus:after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: var(--height, 16px);
+  left: 8px;
+  top: var(--top, 8px);
+  background: var(--background, var(--primary));
+  -webkit-animation: var(--name-icon-b, var(--name-icon, unchecked-icon)) var(--duration) ease forwards;
+          animation: var(--name-icon-b, var(--name-icon, unchecked-icon)) var(--duration) ease forwards;
+}
+.plus-minus:before {
+  -webkit-clip-path: polygon(0 6px, 6px 6px, 6px 0, 10px 0, 10px 6px, 16px 6px, 16px 10px, 10px 10px, 10px 16px, 6px 16px, 6px 10px, 0 10px);
+          clip-path: polygon(0 6px, 6px 6px, 6px 0, 10px 0, 10px 6px, 16px 6px, 16px 10px, 10px 10px, 10px 16px, 6px 16px, 6px 10px, 0 10px);
+}
+.plus-minus:after {
+  --height: 4px;
+  --top: 14px;
+  --background: var(--secondary);
+  --name-icon-b: var(--name-icon-a, checked-icon);
+}
+.plus-minus:active {
+  --scale: .95;
+}
+.plus-minus:checked {
+  --name: checked;
+  --name-icon-b: checked-icon;
+  --name-icon-a: unchecked-icon;
+}
+
+@-webkit-keyframes checked-icon {
+  from {
+    -webkit-transform: translateZ(12px);
+            transform: translateZ(12px);
+  }
+  to {
+    -webkit-transform: translateX(16px) rotateY(90deg) translateZ(12px);
+            transform: translateX(16px) rotateY(90deg) translateZ(12px);
+  }
+}
+
+@keyframes checked-icon {
+  from {
+    -webkit-transform: translateZ(12px);
+            transform: translateZ(12px);
+  }
+  to {
+    -webkit-transform: translateX(16px) rotateY(90deg) translateZ(12px);
+            transform: translateX(16px) rotateY(90deg) translateZ(12px);
+  }
+}
+@-webkit-keyframes unchecked-icon {
+  from {
+    -webkit-transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
+            transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
+  }
+  to {
+    -webkit-transform: translateZ(12px);
+            transform: translateZ(12px);
+  }
+}
+@keyframes unchecked-icon {
+  from {
+    -webkit-transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
+            transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
+  }
+  to {
+    -webkit-transform: translateZ(12px);
+            transform: translateZ(12px);
+  }
+}
+@-webkit-keyframes checked {
+  from {
+    background-image: radial-gradient(ellipse at center, var(--primary) 0%, var(--primary) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
+    background-position: 100% 50%;
+  }
+  to {
+    background-image: radial-gradient(ellipse at center, var(--primary) 0%, var(--primary) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
+    background-position: 50% 50%;
+  }
+}
+@keyframes checked {
+  from {
+    background-image: radial-gradient(ellipse at center, var(--primary) 0%, var(--primary) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
+    background-position: 100% 50%;
+  }
+  to {
+    background-image: radial-gradient(ellipse at center, var(--primary) 0%, var(--primary) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
+    background-position: 50% 50%;
+  }
+}
+@-webkit-keyframes unchecked {
+  from {
+    background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
+    background-position: 100% 50%;
+  }
+  to {
+    background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
+    background-position: 50% 50%;
+  }
+}
+@keyframes unchecked {
+  from {
+    background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
+    background-position: 100% 50%;
+  }
+  to {
+    background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
+    background-position: 50% 50%;
+  }
+}
 
 
 
@@ -388,6 +550,12 @@ Home Mobile
 
 @media screen and (max-width: 570px) {
 
+  /* Home Page */
+
+  h1 {
+    font-size: 30px;
+  }
+
   .sign-up {
     top: -170px;
     padding: 40px 20px;
@@ -395,5 +563,27 @@ Home Mobile
 
   .login {
     padding: 0;
+  }
+
+  /* Goals Page */
+  .goal__header {
+    margin-bottom: 20px;
+  }
+
+
+  .goal {
+    padding: 20px;
+  }
+
+  .goal__tooltip {
+    align-self: center;
+    text-align: center;
+    padding: none;
+  }
+  
+  .goal__tooltip__icon {
+    color: white;
+    font-size: 1.2rem;
+    padding: none;
   }
 }

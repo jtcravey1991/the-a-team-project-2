@@ -1,4 +1,6 @@
-const meditateLogChart = document.getElementById("meditationChart").getContext("2d");
+const meditateLogChart = document
+  .getElementById("meditationChart")
+  .getContext("2d");
 
 const meditateBtn = document.querySelector("#meditationBtn");
 
@@ -24,7 +26,7 @@ const meditationChart = new Chart(meditateLogChart, {
         data: [],
         backgroundColor: "RosyBrown",
         hoverBackgroundColor: "Thistle",
-        barThickness: 50   
+        barThickness: 50
       }
     ]
   },
@@ -64,7 +66,6 @@ const meditationChart = new Chart(meditateLogChart, {
 meditateBtn.addEventListener("click", () => {
   event.preventDefault();
   addMeditation();
-
 });
 function addMeditation() {
   let inputDate = document.getElementById("meditationDate").value;
@@ -76,6 +77,7 @@ function addMeditation() {
   meditationChart.data.datasets[0].data.push(meditateValue);
 
   meditationChart.data.labels.push(logDate);
+
 
   meditationChart.update();
 
@@ -91,12 +93,14 @@ function addMeditation() {
   }).then(data => {
     console.log(data);
     console.log("logged meditation");
+
     location.reload(); 
-  });
-};
+
+}
 
 
 function getMeditate() {
+
   
   $.get("/api/meditation", function(data) {
 
@@ -128,5 +132,6 @@ function getMeditate() {
 };
   meditationChart.update(); 
   
+
   });
-};
+}

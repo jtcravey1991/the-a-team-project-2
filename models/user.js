@@ -154,7 +154,7 @@ module.exports = function(sequelize, DataTypes) {
     User.hasMany(models.Hug, {
       onDelete: "cascade"
     });
-    User.hasMany(models.Socialize, {    
+    User.hasMany(models.Socialize, {
       onDelete: "cascade"
     });
     User.hasMany(models.Joke, {

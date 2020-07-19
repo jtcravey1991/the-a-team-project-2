@@ -31,7 +31,7 @@ const hobbyChart = new Chart(hobbyLogChart, {
           "MediumAquamarine",
           "RosyBrown"
         ],
-        hoverBackgroundColor: "LightBlue"   
+        hoverBackgroundColor: "LightBlue"
       }
     ]
   },
@@ -76,9 +76,11 @@ hobbyBtn.addEventListener("click", () => {
 });
 
 function addHobby() {
+  
   let inputDate = document.getElementById("hobbyDate").value;
     let day = moment(inputDate).utc().format("ddd, MMMM Do");
  
+
   //dayStudy = 2;
   hobbyMin = document.getElementById("minHobby").value;
   hobbyHours = hobbyMin / 60;
@@ -109,7 +111,9 @@ function addHobby() {
   }).then(data => {
     console.log(data);
     console.log("logged hobby time");
+
     location.reload();
+
   });
   getHobby(); 
 };
@@ -117,6 +121,7 @@ function addHobby() {
 
 
 function getHobby() {
+
   $.get("/api/hobby", function(data) {
   
     const dataSet = [data];
@@ -145,5 +150,6 @@ function getHobby() {
 };
   hobbyChart.update(); 
   
+
   });
-};
+}

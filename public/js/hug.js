@@ -1,54 +1,66 @@
-let hugLogChart = document.getElementById("hugChart").getContext("2d");
+const hugLogChart = document.getElementById("hugChart").getContext("2d");
+
 
 
 getHug(); 
+
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
 const hugChart = new Chart(hugLogChart, {
-    type: "bar",
-    data: {
-        labels: [],
-        datasets: [{
-            label: "Hug",
-            data: [],
-            backgroundColor: "Thistle", 
-            hoverBackgroundColor: "MediumPurple", 
-            barThickness: 75      
-  
-        }]
+
+  type: "bar",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "Hug",
+        data: [],
+        backgroundColor: "Thistle",
+        hoverBackgroundColor: "MediumPurple",
+        barThickness: 75
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Hug Tracker",
+      fontSize: 25
+
     },
-    options: {
-        title: {
-            display: true,
-            text: "Hug Tracker",
-            fontSize: 25
-        },
-        legend: {
-            //display, font options as well in labels object
-            //position: "right"
-        },
-        layout: {
-            padding: {
-                left: 50,
-                right: 0,
-                bottom: 0,
-                top: 0
-            }//tooltips can be enabled:true or false
-        },
-        responsive: true,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    max: 1,
-                    stepSize: 1
-                }
-            }]
+    legend: {
+      //display, font options as well in labels object
+      //position: "right"
+    },
+    layout: {
+      padding: {
+        left: 50,
+        right: 0,
+        bottom: 0,
+        top: 0
+      } //tooltips can be enabled:true or false
+    },
+    responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+            max: 1,
+            stepSize: 1
+          }
         }
+      ]
     }
+  }
+});
+
+$("#hugBtn").on("click", e => {
+  e.preventDefault();
+  addHug();
 });
 
 
@@ -56,6 +68,10 @@ $("#hugBtn").on("click", function (e){
     e.preventDefault();  
     addHug();
 }); 
+
+function addHug() {
+  const hugDate = moment().format("MMMM Do YYYY");
+  $("#hugDisplayDate").text(hugDate);
 
 function addHug(){
  
@@ -65,11 +81,14 @@ function addHug(){
     
     let hugValue = 1;
     hugChart.data.datasets[0].data.push(hugValue);
-    hugChart.data.labels.push(hugDate);
+
+
+  hugChart.data.labels.push(hugDate);
   //want to push dayDate as value to backend
- 
-  
-  
+  document.getElementById("hugProgress").innerHTML =
+    "Great hug! Keep those endorphins going!";
+
+
   hugChart.update();
 
   const newHug = {
@@ -83,11 +102,14 @@ function addHug(){
   }).then(data => {
     console.log(data);
     console.log("logged hug");
+
     location.reload(); 
+
   });
 }
 
 function getHug() {
+
     $.get("/api/hug", function(data) {
         const dataSet = [data];
         console.log(dataSet); 

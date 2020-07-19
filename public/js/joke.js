@@ -1,12 +1,13 @@
-let jokeLogChart = document.getElementById("jokeChart").getContext("2d");
+const jokeLogChart = document.getElementById("jokeChart").getContext("2d");
 
-getJoke(); 
+getJoke();
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
 const jokeChart = new Chart(jokeLogChart, {
+
     type: "bar",
     data: {
         labels: [],
@@ -46,15 +47,21 @@ const jokeChart = new Chart(jokeLogChart, {
                     stepSize: 1
                 }
             }]
+
         }
+      ]
     }
+  }
 });
 
+$("#jokeBtn").on("click", e => {
+  e.preventDefault();
+  addJoke();
+});
 
-$("#jokeBtn").on("click", function (e){
-    e.preventDefault(); 
-    addJoke();
-}); 
+function addJoke() {
+  const dayDate = moment().format("MMMM Do YYYY");
+  $("#dateDisplay").text(dayDate);
 
 function addJoke(){
     let inputDate = moment({hour: 0, minute: 0, seconds: 0, milliseconds: 0}).utc().format(); 
@@ -65,9 +72,11 @@ function addJoke(){
     let jokeValue = 1; 
     
     jokeChart.data.datasets[0].data.push(jokeValue);
+
     jokeChart.data.labels.push(dayDate);
 
    
+
   jokeChart.update();
 
   const newJoke = {
@@ -86,6 +95,7 @@ function addJoke(){
   });
 }
 function getJoke() {
+
     $.get("/api/joke", function(data) {
     
   const dataSet = [data];
