@@ -49,8 +49,6 @@ const jokeChart = new Chart(jokeLogChart, {
             }]
 
         }
-      ]
-    }
   }
 });
 
@@ -99,7 +97,7 @@ function getJoke() {
     $.get("/api/joke", function(data) {
     
   const dataSet = [data];
-console.log(dataSet);
+  console.log(dataSet);
   const mappedData = data.reduce((last, date) =>{
   const temp = {};
   temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
@@ -119,8 +117,9 @@ console.log(dataSet);
      
       document.getElementById("jokeProgress").innerHTML = "Always nice to make others smile, keep it up!"
   
-  };
+    };
     jokeChart.update(); 
     
     });
-  };
+  }
+}; 

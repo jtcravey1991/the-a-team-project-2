@@ -67,6 +67,7 @@ meditateBtn.addEventListener("click", () => {
   event.preventDefault();
   addMeditation();
 });
+
 function addMeditation() {
   let inputDate = document.getElementById("meditationDate").value;
   let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
@@ -96,12 +97,13 @@ function addMeditation() {
 
     location.reload(); 
 
+});
+
 }
 
 
 function getMeditate() {
 
-  
   $.get("/api/meditation", function(data) {
 
     const dataSet = [data];
@@ -129,9 +131,8 @@ function getMeditate() {
         "A buddha in the making; you met your daily meditation goal!";
     }
 
-};
+  };
   meditationChart.update(); 
   
-
   });
-}
+}; 
