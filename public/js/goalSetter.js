@@ -33,6 +33,7 @@ function init() {
     }).then(data => {
       console.log(data);
       console.log("sent sleep goal");
+      window.location.replace("/dashboard");
     });
   });
 
