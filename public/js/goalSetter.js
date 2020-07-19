@@ -52,9 +52,8 @@ $("#createGoalsBtn").on("click", () => {
 });
 
 function valueChecker(value) {
-  if  (!value) {
+  if (!value) {
     return 0;
-  } else {
-    return value;
   }
+  return value;
 }

@@ -2,10 +2,10 @@ const donutChart = document.getElementById("donutChart").getContext("2d");
 const studyTime = document.querySelector("#studyBtn");
 let studyMin = document.getElementById("minStudy").value;
 
-// let studGoal = 20;
+let studGoal = 20;
+
 //render study chart with db data for user
 getStudy();
-
 // document.getElementById("studyHoursGoal").innerHTML =
 //   "Hours left this week to study: " + studGoal;
 
@@ -94,7 +94,7 @@ function addStudy() {
   
   studyMin = document.getElementById("minStudy").value;
   studyHours = studyMin / 60;
-  studyHours = studyHours.toFixed(2); 
+  studyHours = studyHours.toFixed(2);
   studGoal = studGoal - studyHours;
 
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
@@ -170,3 +170,4 @@ function getStudy() {
     studyChart.update();
   });
 }
+
