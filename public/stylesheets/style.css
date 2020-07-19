@@ -240,7 +240,25 @@ Goals Selector Page Desktop
   color: #0D9BD9;
 }
 
+.goal__select {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  border-style: none;
+  border: none;
+  border-bottom: 1px solid white;
+  background: none;
+  text-align: center;
+}
+
 .goal__checked input.goal__input {
+  outline: none;
+  border-bottom: 3px solid #0D9BD9;
+  color: #0D9BD9;
+}
+
+.goal__checked select.goal__select {
   outline: none;
   border-bottom: 3px solid #0D9BD9;
   color: #0D9BD9;
@@ -316,6 +334,8 @@ button.goal__tooltip__icon {
   color: white;
   background-color: #0D9BD9;
 }
+
+
 
 
 /* Chrome, Safari, Edge, Opera */
