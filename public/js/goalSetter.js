@@ -15,25 +15,25 @@ $(".plus-minus").change(function(event) {
 $("#createGoalsBtn").on("click", () => {
   const userData = {
     isTrackingStudyTime: $("#studyCheck").prop("checked"),
-    studyTimeGoal: $("#studyGoalVal").val(),
+    studyTimeGoal: valueChecker($("#studyGoalVal").val()),
     isTrackingSleep: $("#sleepCheck").prop("checked"),
-    sleepGoal: $("#sleepGoalVal").val(),
+    sleepGoal: valueChecker($("#sleepGoalVal").val()),
     isTrackingHealthyEats: $("#eatCheck").prop("checked"),
-    heathyEatsGoal: $("#eatGoalVal").val(),
+    heathyEatsGoal: valueChecker($("#eatGoalVal").val()),
     isTrackingDrinkingWater: $("#waterCheck").prop("checked"),
-    drinkingWaterGoal: $("#waterGoalVal").val(),
+    drinkingWaterGoal: valueChecker($("#waterGoalVal").val()),
     isTrackingMeditation: $("#meditateCheck").prop("checked"),
-    meditationGoal: $("#meditateGoalVal").val(),
+    meditationGoal: valueChecker($("#meditateGoalVal").val()),
     isTrackingExercise: $("#exerciseCheck").prop("checked"),
-    exerciseGoal: $("#exerciseGoalVal").val(),
+    exerciseGoal: valueChecker($("#exerciseGoalVal").val()),
     isTrackingHugs: $("#hugCheck").prop("checked"),
-    hugGoal: $("#hugGoalVal").val(),
+    hugGoal: valueChecker($("#hugGoalVal").val()),
     isTrackingSocializing: $("#socializeCheck").prop("checked"),
-    socializingGoal: $("#socializeGoalVal").val(),
+    socializingGoal: valueChecker($("#socializeGoalVal").val()),
     isTrackingJokes: $("#jokeCheck").prop("checked"),
-    jokesGoal: $("#jokeGoalVal").val(),
+    jokesGoal: valueChecker($("#jokeGoalVal").val()),
     isTrackingHobby: $("#hobbyCheck").prop("checked"),
-    hobbyGoal: $("#hobbyGoalVal").val()
+    hobbyGoal: valueChecker($("#hobbyGoalVal").val())
   };
 
   $.ajax("/api/user_data", {
@@ -50,3 +50,11 @@ $("#createGoalsBtn").on("click", () => {
     }
   });
 });
+
+function valueChecker(value) {
+  if  (!value) {
+    return 0;
+  } else {
+    return value;
+  }
+}

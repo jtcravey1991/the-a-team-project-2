@@ -68,8 +68,8 @@ meditateBtn.addEventListener("click", () => {
   addMeditation();
 });
 function addMeditation() {
-  const inputDate = document.getElementById("meditationDate").value;
-  const logDate = moment(inputDate).format("ddd, MMMM Do");
+  let inputDate = document.getElementById("meditationDate").value;
+  let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
 
   meditateValue = document.getElementById("meditationLog").value;
   console.log(meditateValue);
@@ -78,13 +78,6 @@ function addMeditation() {
 
   meditationChart.data.labels.push(logDate);
 
-  if (meditateValue < meditateGoal) {
-    document.getElementById("meditationProgress").innerHTML =
-      "Take some time to be still!";
-  } else {
-    document.getElementById("meditationProgress").innerHTML =
-      "A buddha in the making; you met your daily meditation goal!";
-  }
 
   meditationChart.update();
 
@@ -100,10 +93,13 @@ function addMeditation() {
   }).then(data => {
     console.log(data);
     console.log("logged meditation");
-  });
+
+    location.reload(); 
+
 }
 
 function getMeditate() {
+<<<<<<< HEAD
   $.get("/api/meditation", data => {
     console.log(data);
     //array that takes in the data values to populate the chart
@@ -116,5 +112,40 @@ function getMeditate() {
       meditationChart.data.labels.push(data[i].date);
     }
     meditationChart.update();
+=======
+
+  
+  $.get("/api/meditation", function(data) {
+
+    const dataSet = [data];
+
+    const mappedData = data.reduce((last, date) =>{
+      const temp = {};
+      temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+      return {...last, ...temp};
+    }, {}); 
+  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+  console.log(chartData); 
+   
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < chartData.length; i++) {
+
+    meditationChart.data.datasets[0].data.push(chartData[i].value);
+
+    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
+    meditationChart.data.labels.push(chartData[i].date);
+
+    if (chartData[chartData.length -1].value  < meditateGoal) {
+      document.getElementById("meditationProgress").innerHTML = "Take some time to be still!";
+    } else {
+      document.getElementById("meditationProgress").innerHTML =
+        "A buddha in the making; you met your daily meditation goal!";
+    }
+
+};
+  meditationChart.update(); 
+  
+
+>>>>>>> e3e57c3f94426e208ffa75a1277a21518932e86b
   });
 }

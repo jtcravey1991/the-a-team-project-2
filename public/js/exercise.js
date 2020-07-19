@@ -78,28 +78,25 @@ exerciseBtn.addEventListener("click", () => {
 });
 
 function addExercise() {
-  const inputDate = document.getElementById("exDate").value;
-  const day = moment(inputDate).format("ddd, MMMM Do");
 
+  let inputDate = document.getElementById("exDate").value;
+  let day = moment(inputDate).utc().format("ddd, MMMM Do");
+ 
   //dayStudy = 2;
   exerciseMin = document.getElementById("minExercise").value;
-  dayExercise = exerciseMin / 60;
-  exerciseGoal = exerciseGoal - dayExercise;
+  exerciseHours = exerciseMin / 60;
+  exerciseHours = exerciseHours.toFixed(2); 
+  exerciseGoal = exerciseGoal - exerciseHours;
   //date++;
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
   exerciseChart.data.datasets[0].data.pop(exerciseGoal);
-  exerciseChart.data.datasets[0].data.push(dayExercise);
+  exerciseChart.data.datasets[0].data.push(exerciseHours);
   exerciseChart.data.datasets[0].data.push(exerciseGoal);
   //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
   exerciseChart.data.labels.push(day);
-  //studyChart.data.labels = [studGoal];
-  document.getElementById("exerciseHoursGoal").innerHTML =
-    "Hours left this week to study: " + studGoal;
-  if (exerciseGoal <= 0) {
-    document.getElementById("exerciseHoursGoal").innerHTML =
-      "Now that is fitness! You've met your exercise goal!";
-    exerciseGoal = 0;
-  }
+  exerciseChart.data.labels.push(exerciseHours);
+
+ 
   exerciseChart.update();
 
   const newExercise = {
@@ -113,18 +110,54 @@ function addExercise() {
   }).then(data => {
     console.log(data);
     console.log("logged exercise time");
+
+    location.reload(); 
+
   });
+  
+  //GET request to update
+  getExercise(); 
+  
 }
 
 function getExercise() {
-  $.get("/api/exercise", data => {
-    //array that takes in the data values to populate the chart
-    for (let i = 0; i < data.length; i++) {
-      exerciseChart.data.datasets[0].data.push(data[i].value);
 
-      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
-      exerciseChart.data.labels.push(data[i].date);
+  $.get("/api/exercise", function(data) {
+  
+    const dataSet = [data];
+
+    const mappedData = data.reduce((last, date) =>{
+      const temp = {};
+      temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+      return {...last, ...temp};
+    }, {}); 
+  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+  console.log(chartData); 
+
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < chartData.length; i++) {
+
+  /////
+  let exerciseHours = chartData[i].value / 60; 
+  exerciseHours = exerciseHours.toFixed(2); 
+  chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
+
+    exerciseChart.data.labels.push(chartData[i].date);
+    exerciseChart.data.datasets[0].data.push(exerciseHours);
+
+   
+  exerciseGoal = exerciseGoal - exerciseHours;
+
+    document.getElementById("exerciseHoursGoal").innerHTML =
+    "Hours left this week to exercise: " + exerciseGoal;
+    if (exerciseGoal <= 0) {
+      document.getElementById("exerciseHoursGoal").innerHTML =
+        "Now that is fitness! You've met your exercise goal!";
+      exerciseGoal = 0;
     }
-    exerciseChart.update();
+  
+};
+  exerciseChart.update(); 
+
   });
 }
