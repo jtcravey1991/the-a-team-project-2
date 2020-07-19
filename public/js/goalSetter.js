@@ -1,8 +1,14 @@
 $(".plus-minus").change(function(event) {
   if ($(this).prop("checked")) {
-    $(this).parent().parent().addClass("goal__checked");
+    $(this)
+      .parent()
+      .parent()
+      .addClass("goal__checked");
   } else if (!$(this).prop("checked")) {
-    $(this).parent().parent().removeClass("goal__checked");
+    $(this)
+      .parent()
+      .parent()
+      .removeClass("goal__checked");
   }
 });
 
@@ -46,9 +52,8 @@ $("#createGoalsBtn").on("click", () => {
 });
 
 function valueChecker(value) {
-  if  (!value) {
+  if (!value) {
     return 0;
-  } else {
-    return value;
   }
+  return value;
 }

@@ -90,7 +90,7 @@ function addStudy() {
   
   studyMin = document.getElementById("minStudy").value;
   studyHours = studyMin / 60;
-  studyHours = studyHours.toFixed(2); 
+  studyHours = studyHours.toFixed(2);
   studGoal = studGoal - studyHours;
   
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
@@ -145,6 +145,7 @@ function getStudy() {
 
     let studyHours = chartData[i].value / 60; 
     studyHours = studyHours.toFixed(2); 
+    studGoal = studGoal - studyHours;
     //studyChart.data.datasets[0].data.push(data[i].value);
     studyChart.data.datasets[0].data.push(studyHours);
 
@@ -152,7 +153,7 @@ function getStudy() {
     studyChart.data.labels.push(chartData[i].date);
 
     // studyHours = studyMin / 60;
-    studGoal = studGoal - studyHours;
+
     document.getElementById("studyHoursGoal").innerHTML =
     "Hours left this week to study: " + studGoal;
 

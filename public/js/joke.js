@@ -56,35 +56,38 @@ $("#jokeBtn").on("click", function (e){
     addJoke();
 }); 
 
-function addJoke(){
-    let inputDate = moment({hour: 0, minute: 0, seconds: 0, milliseconds: 0}).utc().format(); 
-    console.log(inputDate); 
+  function addJoke() {
+    let inputDate = moment({ hour: 0, minute: 0, seconds: 0, milliseconds: 0 }).utc().format();
+    console.log(inputDate);
     let dayDate = moment(inputDate).utc().format('MMMM Do YYYY');
     $("#dateDisplay").text(dayDate);
-    
-    let jokeValue = 1; 
-    
+
+    let jokeValue = 1;
+
     jokeChart.data.datasets[0].data.push(jokeValue);
     jokeChart.data.labels.push(dayDate);
 
    
   jokeChart.update();
 
-  const newJoke = {
-    date: inputDate,
-    value: jokeValue
-  };
-  // Send the POST request.
-  $.ajax("/api/joke", {
-    type: "POST",
-    data: newJoke
-  }).then(data => {
-    console.log(data);
-    console.log("logged joke");
-    location.reload(); 
 
-  });
-}
+    const newJoke = {
+      date: inputDate,
+      value: jokeValue
+    };
+    // Send the POST request.
+    $.ajax("/api/joke", {
+      type: "POST",
+      data: newJoke
+    }).then(data => {
+      console.log(data);
+      console.log("logged joke");
+      location.reload();
+
+    });
+  };
+
+
 function getJoke() {
     $.get("/api/joke", function(data) {
     
@@ -99,14 +102,14 @@ console.log(dataSet);
   console.log(chartData); 
        //array that takes in the data values to populate the chart
     for (let i = 0; i < chartData.length; i++) {
-  
+
       jokeChart.data.datasets[0].data.push(chartData[i].value);
-  
+
       chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
       jokeChart.data.labels.push(chartData[i].date);
 
       //jokeChart.data.datasets[0].data.push(chartData[chartData.length -1].value);
-     
+
       document.getElementById("jokeProgress").innerHTML = "Always nice to make others smile, keep it up!"
   
   };

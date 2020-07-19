@@ -64,7 +64,7 @@ sleepTime.addEventListener("click", () => {
 
 function addSleep() {
   let inputDate = document.getElementById("startOne").value;
-  
+
   let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
   
 
@@ -99,36 +99,35 @@ function addSleep() {
 };
 
 function getSleep() {
-  $.get("/api/sleep", function(data) {
-  
+  $.get("/api/sleep", function (data) {
+
 
     const dataSet = [data];
-    console.log(dataSet); 
-    const mappedData = data.reduce((last, date) =>{
+    console.log(dataSet);
+    const mappedData = data.reduce((last, date) => {
       const temp = {};
       temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
-      return {...last, ...temp};
-    }, {}); 
-  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
-  console.log(chartData); 
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
+      return { ...last, ...temp };
+    }, {});
+    const chartData = Object.keys(mappedData).map(k => ({ date: k, value: mappedData[k] }));
+    console.log(chartData);
+    //array that takes in the data values to populate the chart
+    for (let i = 0; i < chartData.length; i++) {
 
-    sleepChart.data.datasets[0].data.push(chartData[i].value);
+      sleepChart.data.datasets[0].data.push(chartData[i].value);
 
-    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
-    sleepChart.data.labels.push(chartData[i].date);
+      chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
+      sleepChart.data.labels.push(chartData[i].date);
 
-    if (chartData[chartData.length -1].value < sleepGoal) {
-      document.getElementById("sleepProgress").innerHTML = "You need more sleep!";
-    } else {
-      document.getElementById("sleepProgress").innerHTML =
-        "You must feel well rested!";
-    }
-};
+      if (chartData[chartData.length - 1].value < sleepGoal) {
+        document.getElementById("sleepProgress").innerHTML = "You need more sleep!";
+      } else {
+        document.getElementById("sleepProgress").innerHTML =
+          "You must feel well rested!";
+      }
+    };
 
-
-sleepChart.update(); 
+    sleepChart.update();
   
   });
 };
