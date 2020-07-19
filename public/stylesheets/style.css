@@ -240,6 +240,12 @@ Goals Selector Page Desktop
   color: #0D9BD9;
 }
 
+.goal__checked input.goal__input {
+  outline: none;
+  border-bottom: 3px solid #0D9BD9;
+  color: #0D9BD9;
+}
+
 .goal__checked .goal__tooltip__icon {
   color: #0D9BD9;
 }
@@ -270,8 +276,6 @@ Goals Selector Page Desktop
 
 input.goal__input:focus {
   outline: none;
-  border-bottom: 3px solid #0D9BD9;
-  color: #0D9BD9;
 }
 
 .goal__tooltip {
