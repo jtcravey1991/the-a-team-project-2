@@ -25,10 +25,19 @@
 </head>
 
 <body class="bg--blue">
-    <header>
+    <header class="navbar--border-b">
         <nav class="container navbar pt-4">
+            {{!-- Logo --}}
             <img class="navbar-brand" src="./images/wellyess-logo.svg" alt="wellyes logo">
-            <p class="navbar--goals">More goals to be activated after the beta launch.</p>
+
+            {{!-- Beta message --}}
+            <p class="navbar__beta">More goals to be activated after the beta launch.</p>
+
+            {{!-- Dashboard Btn --}}
+            <button type="button" href="/dashboard" class="btn home-header__btn" id="dashboardBtn">Dashboard</button>
+
+            {{!-- Logout Btn --}}
+            <button type="button" href="/" class="btn home-header__btn mt-3 mt-sm-0" id="logoutBtn">Logout</button>
 
         </nav>
     </header>
@@ -93,8 +102,7 @@
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
                         I want to eat
-                        <input type="number" min="1" max="5" class="goal__input" id="eatGoalVal"
-                            placeholder="1-5">
+                        <input type="number" min="1" max="5" class="goal__input" id="eatGoalVal" placeholder="1-5">
                         healthy every day.
                     </div>
                     <div class="col-2 goal__tooltip">
