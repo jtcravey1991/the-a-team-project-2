@@ -6,7 +6,7 @@ Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
-let jokeChart = new Chart(jokeLogChart, {
+const jokeChart = new Chart(jokeLogChart, {
     type: "bar",
     data: {
         labels: [],
@@ -57,15 +57,14 @@ $("#jokeBtn").on("click", function (e){
 }); 
 
 function addJoke(){
-    let inputDate = moment().format(); 
+    let inputDate = moment().utc().format(); 
     console.log(inputDate); 
-    let dayDate = moment(inputDate).format('MMMM Do YYYY');
+    let dayDate = moment(inputDate).utc().format('MMMM Do YYYY');
     $("#dateDisplay").text(dayDate);
     
     
     jokeValue = 1; 
     jokeChart.data.datasets[0].data.push(jokeValue);
-
     jokeChart.data.labels.push(dayDate);
   //want to push dayDate as value to backend
   document.getElementById("jokeProgress").innerHTML = "Always nice to make others smile, keep it up!"
@@ -83,19 +82,29 @@ function addJoke(){
   }).then(data => {
     console.log(data);
     console.log("logged joke");
+    location.reload(); 
 
   });
 }
 function getJoke() {
     $.get("/api/joke", function(data) {
     
+  const dataSet = [data];
+
+  const mappedData = data.reduce((last, date) =>{
+  const temp = {};
+  temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+      return {...last, ...temp};
+    }, {}); 
+  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+  console.log(chartData); 
        //array that takes in the data values to populate the chart
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < chartData.length; i++) {
   
-      jokeChart.data.datasets[0].data.push(data[i].value);
+      jokeChart.data.datasets[0].data.push(chartData[i].value);
   
-      data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-      jokeChart.data.labels.push(data[i].date);
+      chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
+      jokeChart.data.labels.push(chartData[i].date);
   
   };
     jokeChart.update(); 

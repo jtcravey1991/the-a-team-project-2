@@ -8,7 +8,7 @@ Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
-let socializeChart = new Chart(socializeLogChart, {
+const socializeChart = new Chart(socializeLogChart, {
     type: "bar",
     data: {
         labels: [],
@@ -59,14 +59,14 @@ socializeBtn.addEventListener("click", function () {
 
 function addSocializeValue(){
     let inputDate = document.getElementById("logSocialDate").value;
-    let day = moment(inputDate).format("ddd, MMMM Do");
+    let day = moment(inputDate).utc().format("ddd, MMMM Do");
 
     socializeValue= document.getElementById("socializeValue").value;
 
     socializeChart.data.datasets[0].data.push(socializeValue);
 
     socializeChart.data.labels.push(day);
-
+   
     if (socializeValue == 3 || socializeValue == 4) {
         document.getElementById("socializeProgress").innerHTML = "Keep up the social quality!"
     } else if(socializeValue == 5){
@@ -74,6 +74,9 @@ function addSocializeValue(){
     } else{
         document.getElementById("socializeProgress").innerHTML = "Give a friend a call!"
     };
+    if (socializeValue > 5){
+        socializeValue = 5; 
+    }; 
     socializeChart.update();
 
 
@@ -88,20 +91,29 @@ function addSocializeValue(){
   }).then(data => {
     console.log(data);
     console.log("logged social quality rating");
-
+    location.reload(); 
   });
 };
 
 function getSocialize() {
     $.get("/api/socialize", function(data) {
     
+        const dataSet = [data];
+
+        const mappedData = data.reduce((last, date) =>{
+          const temp = {};
+          temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+          return {...last, ...temp};
+        }, {}); 
+      const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+      console.log(chartData); 
        //array that takes in the data values to populate the chart
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < chartData.length; i++) {
   
-      socializeChart.data.datasets[0].data.push(data[i].value);
+      socializeChart.data.datasets[0].data.push(chartData[i].value);
   
-      data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-      socializeChart.data.labels.push(data[i].date);
+      chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
+      socializeChart.data.labels.push(chartData[i].date);
   
   };
     socializeChart.update(); 

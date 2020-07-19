@@ -77,19 +77,21 @@ hobbyBtn.addEventListener("click", () => {
 
 function addHobby() {
   let inputDate = document.getElementById("hobbyDate").value;
-    let day = moment(inputDate).format("ddd, MMMM Do");
+    let day = moment(inputDate).utc().format("ddd, MMMM Do");
  
   //dayStudy = 2;
   hobbyMin = document.getElementById("minHobby").value;
-  dayHobby = hobbyMin / 60;
-  hobbyGoal = hobbyGoal - dayHobby;
+  hobbyHours = hobbyMin / 60;
+  hobbyHours = hobbyHours.toFixed(2); 
+  hobbyGoal = hobbyGoal - hobbyHours;
   //date++;
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
   hobbyChart.data.datasets[0].data.pop(hobbyGoal);
-  hobbyChart.data.datasets[0].data.push(dayHobby);
+  hobbyChart.data.datasets[0].data.push(hobbyHours);
   hobbyChart.data.datasets[0].data.push(hobbyGoal);
   //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
   hobbyChart.data.labels.push(day);
+  hobbyChart.data.labels.push(hobbyHours);
   //studyChart.data.labels = [studGoal];
   document.getElementById("hobbyHoursGoal").innerHTML =
     "Hours left this week to work on hobby: " + hobbyGoal;
@@ -111,20 +113,34 @@ function addHobby() {
   }).then(data => {
     console.log(data);
     console.log("logged hobby time");
-
+    location.reload();
   });
-}
+  getHobby(); 
+};
+
+
 
 function getHobby() {
   $.get("/api/hobby", function(data) {
   
+    const dataSet = [data];
+
+    const mappedData = data.reduce((last, date) =>{
+      const temp = {};
+      temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+      return {...last, ...temp};
+    }, {}); 
+  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+  console.log(chartData); 
      //array that takes in the data values to populate the chart
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < chartData.length; i++) {
 
-    hobbyChart.data.datasets[0].data.push(data[i].value);
-
-    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-    hobbyChart.data.labels.push(data[i].date);
+    let hobbyHours = chartData[i].value / 60; 
+    hobbyHours = hobbyHours.toFixed(2); 
+    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
+    hobbyChart.data.labels.push(chartData[i].date);
+    hobbyChart.data.datasets[0].data.push(hobbyHours);
+   
 
 };
   hobbyChart.update(); 

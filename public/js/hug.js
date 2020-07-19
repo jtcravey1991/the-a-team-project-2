@@ -6,7 +6,7 @@ Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 Chart.defaults.global.defaultFontColor = "#777";
 
-let hugChart = new Chart(hugLogChart, {
+const hugChart = new Chart(hugLogChart, {
     type: "bar",
     data: {
         labels: [],
@@ -58,7 +58,7 @@ $("#hugBtn").on("click", function (e){
 
 function addHug(){
     let inputDate = moment().format(); 
-    let hugDate = moment(inputDate).format('MMMM Do YYYY');
+    let hugDate = moment(inputDate).utc().format('MMMM Do YYYY');
     $("#hugDisplayDate").text(hugDate);
     
     hugValue = 1; 
@@ -81,19 +81,28 @@ function addHug(){
   }).then(data => {
     console.log(data);
     console.log("logged hug");
-
+    location.reload(); 
   });
 }
 function getHug() {
     $.get("/api/hug", function(data) {
+        const dataSet = [data];
+
+        const mappedData = data.reduce((last, date) =>{
+          const temp = {};
+          temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+          return {...last, ...temp};
+        }, {}); 
+      const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+      console.log(chartData); 
     
        //array that takes in the data values to populate the chart
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < chartData.length; i++) {
   
-      hugChart.data.datasets[0].data.push(data[i].value);
+      hugChart.data.datasets[0].data.push(chartData[i].value);
   
-      data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-      hugChart.data.labels.push(data[i].date);
+      chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
+      hugChart.data.labels.push(chartData[i].date);
   
   };
     hugChart.update(); 

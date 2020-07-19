@@ -45,14 +45,14 @@ const studyChart = new Chart(donutChart, {
       //display, font options as well in labels object
       position: "top",
     
-      labels: {
-          filter: function(label) {
-           if (label[0] === undefined) {
-             return false;
-           }
-          return true;
-          }
-       }
+      // labels: {
+      //     filter: function(label) {
+      //      if (label[0] === undefined) {
+      //        return false;
+      //      }
+      //     return true;
+      //     }
+      //  }
     },
     layout: {
       padding: {
@@ -86,13 +86,11 @@ studyTime.addEventListener("click", () => {
 
 function addStudy() {
   let inputDate = document.getElementById("start").value;
-  let day = moment(inputDate).format("ddd, MMMM Do");
-    currentDate = moment().format('MMMM Do YYYY');
-    //console.log(currentDate); 
-    console.log(inputDate); 
+  let day = moment(inputDate).utc().format("ddd, MMMM Do");
   
   studyMin = document.getElementById("minStudy").value;
   studyHours = studyMin / 60;
+  studyHours = studyHours.toFixed(2); 
   studGoal = studGoal - studyHours;
   
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
@@ -101,7 +99,7 @@ function addStudy() {
   studyChart.data.datasets[0].data.push(studGoal);
   //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
   studyChart.data.labels.push(day);
-  //studyChart.data.labels = [studGoal];
+  studyChart.data.labels.push(studyHours);
   document.getElementById("studyHoursGoal").innerHTML =
     "Hours left this week to study: " + studGoal;
   if (studGoal <= 0) {
@@ -123,20 +121,39 @@ function addStudy() {
   }).then(data => {
     console.log(data);
     console.log("logged study time");
-
+    location.reload(); 
   });
+  getStudy(); 
 }
 
 function getStudy() {
   $.get("/api/study", function(data) {
+
+    const dataSet = [data];
+
+    const mappedData = data.reduce((last, date) =>{
+      const temp = {};
+      temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+      return {...last, ...temp};
+    }, {}); 
+  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+  console.log(chartData); 
   
      //array that takes in the data values to populate the chart
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < chartData.length; i++) {
 
-    studyChart.data.datasets[0].data.push(data[i].value);
+    let studyHours = chartData[i].value / 60; 
+    studyHours = studyHours.toFixed(2); 
+    //studyChart.data.datasets[0].data.push(data[i].value);
+    studyChart.data.datasets[0].data.push(studyHours);
 
-    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-    studyChart.data.labels.push(data[i].date);
+    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
+    studyChart.data.labels.push(chartData[i].date);
+
+    // studyHours = studyMin / 60;
+    // studGoal = studGoal - studyHours;
+    // document.getElementById("studyHoursGoal").innerHTML =
+    // "Hours left this week to study: " + studGoal;
 
 };
   studyChart.update(); 

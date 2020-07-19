@@ -66,7 +66,7 @@ waterBtn.addEventListener("click", () => {
 });
 function addWater() {
   let inputDate = document.getElementById("waterDate").value;
-  let logDate = moment(inputDate).format("ddd, MMMM Do");
+  let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
 
   waterOunces = document.getElementById("waterLog").value;
 
@@ -96,20 +96,30 @@ function addWater() {
   }).then(data => {
     console.log(data);
     console.log("logged water");
-
+    location.reload(); 
   });
 };
 
 function getWater() {
   $.get("/api/water", function(data) {
+
+  const dataSet = [data];
+
+  const mappedData = data.reduce((last, date) =>{
+  const temp = {};
+  temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
+      return {...last, ...temp};
+    }, {}); 
+  const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
+  console.log(chartData); 
   
      //array that takes in the data values to populate the chart
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < chartData.length; i++) {
 
-    waterChart.data.datasets[0].data.push(data[i].value);
+    waterChart.data.datasets[0].data.push(chartData[i].value);
 
-    data[i].date = moment(data[i].date).format("ddd, MMMM Do")
-    waterChart.data.labels.push(data[i].date);
+    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
+    waterChart.data.labels.push(chartData[i].date);
 
 };
   waterChart.update(); 
