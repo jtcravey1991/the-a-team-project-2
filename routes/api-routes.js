@@ -4,7 +4,7 @@ const passport = require("../config/passport");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const moment = require("moment");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -32,6 +32,36 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+
+  //Route for gettting user preferences
+  app.get("/api/user_prefs", isAuthenticated, (req, res) => {
+    if (!req.user) {
+      res.json({});
+    } else {
+      res.json({
+        isTrackingStudyTime: req.user.isTrackingStudyTime,
+        studyTimeGoal: req.user.studyTimeGoal,
+        isTrackingSleep: req.user.isTrackingSleep,
+        sleepGoal: req.user.sleepGoal,
+        isTrackingHealthyEats: req.user.isTrackingHealthyEats,
+        healthyEatsGoal: req.user.healthyEatsGoal,
+        isTrackingDrinkingWater: req.user.isTrackingDrinkingWater,
+        drinkingWaterGoal: req.user.drinkingWaterGoal,
+        isTrackingMeditation: req.user.isTrackingMeditation,
+        meditationGoal: req.user.meditationGoal,
+        isTrackingExercise: req.user.isTrackingExercise,
+        exerciseGoal: req.user.exerciseGoal,
+        isTrackingHugs: req.user.isTrackingHugs,
+        hugsGoal: req.user.hugsGoal,
+        isTrackingSocializing: req.user.isTrackingSocializing,
+        socializingGoal: req.user.socializingGoal,
+        isTrackingJokes: req.user.isTrackingJokes,
+        jokesGoal: req.user.jokesGoal,
+        isTrackingHobby: req.user.isTrackingHobby,
+        hobbyGoal: req.user.hobbyGoal
+      });
+    }
+  })
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
