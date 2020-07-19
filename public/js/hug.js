@@ -66,9 +66,6 @@ $("#hugBtn").on("click", function (e) {
   addHug();
 });
 
-function addHug() {
-  const hugDate = moment().format("MMMM Do YYYY");
-  $("#hugDisplayDate").text(hugDate);
 
   function addHug() {
 
@@ -102,9 +99,8 @@ function addHug() {
 
       location.reload();
 
-    });
-  }
-}
+  });
+};
 
 function getHug() {
 
@@ -135,10 +131,9 @@ function getHug() {
       // };
       hugChart.data.datasets[0].data.push(chartData[chartData.length - 1].value);
       document.getElementById("hugProgress").innerHTML = "Great hug! Keep those endorphins going!"
-
-    };
-    hugChart.update();
-
-  });
-}
-
+     
+  };
+    hugChart.update(); 
+    
+    });
+  }; 

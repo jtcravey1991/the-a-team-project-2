@@ -120,7 +120,7 @@ function getWater() {
     chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
     waterChart.data.labels.push(chartData[i].date);
 
-    waterOz = chartData[chartData.length -1].value;
+    let waterOz = chartData[chartData.length -1].value;
 
     if (waterOz < waterGoal) {
       document.getElementById("waterProgress").innerHTML = "Remember to hydrate!";

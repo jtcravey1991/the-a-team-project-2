@@ -67,6 +67,7 @@ meditateBtn.addEventListener("click", () => {
   event.preventDefault();
   addMeditation();
 });
+
 function addMeditation() {
   let inputDate = document.getElementById("meditationDate").value;
   let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
@@ -96,13 +97,26 @@ function addMeditation() {
 
     location.reload();
 
-  })
+});
+
 }
 
 function getMeditate() {
 
+  $.get("/api/meditation", data => {
+    console.log(data);
+    //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i].value);
+      console.log(data[i].date);
+      meditationChart.data.datasets[0].data.push(data[i].value);
 
-  $.get("/api/meditation", function (data) {
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
+      meditationChart.data.labels.push(data[i].date);
+    }
+    meditationChart.update();
+
+  $.get("/api/meditation", function(data) {
 
     const dataSet = [data];
 
@@ -122,15 +136,8 @@ function getMeditate() {
       chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
       meditationChart.data.labels.push(chartData[i].date);
 
-      if (chartData[chartData.length - 1].value < meditateGoal) {
-        document.getElementById("meditationProgress").innerHTML = "Take some time to be still!";
-      } else {
-        document.getElementById("meditationProgress").innerHTML =
-          "A buddha in the making; you met your daily meditation goal!";
-      }
-
-    };
-    meditationChart.update();
-
-  })
-}
+  };
+  meditationChart.update(); 
+  });
+})
+}; 
