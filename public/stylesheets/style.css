@@ -317,6 +317,10 @@ button.goal__tooltip__icon {
   background-color: #0D9BD9;
 }
 
+.goal__select {
+
+}
+
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
