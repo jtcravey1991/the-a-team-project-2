@@ -91,6 +91,7 @@ module.exports = function (app) {
         id: req.user.id
       }
     });
+    res.json({});
   });
 
   // ----------- GOALS ROUTES -------------------- ||

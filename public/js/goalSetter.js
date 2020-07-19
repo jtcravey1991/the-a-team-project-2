@@ -30,9 +30,8 @@ function init() {
     $.ajax("/api/user_data", {
       type: "PUT",
       data: userData
-    }).then(data => {
-      console.log(data);
-      console.log("sent sleep goal");
+    }).then(() => {
+      console.log("hello world")
       window.location.replace("/dashboard");
     });
   });
@@ -116,3 +115,13 @@ function valueChecker(value) {
     return value;
   }
 }
+
+//dashboard button listener
+$("#dashboardBtn").click(() => {
+  window.location.replace("/dashboard");
+});
+
+//logout button listener
+$("#logoutBtn").click(() => {
+  window.location.replace("/");
+});
