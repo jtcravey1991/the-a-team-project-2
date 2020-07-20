@@ -25,10 +25,19 @@
 </head>
 
 <body class="bg--blue">
-    <header>
+    <header class="navbar--border-b">
         <nav class="container navbar pt-4">
+            {{!-- Logo --}}
             <img class="navbar-brand" src="./images/wellyess-logo.svg" alt="wellyes logo">
-            <p class="navbar--goals">More goals to be activated after the beta launch.</p>
+
+            {{!-- Beta message --}}
+            <p class="navbar__beta">More goals to be activated after the beta launch.</p>
+
+            {{!-- Dashboard Btn --}}
+            <button type="button" href="/dashboard" class="btn home-header__btn" id="dashboardBtn">Dashboard</button>
+
+            {{!-- Logout Btn --}}
+            <button type="button" href="/" class="btn home-header__btn mt-3 mt-sm-0" id="logoutBtn">Logout</button>
 
         </nav>
     </header>
@@ -47,7 +56,7 @@
             <form class="col-md-8 d-flex flex-column">
 
                 <!-- Sleep Goal -->
-                <div class="row goal mb-4">
+                <div id="sleepGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class=" fas fa-bed"></i>
                     </div>
@@ -67,7 +76,7 @@
                 </div>
 
                 <!-- Study Goal -->
-                <div class="row goal mb-4">
+                <div id="studyGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-book-open"></i>
                     </div>
@@ -87,25 +96,18 @@
                 </div>
 
                 <!-- Eat Goal -->
-                <div class="row goal mb-4">
+                <div id="eatGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-apple-alt"></i>
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
                         I want to eat
-                        <select id="eatGoalVal" class="goal__select">
-                            <option value="">choose…</option>
-                            <option value="1">not</option>
-                            <option value="2">some</option>
-                            <option value="3">fairly</option>
-                            <option value="4">very</option>
-                            <option value="5">all</option>
-                        </select>
+                        <input type="number" min="1" max="5" class="goal__input" id="eatGoalVal" placeholder="1-5">
                         healthy every day.
                     </div>
                     <div class="col-2 goal__tooltip">
                         <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
-                            title="Eating right could protect your memory. Studies have found people who follow healthy diets are less likely to develop dementia and Alzheimer's.">
+                            title="Eating right could protect your memory. Studies have found people who follow healthy diets are less likely to develop dementia and Alzheimer's. Use a scale of 1-5.">
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
@@ -115,12 +117,12 @@
                 </div>
 
                 <!-- Drink Goal -->
-                <div class="row goal mb-4">
+                <div id="waterGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-glass-whiskey"></i>
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
-                        <span>I want to drink</span><input type="number" class="goal__input" id="drinkGoalVal"
+                        <span>I want to drink</span><input type="number" class="goal__input" id="waterGoalVal"
                             placeholder="0"><span>cups of water a day.</span>
                     </div>
                     <div class="col-2 goal__tooltip">
@@ -135,7 +137,7 @@
                 </div>
 
                 <!-- Exercise Goal -->
-                <div class="row goal mb-4">
+                <div id="exerciseGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-running"></i>
                     </div>
@@ -155,25 +157,19 @@
                 </div>
 
                 <!-- Socialize Goal -->
-                <div class="row goal mb-4">
+                <div id="socializeGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="col-8 col-sm-7 goal__sentence">
                         I want to socialize
-                        <select id="socializeGoalVal" class="goal__select">
-                            <option value="">choose…</option>
-                            <option value="1">none</option>
-                            <option value="2">some</option>
-                            <option value="3">often</option>
-                            <option value="4">a lot</option>
-                            <option value="5">all day</option>
-                        </select>
+                        <input type="number" min="1" max="5" class="goal__input" id="socializeGoalVal"
+                            placeholder="1-5">
                         every day.
                     </div>
                     <div class="col-2 goal__tooltip">
                         <button type="button" class="btn goal__tooltip__icon" data-toggle="tooltip" data-placement="top"
-                            title="Socializing gives a sense of purpose and meaning, and is very confidence-boosting!">
+                            title="Socializing gives a sense of purpose and meaning, and is very confidence-boosting! Use a scale of 1-5.">
                             <i class="far fa-question-circle"></i>
                         </button>
                     </div>
@@ -183,7 +179,7 @@
                 </div>
 
                 <!-- Meditate Goal -->
-                <div class="row goal mb-4">
+                <div id="meditationGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-circle"></i>
                     </div>
@@ -203,7 +199,7 @@
                 </div>
 
                 <!-- Jokes Goal -->
-                <div class="row goal mb-4">
+                <div id="jokesGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-grin-squint"></i>
                     </div>
@@ -223,7 +219,7 @@
                 </div>
 
                 <!-- Hugs Goal -->
-                <div class="row goal mb-4">
+                <div id="hugsGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-heart"></i>
                     </div>
@@ -243,7 +239,7 @@
                 </div>
 
                 <!-- Hobbies Goal -->
-                <div class="row goal mb-4">
+                <div id="hobbyGoalDiv" class="row goal mb-4">
                     <div class="col-1 goal--icon d-none d-sm-block">
                         <i class="fas fa-hammer"></i>
                     </div>
@@ -296,6 +292,7 @@
 
     <!-- Goalsetter JS -->
     <script type="text/javascript" src="js/goalSetter.js"></script>
+
 
     <script>
         $(function () {

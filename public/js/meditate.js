@@ -5,9 +5,9 @@ const meditateLogChart = document
 const meditateBtn = document.querySelector("#meditationBtn");
 
 //variable for daily meditation minute goal
-let meditateGoal = 30;
+const meditateGoal = 30;
 
-getMeditate(); 
+getMeditate();
 
 document.getElementById("meditationGoal").innerHTML =
   "You've set a goal for " + meditateGoal + " minutes of meditation per day!";
@@ -73,7 +73,7 @@ function addMeditation() {
   let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
 
   meditateValue = document.getElementById("meditationLog").value;
-  console.log(meditateValue); 
+  console.log(meditateValue);
 
   meditationChart.data.datasets[0].data.push(meditateValue);
 
@@ -95,20 +95,32 @@ function addMeditation() {
     console.log(data);
     console.log("logged meditation");
 
-    location.reload(); 
+    location.reload();
 
 });
 
 }
 
-
 function getMeditate() {
+
+  $.get("/api/meditation", data => {
+    console.log(data);
+    //array that takes in the data values to populate the chart
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i].value);
+      console.log(data[i].date);
+      meditationChart.data.datasets[0].data.push(data[i].value);
+
+      data[i].date = moment(data[i].date).format("ddd, MMMM Do");
+      meditationChart.data.labels.push(data[i].date);
+    }
+    meditationChart.update();
 
   $.get("/api/meditation", function(data) {
 
     const dataSet = [data];
 
-    const mappedData = data.reduce((last, date) =>{
+    const mappedData = data.reduce((last, date) => {
       const temp = {};
       temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
       return {...last, ...temp};
@@ -159,6 +171,6 @@ if(chartData.length<= 7){
 
   };
   meditationChart.update(); 
-  
   });
+})
 }; 

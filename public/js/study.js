@@ -90,7 +90,7 @@ function addStudy() {
   
   studyMin = document.getElementById("minStudy").value;
   studyHours = studyMin / 60;
-  studyHours = studyHours.toFixed(2); 
+  studyHours = studyHours.toFixed(2);
   studGoal = studGoal - studyHours;
   
   //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal

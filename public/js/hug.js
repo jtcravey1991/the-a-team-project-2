@@ -72,10 +72,10 @@ function addHug(){
   
   hugChart.data.datasets[0].data.push(hugValue);
 
-  hugChart.data.labels.push(hugDate);
-  //want to push dayDate as value to backend
-  document.getElementById("hugProgress").innerHTML =
-    "Great hug! Keep those endorphins going!";
+    hugChart.data.labels.push(hugDate);
+    //want to push dayDate as value to backend
+    document.getElementById("hugProgress").innerHTML =
+      "Great hug! Keep those endorphins going!";
 
 
   const newHug = {

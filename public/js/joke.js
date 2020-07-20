@@ -61,30 +61,33 @@ function addJoke(){
   
     let dayDate = moment(inputDate).utc().format("ddd, MMMM Do");
     $("#dateDisplay").text(dayDate);
-    
-    let jokeValue = 1; 
-    
+
+    let jokeValue = 1;
+
     jokeChart.data.datasets[0].data.push(jokeValue);
     jokeChart.data.labels.push(dayDate);
 
    
   jokeChart.update();
 
-  const newJoke = {
-    date: inputDate,
-    value: jokeValue
-  };
-  // Send the POST request.
-  $.ajax("/api/joke", {
-    type: "POST",
-    data: newJoke
-  }).then(data => {
-    console.log(data);
-    console.log("logged joke");
-    location.reload(); 
 
-  });
-}
+    const newJoke = {
+      date: inputDate,
+      value: jokeValue
+    };
+    // Send the POST request.
+    $.ajax("/api/joke", {
+      type: "POST",
+      data: newJoke
+    }).then(data => {
+      console.log(data);
+      console.log("logged joke");
+      location.reload();
+
+    });
+  };
+
+
 function getJoke() {
     $.get("/api/joke", function(data) {
     
