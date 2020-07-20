@@ -164,8 +164,9 @@ function getHobby() {
 
     let hobbyHours = hobbyData[i].value / 60; 
     hobbyHours = hobbyHours.toFixed(2); 
-    hobbyData[i].date = moment(hobbyData[i].date).utc().format("ddd, MMMM Do");
+    
     hobbyChart.data.labels.push(hobbyData[i].date);
+    hobbyData[i].date = moment(hobbyData[i].date).utc().format("ddd, MMMM Do");
     hobbyChart.data.datasets[0].data.push(hobbyHours);
    
     if (hobbyGoal <= 0) {
@@ -173,6 +174,8 @@ function getHobby() {
         "A master at your craft! You've met your hobby time goal!";
       hobbyGoal = 0;
     }
+    document.getElementById("hobbyHoursGoal").innerHTML =
+    "Hours left this week to study: " + hobbyGoal;
 };
   hobbyChart.update(); 
   

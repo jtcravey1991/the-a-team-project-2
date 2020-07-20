@@ -176,7 +176,7 @@ if(chartData.length<= 7){
   
     studyChart.data.datasets[0].data.push(studyHours);
 
-    studyData[i].date = moment(studyData[i].date).utc().format("ddd, MMMM Do")
+    studyData[i].date = moment(studyData[i].date).utc().format("ddd, MMMM Do");
     studyChart.data.labels.push(studyData[i].date);
    
     document.getElementById("studyHoursGoal").innerHTML =
