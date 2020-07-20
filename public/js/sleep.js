@@ -89,9 +89,6 @@ function generateChart(sleepGoal) {
 }
 
 
-
-
-
 function addSleep(sleepChart) {
   let inputDate = document.getElementById("startOne").value;
 
