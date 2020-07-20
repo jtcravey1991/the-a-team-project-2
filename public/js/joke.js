@@ -57,7 +57,7 @@ $("#jokeBtn").on("click", function (e){
 }); 
 
 function addJoke(){
-    let inputDate = moment().utc().format(); 
+    let inputDate = moment({h:0, m:0, s:0, ms:0}).utc().format(); 
   
     let dayDate = moment(inputDate).utc().format("ddd, MMMM Do");
     $("#dateDisplay").text(dayDate);

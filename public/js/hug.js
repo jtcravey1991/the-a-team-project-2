@@ -64,7 +64,7 @@ $("#hugBtn").on("click", e => {
 
 function addHug(){
  
-    let inputDate = moment().utc().format(); 
+    let inputDate = moment({h:0, m:0, s:0, ms:0}).utc().format(); 
     let hugDate = moment(inputDate).utc().format("ddd, MMMM Do");
     $("#hugDisplayDate").text(hugDate);
  
@@ -77,8 +77,6 @@ function addHug(){
   document.getElementById("hugProgress").innerHTML =
     "Great hug! Keep those endorphins going!";
 
-
-  hugChart.update();
 
   const newHug = {
     date: inputDate,
@@ -93,6 +91,7 @@ function addHug(){
     console.log("logged hug");
     location.reload(); 
   });
+  hugChart.update();
 };
 
 function getHug() {
