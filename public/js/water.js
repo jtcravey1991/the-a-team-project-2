@@ -75,10 +75,6 @@ function addWater() {
 
   waterChart.data.labels.push(logDate);
 
-
-//   document.getElementById("waterGoal").innerHTML =
-//     "You've set a goal for " + waterGoal + " ounces of water per day.";
-
   waterChart.update();
 
   const newWater = {
@@ -112,15 +108,44 @@ function getWater() {
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
   
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
 
-    waterChart.data.datasets[0].data.push(chartData[i].value);
 
-    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
-    waterChart.data.labels.push(chartData[i].date);
+const waterData = [];
 
-    let waterOz = chartData[chartData.length -1].value;
+if(chartData.length<= 7){
+    for (let i = 0; i < chartData.length; i++) {
+      chartData.sort(function(a,b){
+     
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      waterData.push(chartData[i]); 
+      
+    };
+  }
+  else if(chartData.length >7){
+    for (let i = 0; i < 7; i++) {
+      chartData.sort(function(a,b){
+   
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      waterData.push(chartData[i]); 
+      
+    };
+  };
+ 
+  waterData.reverse(); 
+  
+  
+  for (let i = 0; i < waterData.length; i++) {
+
+    waterChart.data.datasets[0].data.push(waterData[i].value);
+
+    waterData[i].date = moment(waterData[i].date).utc().format("ddd, MMMM Do")
+    waterChart.data.labels.push(waterData[i].date);
+
+    let waterOz = waterData[waterData.length -1].value;
 
     if (waterOz < waterGoal) {
       document.getElementById("waterProgress").innerHTML = "Remember to hydrate!";

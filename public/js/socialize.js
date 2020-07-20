@@ -1,6 +1,4 @@
-const socializeLogChart = document
-  .getElementById("socializeChart")
-  .getContext("2d");
+const socializeLogChart = document.getElementById("socializeChart").getContext("2d");
 
 const socializeBtn = document.querySelector("#socializeBtn");
 
@@ -69,26 +67,12 @@ function addSocializeValue(){
     let inputDate = document.getElementById("logSocialDate").value;
     let day = moment(inputDate).utc().format("ddd, MMMM Do");
 
-
   socializeValue = document.getElementById("socializeValue").value;
 
   socializeChart.data.datasets[0].data.push(socializeValue);
-
-    socializeChart.data.labels.push(day);
-   
-    socializeChart.update();
+  socializeChart.data.labels.push(day);
 
 
-  if (socializeValue == 3 || socializeValue == 4) {
-    document.getElementById("socializeProgress").innerHTML =
-      "Keep up the social quality!";
-  } else if (socializeValue == 5) {
-    document.getElementById("socializeProgress").innerHTML =
-      "Wow! What a friend!";
-  } else {
-    document.getElementById("socializeProgress").innerHTML =
-      "Give a friend a call!";
-  }
   socializeChart.update();
 
   const newSocialize = {
@@ -102,10 +86,7 @@ function addSocializeValue(){
   }).then(data => {
     console.log(data);
     console.log("logged social quality rating");
-
     location.reload(); 
-
-
   });
 }
 
@@ -122,15 +103,37 @@ function getSocialize() {
         }, {}); 
       const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
       console.log(chartData); 
-       //array that takes in the data values to populate the chart
-    for (let i = 0; i < chartData.length; i++) {
-  
-      socializeChart.data.datasets[0].data.push(chartData[i].value);
-  
-      chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
-      socializeChart.data.labels.push(chartData[i].date);
 
-      let socializeInput = chartData[chartData.length -1].value; 
+      const socialData = [];
+      if(chartData.length <= 7){
+        for (let i = 0; i < chartData.length; i++) {
+          chartData.sort(function(a,b){
+        
+            return new Date(b.date) - new Date(a.date);
+          });
+          
+          socialData.push(chartData[i]); 
+        }
+      }
+      else if(chartData.length > 7){
+        for (let i = 0; i < 7; i++) {
+          chartData.sort(function(a,b){
+         
+            return new Date(b.date) - new Date(a.date);
+          });
+          socialData.push(chartData[i]); 
+        } 
+      };
+      socialData.reverse(); 
+ 
+    for (let i = 0; i < socialData.length; i++) {
+     
+      socializeChart.data.datasets[0].data.push(socialData[i].value);
+  
+      socialData[i].date = moment(socialData[i].date).utc().format("ddd, MMMM Do")
+      socializeChart.data.labels.push(socialData[i].date);
+
+      let socializeInput = socialData[socialData.length -1].value; 
 
       if (socializeInput == 3 || socializeInput == 4) {
         document.getElementById("socializeProgress").innerHTML = "Keep up the social quality!"
@@ -139,9 +142,6 @@ function getSocialize() {
     } else{
         document.getElementById("socializeProgress").innerHTML = "Give a friend a call!"
     };
-    if (socializeInput > 5){
-        socializeInput = 5; 
-    }; 
   
   };
     socializeChart.update(); 

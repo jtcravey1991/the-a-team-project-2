@@ -82,21 +82,19 @@ function addExercise() {
   let inputDate = document.getElementById("exDate").value;
   let day = moment(inputDate).utc().format("ddd, MMMM Do");
  
-  //dayStudy = 2;
+
   exerciseMin = document.getElementById("minExercise").value;
   exerciseHours = exerciseMin / 60;
   exerciseHours = exerciseHours.toFixed(2); 
   exerciseGoal = exerciseGoal - exerciseHours;
-  //date++;
-  //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
+
   exerciseChart.data.datasets[0].data.pop(exerciseGoal);
   exerciseChart.data.datasets[0].data.push(exerciseHours);
   exerciseChart.data.datasets[0].data.push(exerciseGoal);
-  //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
   exerciseChart.data.labels.push(day);
   exerciseChart.data.labels.push(exerciseHours);
 
- 
+
   exerciseChart.update();
 
   const newExercise = {
@@ -110,15 +108,13 @@ function addExercise() {
   }).then(data => {
     console.log(data);
     console.log("logged exercise time");
-
     location.reload(); 
-
   });
   
   //GET request to update
   getExercise(); 
   
-}
+};
 
 function getExercise() {
 
@@ -134,15 +130,41 @@ function getExercise() {
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
 
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
+const exerciseData = [];
 
-  /////
-  let exerciseHours = chartData[i].value / 60; 
+if(chartData.length<= 7){
+    for (let i = 0; i < chartData.length; i++) {
+      chartData.sort(function(a,b){
+     
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      exerciseData.push(chartData[i]); 
+      
+    };
+  }
+  else if(chartData.length >7){
+    for (let i = 0; i < 7; i++) {
+      chartData.sort(function(a,b){
+      
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      exerciseData.push(chartData[i]); 
+      
+    };
+  };
+ 
+  exerciseData.reverse(); 
+
+  for (let i = 0; i < exerciseData.length; i++) {
+
+ 
+  let exerciseHours = exerciseData[i].value / 60; 
   exerciseHours = exerciseHours.toFixed(2); 
-  chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
+  exerciseData[i].date = moment(exerciseData[i].date).utc().format("ddd, MMMM Do");
 
-    exerciseChart.data.labels.push(chartData[i].date);
+    exerciseChart.data.labels.push(exerciseData[i].date);
     exerciseChart.data.datasets[0].data.push(exerciseHours);
 
    
@@ -160,4 +182,4 @@ function getExercise() {
   exerciseChart.update(); 
 
   });
-}
+};
