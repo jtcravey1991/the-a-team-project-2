@@ -16,7 +16,7 @@ const eatChart = new Chart(eatLogChart, {
         label: "Eat Healthy",
         data: [],
         backgroundColor: "ForestGreen",
-        hoverBackgroundColor: "LightBlue",
+        hoverBackgroundColor: "PaleGreen",
         barThickness: 50
       }
     ]
@@ -60,16 +60,13 @@ eatBtn.addEventListener("click", () => {
 });
 
 function addEatValue() {
-  const inputDate = document.getElementById("logDate").value;
-  const day = moment(inputDate).format("ddd, MMMM Do");
+  let inputDate = document.getElementById("logDate").value;
+  const day = moment(inputDate).utc().format("ddd, MMMM Do");
 
-  eatValue = document.getElementById("eatValue").value;
-  console.log(eatValue);
+  let eatValue = document.getElementById("eatValue").value;
 
   eatChart.data.datasets[0].data.push(eatValue);
-
   eatChart.data.labels.push(day);
-
 
   eatChart.update();
 
@@ -88,11 +85,12 @@ function addEatValue() {
   });
 };
 
+
 function getEat() {
   $.get("/api/eat", data => {
 
     const dataSet = [data];
-
+    console.log(dataSet); 
     const mappedData = data.reduce((last, date) =>{
     const temp = {};
     temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
@@ -100,26 +98,55 @@ function getEat() {
       }, {}); 
       const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
       console.log(chartData); 
-    //array that takes in the data values to populate the chart
+
+  const eatData = [];
+  if(chartData.length<= 7){
     for (let i = 0; i < chartData.length; i++) {
-
-      eatChart.data.datasets[0].data.push(chartData[i].value);
-
-      chartData[i].date = moment(chartData[i].date).format("ddd, MMMM Do");
-      eatChart.data.labels.push(chartData[i].date);
-
-      let eatValue = chartData[chartData.length -1].value; 
+      chartData.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+      });
       
-      if (eatValue == 3 || eatValue == 4) {
-        document.getElementById("eatProgress").innerHTML =
-          "Keep up the healthy eating!";
-      } else if (eatValue == 5) {
-        document.getElementById("eatProgress").innerHTML = "Wow! Amazing!";
-      } else {
-        document.getElementById("eatProgress").innerHTML =
-          "Let's try to eat better!";
-      }
-    }
+      eatData.push(chartData[i]); 
+      
+    };
+  }
+  else if(chartData.length >7){
+    for (let i = 0; i < 7; i++) {
+      chartData.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      eatData.push(chartData[i]); 
+      
+    };
+  };
+ 
+ 
+  eatData.reverse(); 
+  for (let i = 0; i < eatData.length; i++) {
+    
+   eatChart.data.datasets[0].data.push(eatData[i].value);
+
+    eatData[i].date = moment(eatData[i].date).utc().format("ddd, MMMM Do");
+ 
+    eatChart.data.labels.push(eatData[i].date);
+   
+    let eatValue = eatData[eatData.length-1].value; 
+    
+    if (eatValue == 3 || eatValue == 4) {
+      document.getElementById("eatProgress").innerHTML =
+        "Keep up the healthy eating!";
+    } else if (eatValue == 5) {
+      document.getElementById("eatProgress").innerHTML = "Wow! Amazing!";
+    } else {
+      document.getElementById("eatProgress").innerHTML =
+        "Let's try to eat better!";
+    } 
+  }
     eatChart.update();
-  });
-}
+   });
+};

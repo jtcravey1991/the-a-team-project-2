@@ -111,15 +111,47 @@ function getSleep() {
     }, {}); 
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
+
+
+  const sleepData = [];
+
+  if(chartData.length<= 7){
+      for (let i = 0; i < chartData.length; i++) {
+        chartData.sort(function(a,b){
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(b.date) - new Date(a.date);
+        });
+        
+        sleepData.push(chartData[i]); 
+        
+      };
+    }
+    else if(chartData.length >7){
+      for (let i = 0; i < 7; i++) {
+        chartData.sort(function(a,b){
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(b.date) - new Date(a.date);
+        });
+        
+        sleepData.push(chartData[i]); 
+        
+      };
+    };
+   
+    sleepData.reverse(); 
+  
+
      //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
+  for (let i = 0; i < sleepData.length; i++) {
 
-    sleepChart.data.datasets[0].data.push(chartData[i].value);
+    sleepChart.data.datasets[0].data.push(sleepData[i].value);
 
-    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
-    sleepChart.data.labels.push(chartData[i].date);
+    sleepData[i].date = moment(sleepData[i].date).utc().format("ddd, MMMM Do")
+    sleepChart.data.labels.push(sleepData[i].date);
 
-    if (chartData[chartData.length -1].value < sleepGoal) {
+    if (sleepData[sleepData.length -1].value < sleepGoal) {
       document.getElementById("sleepProgress").innerHTML = "You need more sleep!";
     } else {
       document.getElementById("sleepProgress").innerHTML =

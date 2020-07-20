@@ -133,13 +133,44 @@ function getHobby() {
     }, {}); 
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
 
-    let hobbyHours = chartData[i].value / 60; 
+  const hobbyData = [];
+
+  if(chartData.length<= 7){
+      for (let i = 0; i < chartData.length; i++) {
+        chartData.sort(function(a,b){
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(b.date) - new Date(a.date);
+        });
+        
+        hobbyData.push(chartData[i]); 
+        
+      };
+    }
+    else if(chartData.length >7){
+      for (let i = 0; i < 7; i++) {
+        chartData.sort(function(a,b){
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(b.date) - new Date(a.date);
+        });
+        
+        hobbyData.push(chartData[i]); 
+        
+      };
+    };
+   
+    hobbyData.reverse(); 
+
+
+     //array that takes in the data values to populate the chart
+  for (let i = 0; i < hobbyData.length; i++) {
+
+    let hobbyHours = hobbyData[i].value / 60; 
     hobbyHours = hobbyHours.toFixed(2); 
-    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
-    hobbyChart.data.labels.push(chartData[i].date);
+    hobbyData[i].date = moment(hobbyData[i].date).utc().format("ddd, MMMM Do");
+    hobbyChart.data.labels.push(hobbyData[i].date);
     hobbyChart.data.datasets[0].data.push(hobbyHours);
    
     if (hobbyGoal <= 0) {

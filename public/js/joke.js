@@ -57,9 +57,9 @@ $("#jokeBtn").on("click", function (e){
 }); 
 
 function addJoke(){
-    let inputDate = moment({hour: 0, minute: 0, seconds: 0, milliseconds: 0}).utc().format(); 
-    console.log(inputDate); 
-    let dayDate = moment(inputDate).utc().format('MMMM Do YYYY');
+    let inputDate = moment().utc().format(); 
+  
+    let dayDate = moment(inputDate).utc().format("ddd, MMMM Do");
     $("#dateDisplay").text(dayDate);
     
     let jokeValue = 1; 
@@ -89,7 +89,7 @@ function getJoke() {
     $.get("/api/joke", function(data) {
     
   const dataSet = [data];
-console.log(dataSet);
+  console.log(dataSet);
   const mappedData = data.reduce((last, date) =>{
   const temp = {};
   temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
@@ -97,13 +97,43 @@ console.log(dataSet);
     }, {}); 
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
+
+
+  const jokeData = [];
+
+      if(chartData.length<= 7){
+          for (let i = 0; i < chartData.length; i++) {
+            chartData.sort(function(a,b){
+              // Turn your strings into dates, and then subtract them
+              // to get a value that is either negative, positive, or zero.
+              return new Date(b.date) - new Date(a.date);
+            });
+            
+            jokeData.push(chartData[i]); 
+            
+          };
+        }
+        else if(chartData.length >7){
+          for (let i = 0; i < 7; i++) {
+            chartData.sort(function(a,b){
+              // Turn your strings into dates, and then subtract them
+              // to get a value that is either negative, positive, or zero.
+              return new Date(b.date) - new Date(a.date);
+            });
+            
+            jokeData.push(chartData[i]); 
+            
+          };
+        };
+       
+        jokeData.reverse(); 
        //array that takes in the data values to populate the chart
-    for (let i = 0; i < chartData.length; i++) {
+    for (let i = 0; i < jokeData.length; i++) {
   
-      jokeChart.data.datasets[0].data.push(chartData[i].value);
+      jokeChart.data.datasets[0].data.push(jokeData[i].value);
   
-      chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
-      jokeChart.data.labels.push(chartData[i].date);
+      jokeData[i].date = moment(jokeData[i].date).utc().format("ddd, MMMM Do")
+      jokeChart.data.labels.push(jokeData[i].date);
 
       //jokeChart.data.datasets[0].data.push(chartData[chartData.length -1].value);
      

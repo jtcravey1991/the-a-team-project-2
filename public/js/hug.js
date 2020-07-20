@@ -1,7 +1,5 @@
 const hugLogChart = document.getElementById("hugChart").getContext("2d");
 
-
-
 getHug(); 
 
 //Global options
@@ -64,21 +62,15 @@ $("#hugBtn").on("click", e => {
 });
 
 
-$("#hugBtn").on("click", function (e){
-    e.preventDefault();  
-    addHug();
-}); 
-
-
 function addHug(){
  
-    let inputDate = moment({hour: 0, minute: 0, seconds: 0, milliseconds: 0}).utc().format(); 
-    let hugDate = moment(inputDate).format('MMMM Do YYYY');
+    let inputDate = moment().utc().format(); 
+    let hugDate = moment(inputDate).utc().format("ddd, MMMM Do");
     $("#hugDisplayDate").text(hugDate);
-    
+ 
     let hugValue = 1;
-    hugChart.data.datasets[0].data.push(hugValue);
-
+  
+  hugChart.data.datasets[0].data.push(hugValue);
 
   hugChart.data.labels.push(hugDate);
   //want to push dayDate as value to backend
@@ -99,9 +91,7 @@ function addHug(){
   }).then(data => {
     console.log(data);
     console.log("logged hug");
-
     location.reload(); 
-
   });
 };
 
@@ -118,25 +108,50 @@ function getHug() {
         }, {}); 
       const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
       console.log(chartData); 
+
+      const hugData = [];
+
+      if(chartData.length<= 7){
+          for (let i = 0; i < chartData.length; i++) {
+            chartData.sort(function(a,b){
+              // Turn your strings into dates, and then subtract them
+              // to get a value that is either negative, positive, or zero.
+              return new Date(b.date) - new Date(a.date);
+            });
+            
+            hugData.push(chartData[i]); 
+            
+          };
+        }
+        else if(chartData.length >7){
+          for (let i = 0; i < 7; i++) {
+            chartData.sort(function(a,b){
+              // Turn your strings into dates, and then subtract them
+              // to get a value that is either negative, positive, or zero.
+              return new Date(b.date) - new Date(a.date);
+            });
+            
+            hugData.push(chartData[i]); 
+            
+          };
+        };
+       
+        hugData.reverse(); 
+
     
        //array that takes in the data values to populate the chart
-    for (let i = 0; i < chartData.length; i++) {
+    for (let i = 0; i < hugData.length; i++) {
   
-      hugChart.data.datasets[0].data.push(chartData[i].value);
+      hugChart.data.datasets[0].data.push(hugData[i].value);
   
-      chartData[i].date = moment(chartData[i].date).format("ddd, MMMM Do")
-      hugChart.data.labels.push(chartData[i].date);
+      hugData[i].date = moment(hugData[i].date).format("ddd, MMMM Do")
+      hugChart.data.labels.push(hugData[i].date);
      
-
-      //let hugValue = chartData[chartData.length -1].value; 
-      // if(hugValue > 1){
-      //   hugValue = 1; 
-      // };
-      hugChart.data.datasets[0].data.push(chartData[chartData.length -1].value);
+      hugChart.data.datasets[0].data.push(hugData[hugData.length -1].value);
       document.getElementById("hugProgress").innerHTML = "Great hug! Keep those endorphins going!"
      
   };
     hugChart.update(); 
     
     });
-  }; 
+}; 

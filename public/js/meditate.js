@@ -116,16 +116,46 @@ function getMeditate() {
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
    
+
+  const meditateData = [];
+
+if(chartData.length<= 7){
+    for (let i = 0; i < chartData.length; i++) {
+      chartData.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      meditateData.push(chartData[i]); 
+      
+    };
+  }
+  else if(chartData.length >7){
+    for (let i = 0; i < 7; i++) {
+      chartData.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      meditateData.push(chartData[i]); 
+      
+    };
+  };
+ 
+  meditateData.reverse(); 
+
      //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
+  for (let i = 0; i < meditateData.length; i++) {
 
-    meditationChart.data.datasets[0].data.push(chartData[i].value);
+    meditationChart.data.datasets[0].data.push(meditateData[i].value);
 
-    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
-    meditationChart.data.labels.push(chartData[i].date);
+    meditateData[i].date = moment(meditateData[i].date).utc().format("ddd, MMMM Do");
+    meditationChart.data.labels.push(meditateData[i].date);
 
-    if (chartData[chartData.length -1].value  < meditateGoal) {
-      document.getElementById("meditationProgress").innerHTML = "Take some time to be still!";
+    if (meditateData[meditateData.length -1].value  < meditateGoal) {
+      document.getElementById("meditationProgress").innerHTML = "Take some time to be still";
     } else {
       document.getElementById("meditationProgress").innerHTML =
         "A buddha in the making; you met your daily meditation goal!";

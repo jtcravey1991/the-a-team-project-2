@@ -145,14 +145,13 @@ function getStudy() {
 
     let studyHours = chartData[i].value / 60; 
     studyHours = studyHours.toFixed(2); 
-    //studyChart.data.datasets[0].data.push(data[i].value);
+    studGoal = studGoal - studyHours;
+  
     studyChart.data.datasets[0].data.push(studyHours);
 
     chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
     studyChart.data.labels.push(chartData[i].date);
-
-    // studyHours = studyMin / 60;
-    studGoal = studGoal - studyHours;
+   
     document.getElementById("studyHoursGoal").innerHTML =
     "Hours left this week to study: " + studGoal;
 

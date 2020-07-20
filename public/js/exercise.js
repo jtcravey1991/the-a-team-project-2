@@ -110,15 +110,13 @@ function addExercise() {
   }).then(data => {
     console.log(data);
     console.log("logged exercise time");
-
     location.reload(); 
-
   });
   
   //GET request to update
   getExercise(); 
   
-}
+};
 
 function getExercise() {
 
@@ -134,15 +132,45 @@ function getExercise() {
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
 
+const exerciseData = [];
+
+if(chartData.length<= 7){
+    for (let i = 0; i < chartData.length; i++) {
+      chartData.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      exerciseData.push(chartData[i]); 
+      
+    };
+  }
+  else if(chartData.length >7){
+    for (let i = 0; i < 7; i++) {
+      chartData.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      exerciseData.push(chartData[i]); 
+      
+    };
+  };
+ 
+  exerciseData.reverse(); 
+
+
      //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
+  for (let i = 0; i < exerciseData.length; i++) {
 
-  /////
-  let exerciseHours = chartData[i].value / 60; 
+ 
+  let exerciseHours = exerciseData[i].value / 60; 
   exerciseHours = exerciseHours.toFixed(2); 
-  chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do");
+  exerciseData[i].date = moment(exerciseData[i].date).utc().format("ddd, MMMM Do");
 
-    exerciseChart.data.labels.push(chartData[i].date);
+    exerciseChart.data.labels.push(exerciseData[i].date);
     exerciseChart.data.datasets[0].data.push(exerciseHours);
 
    
@@ -160,4 +188,4 @@ function getExercise() {
   exerciseChart.update(); 
 
   });
-}
+};
