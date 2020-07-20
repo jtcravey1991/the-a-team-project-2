@@ -56,10 +56,10 @@ $("#jokeBtn").on("click", function (e){
     addJoke();
 }); 
 
-  function addJoke() {
-    let inputDate = moment({ hour: 0, minute: 0, seconds: 0, milliseconds: 0 }).utc().format();
-    console.log(inputDate);
-    let dayDate = moment(inputDate).utc().format('MMMM Do YYYY');
+function addJoke(){
+    let inputDate = moment({h:0, m:0, s:0, ms:0}).utc().format(); 
+  
+    let dayDate = moment(inputDate).utc().format("ddd, MMMM Do");
     $("#dateDisplay").text(dayDate);
 
     let jokeValue = 1;
@@ -92,7 +92,7 @@ function getJoke() {
     $.get("/api/joke", function(data) {
     
   const dataSet = [data];
-console.log(dataSet);
+  console.log(dataSet);
   const mappedData = data.reduce((last, date) =>{
   const temp = {};
   temp[date.date] = last[date.date] ? last[date.date] + date.value : date.value;
@@ -100,16 +100,42 @@ console.log(dataSet);
     }, {}); 
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
-       //array that takes in the data values to populate the chart
-    for (let i = 0; i < chartData.length; i++) {
 
-      jokeChart.data.datasets[0].data.push(chartData[i].value);
 
-      chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
-      jokeChart.data.labels.push(chartData[i].date);
+  const jokeData = [];
 
-      //jokeChart.data.datasets[0].data.push(chartData[chartData.length -1].value);
-
+      if(chartData.length<= 7){
+          for (let i = 0; i < chartData.length; i++) {
+            chartData.sort(function(a,b){
+             
+              return new Date(b.date) - new Date(a.date);
+            });
+            
+            jokeData.push(chartData[i]); 
+            
+          };
+        }
+        else if(chartData.length >7){
+          for (let i = 0; i < 7; i++) {
+            chartData.sort(function(a,b){
+            
+              return new Date(b.date) - new Date(a.date);
+            });
+            
+            jokeData.push(chartData[i]); 
+            
+          };
+        };
+       
+        jokeData.reverse(); 
+ 
+    for (let i = 0; i < jokeData.length; i++) {
+  
+      jokeChart.data.datasets[0].data.push(jokeData[i].value);
+  
+      jokeData[i].date = moment(jokeData[i].date).utc().format("ddd, MMMM Do")
+      jokeChart.data.labels.push(jokeData[i].date);
+     
       document.getElementById("jokeProgress").innerHTML = "Always nice to make others smile, keep it up!"
   
   };

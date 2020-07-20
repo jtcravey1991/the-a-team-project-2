@@ -140,20 +140,45 @@ function getStudy() {
   const chartData = Object.keys(mappedData).map(k => ({date: k, value: mappedData[k]}));
   console.log(chartData); 
   
-     //array that takes in the data values to populate the chart
-  for (let i = 0; i < chartData.length; i++) {
+  const studyData = [];
 
-    let studyHours = chartData[i].value / 60; 
+if(chartData.length<= 7){
+    for (let i = 0; i < chartData.length; i++) {
+      chartData.sort(function(a,b){
+     
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      studyData.push(chartData[i]); 
+      
+    };
+  }
+  else if(chartData.length >7){
+    for (let i = 0; i < 7; i++) {
+      chartData.sort(function(a,b){
+      
+        return new Date(b.date) - new Date(a.date);
+      });
+      
+      studyData.push(chartData[i]); 
+      
+    };
+  };
+ 
+  studyData.reverse(); 
+
+
+  for (let i = 0; i < studyData.length; i++) {
+
+    let studyHours = studyData[i].value / 60; 
     studyHours = studyHours.toFixed(2); 
     studGoal = studGoal - studyHours;
-    //studyChart.data.datasets[0].data.push(data[i].value);
+  
     studyChart.data.datasets[0].data.push(studyHours);
 
-    chartData[i].date = moment(chartData[i].date).utc().format("ddd, MMMM Do")
-    studyChart.data.labels.push(chartData[i].date);
-
-    // studyHours = studyMin / 60;
-
+    studyData[i].date = moment(studyData[i].date).utc().format("ddd, MMMM Do");
+    studyChart.data.labels.push(studyData[i].date);
+   
     document.getElementById("studyHoursGoal").innerHTML =
     "Hours left this week to study: " + studGoal;
 
