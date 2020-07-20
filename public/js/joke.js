@@ -104,8 +104,7 @@ function getJoke() {
       if(chartData.length<= 7){
           for (let i = 0; i < chartData.length; i++) {
             chartData.sort(function(a,b){
-              // Turn your strings into dates, and then subtract them
-              // to get a value that is either negative, positive, or zero.
+             
               return new Date(b.date) - new Date(a.date);
             });
             
@@ -116,8 +115,7 @@ function getJoke() {
         else if(chartData.length >7){
           for (let i = 0; i < 7; i++) {
             chartData.sort(function(a,b){
-              // Turn your strings into dates, and then subtract them
-              // to get a value that is either negative, positive, or zero.
+            
               return new Date(b.date) - new Date(a.date);
             });
             
@@ -127,15 +125,13 @@ function getJoke() {
         };
        
         jokeData.reverse(); 
-       //array that takes in the data values to populate the chart
+ 
     for (let i = 0; i < jokeData.length; i++) {
   
       jokeChart.data.datasets[0].data.push(jokeData[i].value);
   
       jokeData[i].date = moment(jokeData[i].date).utc().format("ddd, MMMM Do")
       jokeChart.data.labels.push(jokeData[i].date);
-
-      //jokeChart.data.datasets[0].data.push(chartData[chartData.length -1].value);
      
       document.getElementById("jokeProgress").innerHTML = "Always nice to make others smile, keep it up!"
   

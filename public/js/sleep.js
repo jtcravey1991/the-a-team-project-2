@@ -68,8 +68,6 @@ function addSleep() {
   let logDate = moment(inputDate).utc().format("ddd, MMMM Do");
   
 
-  sleepGoal = "8";
-
   sleepHours = document.getElementById("sleepLog").value;
 
   sleepChart.data.datasets[0].data.push(sleepHours);
@@ -118,8 +116,7 @@ function getSleep() {
   if(chartData.length<= 7){
       for (let i = 0; i < chartData.length; i++) {
         chartData.sort(function(a,b){
-          // Turn your strings into dates, and then subtract them
-          // to get a value that is either negative, positive, or zero.
+       
           return new Date(b.date) - new Date(a.date);
         });
         
@@ -130,8 +127,7 @@ function getSleep() {
     else if(chartData.length >7){
       for (let i = 0; i < 7; i++) {
         chartData.sort(function(a,b){
-          // Turn your strings into dates, and then subtract them
-          // to get a value that is either negative, positive, or zero.
+      
           return new Date(b.date) - new Date(a.date);
         });
         
@@ -143,7 +139,7 @@ function getSleep() {
     sleepData.reverse(); 
   
 
-     //array that takes in the data values to populate the chart
+  
   for (let i = 0; i < sleepData.length; i++) {
 
     sleepChart.data.datasets[0].data.push(sleepData[i].value);
@@ -158,7 +154,6 @@ function getSleep() {
         "You must feel well rested!";
     }
 };
-
 
 sleepChart.update(); 
   

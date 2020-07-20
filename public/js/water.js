@@ -75,10 +75,6 @@ function addWater() {
 
   waterChart.data.labels.push(logDate);
 
-
-//   document.getElementById("waterGoal").innerHTML =
-//     "You've set a goal for " + waterGoal + " ounces of water per day.";
-
   waterChart.update();
 
   const newWater = {
@@ -119,8 +115,7 @@ const waterData = [];
 if(chartData.length<= 7){
     for (let i = 0; i < chartData.length; i++) {
       chartData.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
+     
         return new Date(b.date) - new Date(a.date);
       });
       
@@ -131,8 +126,7 @@ if(chartData.length<= 7){
   else if(chartData.length >7){
     for (let i = 0; i < 7; i++) {
       chartData.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
+   
         return new Date(b.date) - new Date(a.date);
       });
       
@@ -142,7 +136,8 @@ if(chartData.length<= 7){
   };
  
   waterData.reverse(); 
-     //array that takes in the data values to populate the chart
+  
+  
   for (let i = 0; i < waterData.length; i++) {
 
     waterChart.data.datasets[0].data.push(waterData[i].value);

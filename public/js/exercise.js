@@ -82,21 +82,19 @@ function addExercise() {
   let inputDate = document.getElementById("exDate").value;
   let day = moment(inputDate).utc().format("ddd, MMMM Do");
  
-  //dayStudy = 2;
+
   exerciseMin = document.getElementById("minExercise").value;
   exerciseHours = exerciseMin / 60;
   exerciseHours = exerciseHours.toFixed(2); 
   exerciseGoal = exerciseGoal - exerciseHours;
-  //date++;
-  //we'd have a variable for their study input, that would be pushed, we would use some math to update hours left of goal
+
   exerciseChart.data.datasets[0].data.pop(exerciseGoal);
   exerciseChart.data.datasets[0].data.push(exerciseHours);
   exerciseChart.data.datasets[0].data.push(exerciseGoal);
-  //we'd have a variable for the date that is being pushed, we'd have a variable count to 7, on day 7, it shows the total hours studied against the goal, that value is saved, drop table and start over?
   exerciseChart.data.labels.push(day);
   exerciseChart.data.labels.push(exerciseHours);
 
- 
+
   exerciseChart.update();
 
   const newExercise = {
@@ -137,8 +135,7 @@ const exerciseData = [];
 if(chartData.length<= 7){
     for (let i = 0; i < chartData.length; i++) {
       chartData.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
+     
         return new Date(b.date) - new Date(a.date);
       });
       
@@ -149,8 +146,7 @@ if(chartData.length<= 7){
   else if(chartData.length >7){
     for (let i = 0; i < 7; i++) {
       chartData.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
+      
         return new Date(b.date) - new Date(a.date);
       });
       
@@ -161,8 +157,6 @@ if(chartData.length<= 7){
  
   exerciseData.reverse(); 
 
-
-     //array that takes in the data values to populate the chart
   for (let i = 0; i < exerciseData.length; i++) {
 
  

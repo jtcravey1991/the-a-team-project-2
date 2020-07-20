@@ -103,8 +103,7 @@ function getEat() {
   if(chartData.length<= 7){
     for (let i = 0; i < chartData.length; i++) {
       chartData.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
+      
         return new Date(b.date) - new Date(a.date);
       });
       
@@ -115,8 +114,7 @@ function getEat() {
   else if(chartData.length >7){
     for (let i = 0; i < 7; i++) {
       chartData.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
+    
         return new Date(b.date) - new Date(a.date);
       });
       
