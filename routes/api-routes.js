@@ -34,34 +34,36 @@ module.exports = function (app) {
   });
 
   //Route for gettting user preferences
-  app.get("/api/user_prefs", isAuthenticated, (req, res) => {
-    if (!req.user) {
-      res.json({});
-    } else {
+  app.get("/api/user_prefs", isAuthenticated,  (req, res) => {
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      }
+    }).then(user => {
       res.json({
-        isTrackingStudyTime: req.user.isTrackingStudyTime,
-        studyTimeGoal: req.user.studyTimeGoal,
-        isTrackingSleep: req.user.isTrackingSleep,
-        sleepGoal: req.user.sleepGoal,
-        isTrackingHealthyEats: req.user.isTrackingHealthyEats,
-        healthyEatsGoal: req.user.healthyEatsGoal,
-        isTrackingDrinkingWater: req.user.isTrackingDrinkingWater,
-        drinkingWaterGoal: req.user.drinkingWaterGoal,
-        isTrackingMeditation: req.user.isTrackingMeditation,
-        meditationGoal: req.user.meditationGoal,
-        isTrackingExercise: req.user.isTrackingExercise,
-        exerciseGoal: req.user.exerciseGoal,
-        isTrackingHugs: req.user.isTrackingHugs,
-        hugsGoal: req.user.hugsGoal,
-        isTrackingSocializing: req.user.isTrackingSocializing,
-        socializingGoal: req.user.socializingGoal,
-        isTrackingJokes: req.user.isTrackingJokes,
-        jokesGoal: req.user.jokesGoal,
-        isTrackingHobby: req.user.isTrackingHobby,
-        hobbyGoal: req.user.hobbyGoal
+        isTrackingStudyTime: user.isTrackingStudyTime,
+        studyTimeGoal: user.studyTimeGoal,
+        isTrackingSleep: user.isTrackingSleep,
+        sleepGoal: user.sleepGoal,
+        isTrackingHealthyEats: user.isTrackingHealthyEats,
+        healthyEatsGoal: user.healthyEatsGoal,
+        isTrackingDrinkingWater: user.isTrackingDrinkingWater,
+        drinkingWaterGoal: user.drinkingWaterGoal,
+        isTrackingMeditation: user.isTrackingMeditation,
+        meditationGoal: user.meditationGoal,
+        isTrackingExercise: user.isTrackingExercise,
+        exerciseGoal: user.exerciseGoal,
+        isTrackingHugs: user.isTrackingHugs,
+        hugsGoal: user.hugsGoal,
+        isTrackingSocializing: user.isTrackingSocializing,
+        socializingGoal: user.socializingGoal,
+        isTrackingJokes: user.isTrackingJokes,
+        jokesGoal: user.jokesGoal,
+        isTrackingHobby: user.isTrackingHobby,
+        hobbyGoal: user.hobbyGoal
       });
-    }
-  })
+    });
+  });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
