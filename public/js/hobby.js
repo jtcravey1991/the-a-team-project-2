@@ -164,10 +164,12 @@ function getHobby() {
 
     let hobbyHours = hobbyData[i].value / 60; 
     hobbyHours = hobbyHours.toFixed(2); 
+    hobbyGoal = hobbyGoal - hobbyHours; 
     
-    hobbyChart.data.labels.push(hobbyData[i].date);
-    hobbyData[i].date = moment(hobbyData[i].date).utc().format("ddd, MMMM Do");
     hobbyChart.data.datasets[0].data.push(hobbyHours);
+    hobbyData[i].date = moment(hobbyData[i].date).utc().format("ddd, MMMM Do");
+    hobbyChart.data.labels.push(hobbyData[i].date);
+   
    
     if (hobbyGoal <= 0) {
       document.getElementById("hobbyHoursGoal").innerHTML =
@@ -175,7 +177,7 @@ function getHobby() {
       hobbyGoal = 0;
     }
     document.getElementById("hobbyHoursGoal").innerHTML =
-    "Hours left this week to study: " + hobbyGoal;
+    "Hours left this week for your hobbies: " + hobbyGoal;
 };
   hobbyChart.update(); 
   

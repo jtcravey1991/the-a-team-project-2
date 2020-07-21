@@ -10,24 +10,13 @@ getSleepGoal();
 
 function getSleepGoal() {
   $.get("/api/user_prefs", function (data) {
-
+    console.log("HelloWorld")
     let sleepGoal = data.sleepGoal;
     generateChart(sleepGoal);
   });
 
 };
 
-
-// $.ajax("/api/user_prefs", {
-//   type: "GET",
-//   data: sleepGoal
-// }).then(data => {
-//   console.log(data.sleepGoal);
-
-// });
-
-
-//getSleep();
 //Global options
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
@@ -86,7 +75,7 @@ function generateChart(sleepGoal) {
     event.preventDefault();
     addSleep(sleepChart);
   });
-}
+};
 
 
 
