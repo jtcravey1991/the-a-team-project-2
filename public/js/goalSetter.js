@@ -31,8 +31,9 @@ function init() {
       type: "PUT",
       data: userData
     }).then(() => {
-      console.log("hello world")
-      window.location.replace("/dashboard");
+      console.log("hello world");
+      location.reload();
+      // window.location.replace("/dashboard");
     });
   });
 
