@@ -32,8 +32,7 @@ function init() {
       data: userData
     }).then(() => {
       console.log("hello world");
-      location.reload();
-      // window.location.replace("/dashboard");
+      window.location.replace("/dashboard");
     });
   });
 
